@@ -1,0 +1,149 @@
+// MAIN COLORS
+$font-main-color: #262626;
+$font-inverse-color : #fff;
+$font-discreet-color : #7e7e7e;
+$font-fun-color: #737373;
+$font-fun2-color: #ffd900;
+
+$bg-color: #f4f4f4;
+$bg-dark-color: #282c34;
+$card-color: #fff;
+
+$font-simple: "Jost";
+$font-serif: "Roboto Serif";
+$font-big: "Bebas Neue";
+
+// GENERAL STUFFS
+body {
+    background-color: $bg-color;
+    font-family: $font-simple;
+    margin: 0;
+    ul {
+        li {
+            list-style:none;
+        }
+    }
+}
+
+.bg-red {
+    background-color: rgba(0, 0, 0, 0.61);
+}
+
+.small-info {
+    color: $bg-dark-color;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+// BOUTONS
+.btn1 {
+    background-color: transparent;
+    color: #f4f4f4;
+    padding: 15px 20px 15px 20px;
+    border: 1px solid #f4f4f4;
+    width: 250px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.btn1:hover{
+    background-color: $font-inverse-color;
+    color: $font-fun-color;
+}
+
+.btn2 {
+    background-color: transparent;
+    color: $font-discreet-color;
+    padding: 15px 20px 15px 20px;
+    border: 1px solid $font-discreet-color;
+    width: 250px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+.btn2:hover {
+    border: 1px solid $font-main-color;
+    color: $font-main-color;
+}
+
+.btn3 {
+    background-color: $bg-color;
+    color: $font-main-color;
+    padding: 15px 20px 15px 20px;
+    border: 1px solid $font-discreet-color;
+    width: 250px;
+    transition: all 0.6s ease-in-out;
+    cursor: pointer;
+    z-index: 3;
+}
+.btn3:hover {
+    background-color: $font-fun-color;
+    color: $font-inverse-color;
+    border: 1px solid transparent;
+}
+
+
+
+// GENERAL CLASSES
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.column {
+    flex-direction: column;
+}
+.justify-center {
+    justify-content: center;
+}
+.justify-space-between {
+    justify-content: space-between;
+}
+.justify-right {
+    justify-content: flex-end;
+}
+.down {
+    align-items: flex-end;
+}
+.rounded {
+    border-radius: 30px;
+}
+.text-left {
+    text-align : left;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align:center;
+}
+.h-100 {
+    height:100%;
+}
+.w-100 {
+    width: 100vw;
+}
+.w-30 {
+    width: 30vw;
+}
+.w-50 {
+    width: 50vw;
+}
+.container {
+    width: 70vw;
+    gap: 20px;
+    margin: auto;
+}
+.card {
+    background-color: #fff;
+    padding: 15px;
+    // border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    min-height: 200px;
+}
+.p-5 {
+    padding: 5px;
+}
+.p-15 {
+    padding: 15px;
+}
+

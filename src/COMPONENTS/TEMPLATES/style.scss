@@ -1,0 +1,71 @@
+@use '../../var.scss';
+
+#secondary-nav {
+    background-color: white;
+    height: 60px;
+    align-items: center;
+
+    ul {
+        gap: 30px;
+        padding: 5px 20px 5px 20px;
+        margin:0;
+        align-items: center;
+
+        #search-input {
+            display:flex;
+            justify-content: space-between;
+            border: 1px solid var.$bg-color;
+            width: 40vw;
+
+            input {
+                padding: 8px;
+                width: 90%;
+                border: none;
+                background-color: transparent;
+            }
+
+            button {
+                width: 10%;
+                min-width:40px;
+                border: none;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+
+#hero-section {
+    position: relative;
+    background-color: var.$bg-dark-color;
+    margin: 0;
+    height: 80vh;
+    color: var.$font-inverse-color;
+
+
+    #primary-nav {
+        background-color: transparent;
+        color: var.$font-inverse-color;
+
+        ul {
+            gap: 8vw;
+            padding: 5px 20px 5px 20px;
+        }
+    }
+
+    #hero-section-text {
+        align-items: flex-end;
+        position: absolute;
+        left: 50px;
+        bottom: 50px;
+        height: 60vh;
+        max-width: 500px;
+
+        h1 {
+            font-family: var.$font-big;
+            font-size: 42px;
+            margin: 0;
+        }
+
+    }
+}
