@@ -126,6 +126,11 @@ body {
 }
 .w-50 {
     width: 50vw;
+    margin: auto;
+}
+.w-80 {
+    width: 80vw;
+    margin: auto;
 }
 .container {
     width: 70vw;
@@ -146,4 +151,18 @@ body {
 .p-15 {
     padding: 15px;
 }
+m-auto {
+    margin: auto;
+}
 
+.one {
+    background-color: $font-inverse-color;
+
+}
+.two {
+    background-color: $font-main-color;
+    color: white;
+}
+.three {
+    background-color: $font-fun2-color;
+}

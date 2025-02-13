@@ -1,6 +1,6 @@
 @use '../../var.scss';
 
-section {
+#container-links {
 
     #metal-card {
         background-image: url(../../assets/metal.jpg);
@@ -12,7 +12,6 @@ section {
         background-image: url(../../assets/news.webp);
     }
 
-
     .card {
         background-size: cover;
         position: relative;
@@ -21,6 +20,8 @@ section {
         justify-content: flex-end;
         height: 400px;
         overflow: hidden;
+        transition: all 0.3s ease-in-out;
+
 
         .btn2 {
             z-index: 1 !important;
@@ -30,7 +31,7 @@ section {
             position: absolute;
             left: 0;
             bottom: -700px;
-            background-color: var.$bg-color;
+            background-color: var.$font-fun-color;
             width: 500px;
             height: 300px;
             z-index: 0;
@@ -39,6 +40,8 @@ section {
     }
 
     .card:hover {
+        transition: all 0.3s ease-in-out;
+        filter: saturate(2);
         .color-block {
             opacity: 100%;
             bottom: -200px;
@@ -63,7 +66,83 @@ section {
 }
 
 #home-about-me-footer {
+
+    padding: 0 0 30px 0;
     h3, p{
         margin: 0;
+    }
+}
+
+#latest-products {
+    #carroussel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        .card {
+            max-width: 200px;
+
+            img {
+                object-fit: cover;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        .card:hover {
+            img { filter:saturate(3)}
+        }
+    }
+}
+
+#squares {
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+
+    .square {
+        // border: 1px solid black;
+        display: flex;
+        width: 33.33%;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        object-position: center bottom;
+        text-align: center;
+        font-size: 1.3rem;
+        transition: all 0.7s ease-in-out;
+
+        img {
+            object-fit: cover;
+            zoom: 2;
+            transition: all 0.3s ease-in-out;
+            filter: grayscale(0.5)
+        }
+
+        img:hover {
+            transform: scale(1.15);
+            filter: grayscale(0)
+        }
+
+        svg {
+            transition: all 0.3s ease-in-out;
+        }
+
+    }
+
+    .square:hover {
+        svg {
+            transform: scale(1.2);
+            transform: rotate(30deg);
+            fill: red;
+        }
+    }
+    .one {
+        background-color: var.$font-inverse-color;
+
+    }
+    .two {
+        background-color: var.$font-main-color;
+        color: white;
+    }
+    .three {
+        background-color: var.$font-fun2-color;
     }
 }
