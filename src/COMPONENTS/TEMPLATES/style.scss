@@ -67,3 +67,23 @@
 
     }
 }
+
+#pre-footer{
+    gap: 10vw;
+}
+
+#main-footer {
+    padding: 30px 0 30px 0;
+    align-items: flex-start;
+    h2 {
+        font-size: 2rem;
+    }
+    input {
+        padding: 10px 15px 10px 15px;
+        margin-right: 5px;
+    }
+    button {
+        padding: 10px 10px 10px 10px;
+        border: 1px solid var.$font-fun-color;
+    }
+}
