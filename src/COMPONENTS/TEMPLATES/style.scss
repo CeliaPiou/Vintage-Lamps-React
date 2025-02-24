@@ -1,36 +1,63 @@
 @use '../../var.scss';
 
 #secondary-nav {
-    background-color: white;
+    background-color: var.$font-inverse-color;
     height: 60px;
-    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    flex-wrap: nowrap;
+
+    div {
+        display: flex;
+        justify-content: flex-end;
+
+        input {
+            border: none;
+            border-bottom: 2px solid var.$font-fun2-color;
+            background-color: var.$font-inverse-color;
+        }
+
+        button {
+            min-width: 30px;
+            border: none;
+            border-bottom: 2px solid var.$font-fun2-color;
+            background-color: var.$font-inverse-color;
+        }
+    }
 
     ul {
-        gap: 30px;
-        padding: 5px 20px 5px 20px;
-        margin:0;
+        display: flex;
+        gap: 60px;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 30px;
 
-        #search-input {
-            display:flex;
-            justify-content: space-between;
-            border: 1px solid var.$bg-color;
-            width: 40vw;
-
-            input {
-                padding: 8px;
-                border: none;
-                background-color: transparent;
-            }
-
-            button {
-                width: 10%;
-                min-width:40px;
-                border: none;
-                background-color: transparent;
+        li {
+            a {
+                svg {
+                    width: 20px;
+                    height: auto;
+                }
             }
         }
     }
+
+
+
+        #search-input {
+
+
+            input {
+
+            }
+
+            button {
+
+            }
+        }
 }
+
 
 a {
     text-decoration: none;
@@ -47,13 +74,14 @@ a {
     background-size: cover;
     background-attachment:fixed;
     margin: 0;
-    height: 80vh;
+    height: 80dvh;
     color: var.$font-inverse-color;
 
 
     #primary-nav {
         color: var.$font-inverse-color;
         transition: all 0.2s ease-in-out;
+        padding: 0 50px 0 50px;
 
         ul {
             gap: 8vw;
@@ -93,38 +121,112 @@ a {
     }
 
     #hero-section-text {
+        // position: absolute;
+        // left: 10vw;
+        // bottom: 5vh;
+        // height: 60vh;
+        // max-width: 500px;
+
+
+        display: flex;
+        padding: 50px;
+        height: 60dvh;
         align-items: flex-end;
-        position: absolute;
-        left: 50px;
-        bottom: 50px;
-        height: 60vh;
+        justify-content: center;
         max-width: 500px;
 
-        h1 {
-            font-family: var.$font-big;
-            font-size: 42px;
-            margin: 0;
-        }
 
+
+
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            // width: 0;
+            // overflow: hidden;
+            // white-space: nowrap;
+            // font-family: var.$font-big;
+            font-size: clamp(15px, 15vw, 42px);
+            letter-spacing: 0.3rem;
+            // border-right: 5px solid;
+            margin: 0;
+
+            // animation: typewriter 2s steps(14) forwards, blink .4s step-end infinite alternate;
+        }
     }
+}
+
+.typewriter {
+    animation: typewriter 2s steps(14) forwards,
+    blink .4s step-end infinite alternate;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 5px solid;
+}
+
+@keyframes blink {
+    50% { border-color: transparent;}
+}
+
+@keyframes typewriter {
+
+    from {width: 0}
+    to { width: 90% }
+
 }
 
 #hero-section-smaller {
     position: relative;
-    background-color: var.$bg-dark-color;
+    // background-image: linear-gradient(60deg, #2727276e, #262626b7)
+    // , url(https://images.pexels.com/photos/1432516/pexels-photo-1432516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    // background-size: cover;
+    // background-attachment: fixed;
     margin: 0;
-    height: 40vh;
+    height: 15vh;
     color: var.$font-inverse-color;
 
 
     #primary-nav {
-        background-color: transparent;
         color: var.$font-inverse-color;
+        background-color: var.$font-inverse-color;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.089);
+
+
 
         ul {
             gap: 8vw;
             padding: 5px 20px 5px 20px;
+
+            li {
+                color:var.$font-fun2-color;
+                border-bottom: 0 solid var.$font-fun2-color;
+                padding-bottom: 10px;
+                transition: all 100ms ease-out;
+                transition-delay: 0.1s;
+                text-transform: uppercase;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            li:hover {
+                padding-bottom: 5px;
+                border-bottom: 5px solid var.$font-fun2-color;
+            }
         }
+    }
+
+    #primary-nav:hover {
+        background-color: var.$font-inverse-color;
+    }
+
+    .fixed {
+        z-index: 10;
+        background-color: var.$font-inverse-color;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
     }
 
     #hero-section-text {
@@ -143,6 +245,7 @@ a {
 
     }
 }
+
 #pre-footer{
     gap: 10vw;
 }
@@ -170,4 +273,94 @@ a {
         background-color: var.$font-inverse-color;
         border: 1px solid var.$font-inverse-color;
     }
+}
+
+#menu-burger {
+    display: none;
+    position: absolute;
+    top:0;
+    right:0;
+
+    button {
+        border: none;
+        background-color: var.$font-inverse-color;
+        padding: 30px;
+        cursor: pointer;
+    }
+
+
+    #hidden-nav-burger {
+        background-color: white;
+        position: fixed;
+        top:0;
+        width: 50%;
+        height: 100vh;
+        margin-top: 0;
+        z-index: 100;
+        display: flex;
+        gap: 50px;
+        padding-top: 200px;
+        text-align:left;
+        transition: all 0.5s ease-out;
+
+        svg {
+            position: absolute;
+            top:15px;
+            left:15px;
+            transition: all 0.1s ease-in-out;
+            cursor: pointer;
+        }
+
+        svg:hover {
+            transform: scale(1.3);
+        }
+
+        li {
+            color:var.$font-fun2-color;
+            border-bottom: 0 solid var.$font-fun2-color;
+            padding-bottom: 10px;
+            transition: all 100ms ease-out;
+            transition-delay: 0.1s;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        li:hover {
+            padding-bottom: 5px;
+            border-bottom: 5px solid var.$font-fun2-color;
+        }
+    }
+
+    .hidden {
+        opacity: 0;
+        right: -1200px;
+    }
+
+    .visible {
+        opacity:100;
+        right: 0;
+    }
+}
+
+// RESPONSIVE
+//// TABLETTES
+@media screen and (max-width:1024px) {
+
+    #primary-nav {
+        display: none;
+    }
+
+    #menu-burger {
+        display: block;
+    }
+
+    #hero-section-text  {
+        min-width: 500px;
+        position: relative;
+        justify-content: center;
+        margin: auto;
+        height: auto;
+    }
+
 }

@@ -3,10 +3,11 @@ import './style.scss'
 import '../../var.scss'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
+import Burger from './Burger'
 
 const Header = () => {
 
-    const [width, setWidth] = useState('200px');
+    const [width, setWidth] = useState('400px');
 
     const handleClick = () => {
         setWidth('800px');
@@ -28,40 +29,54 @@ const Header = () => {
   return (
     <header>
 
-        <nav id="secondary-nav" class="w-100 flex justify-right">
-                    <ul className='flex justify-right'>
-                        <li id="search-input">
+        <nav id="secondary-nav" class="w-100 flex">
+                    <div className='w-100 flex'>
+                        <div id="search-input">
                             <input
                                 type='search'
-                                placeholder='Rechercher un produit'
+                                placeholder='Research a lamp...'
                                 onClick={handleClick}
                                 style={{
                                     width: width,
                                     transition: 'width 0.5s ease', // Transition fluide de la largeur
                                     padding: '8px',
-                                    fontSize: '16px'
+                                    fontSize: '14px'
                                     }}
                                 ></input>
-                            <button type="submit" title="rechercher un produit"></button>
-                        </li>
-                        <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M160-280v-400h280v80H240v80h160v80H240v160h-80Zm360 0v-400h200q33 0 56.5 23.5T800-600v80q0 32-22 54.5T726-440l74 160h-84l-75-160h-41v160h-80Zm80-240h120v-80H600v80Z"/></svg>
-                        </li>
-                        <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
-                        </li>
-                        <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z"/></svg>
-                        </li>
-                    </ul>
+                            <button type="submit" title="rechercher un produit"><svg width={20} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg></button>
+                        </div>
+                    </div>
+
+
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M253.3 35.1c6.1-11.8 1.5-26.3-10.2-32.4s-26.3-1.5-32.4 10.2L117.6 192 32 192c-17.7 0-32 14.3-32 32s14.3 32 32 32L83.9 463.5C91 492 116.6 512 146 512L430 512c29.4 0 55-20 62.1-48.5L544 256c17.7 0 32-14.3 32-32s-14.3-32-32-32l-85.6 0L365.3 12.9C359.2 1.2 344.7-3.4 332.9 2.7s-16.3 20.6-10.2 32.4L404.3 192l-232.6 0L253.3 35.1zM192 304l0 96c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-96c0-8.8 7.2-16 16-16s16 7.2 16 16zm96-16c8.8 0 16 7.2 16 16l0 96c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-96c0-8.8 7.2-16 16-16zm128 16l0 96c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-96c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>                                </a>
+                            </li>
+                        </ul>
         </nav>
 
         <section id="hero-section">
 
+            < Burger />
+
             <nav id="primary-nav" className='flex justify-space-between'>
                 <Link to={{ pathname: `/` }}>
                 <ul>
-                    <li>Logo</li>
+                    <li id="logo-vl">
+                        V<span>intage </span>
+                        L<span>amp</span>
+                    </li>
                 </ul>
                 </Link>
 
@@ -76,8 +91,8 @@ const Header = () => {
             </nav>
 
             <div className='flex' id="hero-section-text">
-                <div className='w-50 p-15'>
-                    <h1>Vintage Lamps</h1>
+                <div className=''>
+                    <h1 className='typewriter'>Vintage Lamps</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Ipsum ea esse dolore! Earum impedit, expedita rerum a
                         delectus ratione officia similique aut dolores eaque

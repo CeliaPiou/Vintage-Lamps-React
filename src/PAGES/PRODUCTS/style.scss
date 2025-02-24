@@ -6,15 +6,13 @@ main {
 #products-nav {
     background-color: $font-inverse-color;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.089);
-
     margin-top: 0;
-
     display: flex;
     justify-content: space-around;
     top: 0;
     right: 0;
     left:0;
-    position: sticky;
+    // position: sticky;
 
     ul {
         display: flex;

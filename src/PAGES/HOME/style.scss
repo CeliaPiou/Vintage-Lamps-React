@@ -52,7 +52,11 @@
 
 #home-about-me {
     position: relative;
-    background-color: var.$bg-dark-color;
+    // background-color: var.$bg-dark-color;
+    background-image: url(https://i.ibb.co/Df8MTNYK/freepik-the-style-is-candid-image-photography-with-natural-80688.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var.$font-inverse-color;
     height: 500px;
 
@@ -196,3 +200,4 @@
     background-color: var.$font-main-color;
     border-radius: 50px;
 }
+
