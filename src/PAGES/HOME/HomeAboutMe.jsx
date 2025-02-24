@@ -5,7 +5,7 @@ const HomeAboutMe = () => {
   return (
 
     <>
-        <section id='home-about-me'>
+        <section id='home-about-me' className='mt-big'>
 
             <div>
                 <h2>A propos</h2>

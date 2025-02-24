@@ -5,7 +5,7 @@ const HomeSquares = () => {
 
   return (
 
-    <div id="squares" className='flex'>
+    <div id="squares" className='flex mt-big'>
 
         <div className='square'>
             <img

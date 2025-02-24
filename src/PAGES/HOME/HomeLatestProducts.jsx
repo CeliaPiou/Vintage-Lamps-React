@@ -34,7 +34,7 @@ const HomeLatestProducts = () => {
 
   return (
 
-    <section id="latest-products" className='container flex justify-center column'>
+    <section id="latest-products" className='container mt-small flex justify-center column'>
 
         <div>
 
@@ -68,7 +68,7 @@ const HomeLatestProducts = () => {
 
         </div>
 
-        <button className='btn3'>Voir plus?</button>
+        <button className='mt-small btn3'>Voir plus?</button>
 
 
     </section>

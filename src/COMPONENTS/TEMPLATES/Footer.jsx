@@ -6,7 +6,7 @@ const Footer = () => {
 
     <footer className='w-100'>
 
-      <section id="pre-footer" className='flex one justify-center'>
+      <section id="pre-footer" className='mt-small flex one justify-center pt-small'>
 
         <div className='flex column'>
           <img src="https://i.ibb.co/9mRfWCLB/ic-outline-paypal.png" height='70px' alt="paypal"></img>

@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import './style.scss'
 import '../../var.scss'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
 
-const Header = () => {
+const HeaderSmall = () => {
 
     const [width, setWidth] = useState('200px');
 
@@ -12,17 +11,6 @@ const Header = () => {
         setWidth('800px');
     }
 
-    useEffect(() => {
-        const navbar = document.getElementById('primary-nav');
-
-        window.addEventListener("scroll", function(){
-            if ( document.body.scrollTop >= 25 || document.scrollingElement.scrollTop >= 25 || document.documentElement.scrollTop >= 25 ){
-                navbar.classList.add('fixed');
-            } else {
-                navbar.classList.remove('fixed')
-            }
-        })
-    })
 
 
   return (
@@ -56,7 +44,7 @@ const Header = () => {
                     </ul>
         </nav>
 
-        <section id="hero-section">
+        <section id="hero-section-smaller">
 
             <nav id="primary-nav" className='flex justify-space-between'>
                 <Link to={{ pathname: `/` }}>
@@ -76,13 +64,9 @@ const Header = () => {
             </nav>
 
             <div className='flex' id="hero-section-text">
-                <div className='w-50 p-15'>
+                <div className=''>
                     <h1>Vintage Lamps</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ipsum ea esse dolore! Earum impedit, expedita rerum a
-                        delectus ratione officia similique aut dolores eaque
-                        voluptatem molestias, voluptatum, eligendi atque dolorum.</p>
-                        <button
+                    <button
                         className='btn1'
                         >
                         Discover our lamps
@@ -96,4 +80,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default HeaderSmall

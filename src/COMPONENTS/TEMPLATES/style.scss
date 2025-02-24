@@ -32,12 +32,88 @@
     }
 }
 
+a {
+    text-decoration: none;
+}
 
 #hero-section {
     position: relative;
-    background-color: var.$bg-dark-color;
+    // background-color: var.$bg-dark-color;
+    background-image:
+    linear-gradient(60deg, #2727273a, #262626b7)
+    ,
+    // url(https://images.pexels.com/photos/568290/pexels-photo-568290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1),
+    url(https://images.pexels.com/photos/30783191/pexels-photo-30783191/free-photo-of-pensive-woman-in-vintage-office-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-size: cover;
+    background-attachment:fixed;
     margin: 0;
     height: 80vh;
+    color: var.$font-inverse-color;
+
+
+    #primary-nav {
+        color: var.$font-inverse-color;
+        transition: all 0.2s ease-in-out;
+
+        ul {
+            gap: 8vw;
+            padding: 5px 20px 5px 20px;
+
+            li {
+                color:var.$font-fun2-color;
+                border-bottom: 0 solid var.$font-fun2-color;
+                padding-bottom: 10px;
+                transition: all 100ms ease-out;
+                transition-delay: 0.1s;
+                text-transform: uppercase;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            li:hover {
+                padding-bottom: 5px;
+                border-bottom: 5px solid var.$font-fun2-color;
+            }
+        }
+    }
+
+    #primary-nav:hover {
+        background-color: white;
+        height:72px;
+    }
+
+    .fixed {
+        z-index: 10;
+        background-color: var.$font-inverse-color;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    #hero-section-text {
+        align-items: flex-end;
+        position: absolute;
+        left: 50px;
+        bottom: 50px;
+        height: 60vh;
+        max-width: 500px;
+
+        h1 {
+            font-family: var.$font-big;
+            font-size: 42px;
+            margin: 0;
+        }
+
+    }
+}
+
+#hero-section-smaller {
+    position: relative;
+    background-color: var.$bg-dark-color;
+    margin: 0;
+    height: 40vh;
     color: var.$font-inverse-color;
 
 
@@ -67,7 +143,6 @@
 
     }
 }
-
 #pre-footer{
     gap: 10vw;
 }
@@ -84,6 +159,15 @@
     }
     button {
         padding: 10px 10px 10px 10px;
-        border: 1px solid var.$font-fun-color;
+        border: 1px solid var.$font-fun2-color;
+        background-color: var.$font-fun2-color;
+        color: var.$font-main-color;
+        cursor: pointer;
+        transform: scale(1.04);
+        transition: all 0.7s cubic-bezier( 0.68, -0.55, 0.265, 1.55 );
+    }
+    button:hover {
+        background-color: var.$font-inverse-color;
+        border: 1px solid var.$font-inverse-color;
     }
 }
