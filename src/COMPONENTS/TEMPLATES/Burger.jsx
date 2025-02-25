@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.scss'
 import '../../var.scss'
 import { Link } from 'react-router-dom'
@@ -6,16 +6,24 @@ import { Link } from 'react-router-dom'
 const Burger = () => {
 
 
+    useEffect(() => {
+        const hiddenNavigation = document.getElementById("hidden-nav-burger")
+        hiddenNavigation.classList.add('hidden')
+        hiddenNavigation.classList.remove('visible');
+    }, [])
+
     function openBurgerMenu() {
         const hiddenNavigation = document.getElementById("hidden-nav-burger")
         hiddenNavigation.classList.remove('hidden');
         hiddenNavigation.classList.add('visible');
+        isOpen = true;
     }
 
     function closeBurgerMenu() {
         const hiddenNavigation = document.getElementById("hidden-nav-burger")
         hiddenNavigation.classList.add('hidden')
         hiddenNavigation.classList.remove('visible');
+        isOpen = false;
     }
 
   return (

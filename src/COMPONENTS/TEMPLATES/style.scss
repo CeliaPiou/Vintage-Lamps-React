@@ -57,8 +57,6 @@
             }
         }
 }
-
-
 a {
     text-decoration: none;
 }
@@ -277,9 +275,10 @@ a {
 
 #menu-burger {
     display: none;
-    position: absolute;
+    position: fixed;
     top:0;
-    right:0;
+    left:0;
+    z-index: 200;
 
     button {
         border: none;
@@ -296,7 +295,7 @@ a {
         width: 50%;
         height: 100vh;
         margin-top: 0;
-        z-index: 100;
+        z-index: 300;
         display: flex;
         gap: 50px;
         padding-top: 200px;
@@ -334,12 +333,12 @@ a {
 
     .hidden {
         opacity: 0;
-        right: -1200px;
+        left: -1200px;
     }
 
     .visible {
         opacity:100;
-        right: 0;
+        left: 0;
     }
 }
 

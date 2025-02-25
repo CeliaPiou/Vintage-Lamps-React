@@ -7,10 +7,10 @@ import Burger from './Burger'
 
 const Header = () => {
 
-    const [width, setWidth] = useState('400px');
+    const [width, setWidth] = useState('300px');
 
     const handleClick = () => {
-        setWidth('800px');
+        setWidth('500px');
     }
 
     useEffect(() => {
