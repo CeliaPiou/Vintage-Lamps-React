@@ -90,8 +90,7 @@ const Header = () => {
                 </ul>
             </nav>
 
-            <div className='flex' id="hero-section-text">
-                <div className=''>
+            <div id="hero-section-text" className='flex'>
                     <h1 className='typewriter'>Vintage Lamps</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Ipsum ea esse dolore! Earum impedit, expedita rerum a
@@ -102,7 +101,6 @@ const Header = () => {
                         >
                         Discover our lamps
                         </button>
-                </div>
             </div>
 
         </section>

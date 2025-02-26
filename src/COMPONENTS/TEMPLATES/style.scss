@@ -125,15 +125,13 @@ a {
         // height: 60vh;
         // max-width: 500px;
 
-
-        display: flex;
         padding: 50px;
-        height: 60dvh;
-        align-items: flex-end;
-        justify-content: center;
+        height: 40dvh;
+        margin-top: 0;
+        padding-top: 20vh;
+        align-items: center;
+        gap:0;
         max-width: 500px;
-
-
 
 
         h1 {
@@ -233,7 +231,7 @@ a {
         left: 50px;
         bottom: 50px;
         height: 60vh;
-        max-width: 500px;
+        // max-width: 500px;
 
         h1 {
             font-family: var.$font-big;
@@ -342,9 +340,18 @@ a {
     }
 }
 
+
+
 // RESPONSIVE
 //// TABLETTES
 @media screen and (max-width:1024px) {
+
+    #secondary-nav {
+
+        #search-input {
+            display: none;
+        }
+    }
 
     #primary-nav {
         display: none;
@@ -355,11 +362,21 @@ a {
     }
 
     #hero-section-text  {
-        min-width: 500px;
+        width: 80vw;
+        padding: 0;
+        overflow-x: hidden;
         position: relative;
         justify-content: center;
         margin: auto;
         height: auto;
+
+        h1 {font-size: 0.5rem}
+    }
+
+    #main-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 
 }

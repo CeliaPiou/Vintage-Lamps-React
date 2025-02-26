@@ -5,26 +5,39 @@ import { Link } from 'react-router-dom'
 
 const Burger = () => {
 
+    const blackBlur = document.getElementById('blur');
+
+    blackBlur.addEventListener('click', () => {
+        closeBurgerMenu();
+    })
+
 
     useEffect(() => {
         const hiddenNavigation = document.getElementById("hidden-nav-burger")
         hiddenNavigation.classList.add('hidden')
         hiddenNavigation.classList.remove('visible');
+
     }, [])
 
     function openBurgerMenu() {
         const hiddenNavigation = document.getElementById("hidden-nav-burger")
         hiddenNavigation.classList.remove('hidden');
         hiddenNavigation.classList.add('visible');
-        isOpen = true;
+
+        blackBlur.classList.add("blur-visible");
+        blackBlur.classList.remove("blur-hidden");
+
     }
 
     function closeBurgerMenu() {
         const hiddenNavigation = document.getElementById("hidden-nav-burger")
         hiddenNavigation.classList.add('hidden')
         hiddenNavigation.classList.remove('visible');
-        isOpen = false;
+
+        blackBlur.classList.remove("blur-visible");
+        blackBlur.classList.add('blur-hidden')
     }
+
 
   return (
 
@@ -53,7 +66,7 @@ const Burger = () => {
             </ul>
         </nav>
 
-        <div aria-hidden="true" id=""></div>
+        <div aria-hidden="true" className="blur-hidden" id="blur"></div>
     </>
 
   )

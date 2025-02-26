@@ -153,12 +153,12 @@
 
 #deliveries {
     height: 500px;
+    display: flex;
 
     .gauche {
         background-color: var.$font-main-color;
-        width: 55%;
+        width: 50%;
         height: 400px;
-        height: 100%;
 
         div {
         border-bottom-left-radius: 100px;
@@ -192,11 +192,30 @@
         justify-content: center;
     }
 }
+
 #separative-line {
     height: 70px;
     width: 2px;
     background-color: var.$font-main-color;
     border-radius: 50px;
+}
+
+.blur-visible {
+        opacity: 100%;
+        position: fixed;
+        z-index: 150;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.74);
+        width: 100vw;
+        height: 100%;
+}
+
+.blur-hidden {
+        opacity: 0%;
+        position: fixed;
+        z-index: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0);
 }
 
 
@@ -238,9 +257,14 @@
             align-self: self-start;
         }
     }
-
     #deliveries {
+        display: flex;
         flex-direction: column;
+        height: auto;
+
+        .gauche {
+            width: 100%;
+        }
     }
 
     #squares {
@@ -251,6 +275,7 @@
 
 }
 
+//// SMARTPHONES
 @media screen and (max-width:790px) {
 
     #container-links {
@@ -258,6 +283,25 @@
 
         #metal-card, #glass-card, #news-card {
             width: 100vw;
+        }
+    }
+    #squares {
+        .square {
+            width: 100%;
+            aspect-ratio: 2/1;
+            img {width:100%;}
+        }
+    }
+    #deliveries {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+        .gauche {
+            width: 100%;
+        }
+        .droite {
+            text-align: center;
         }
     }
 }

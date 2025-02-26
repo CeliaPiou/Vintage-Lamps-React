@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './style.scss'
 import '../../var.scss'
 import { Link } from 'react-router-dom'
+import Burger from './Burger'
 
 const HeaderSmall = () => {
 
@@ -32,8 +33,9 @@ const HeaderSmall = () => {
 
     <header>
 
+        < Burger />
 
-<nav id="secondary-nav" class="w-100 flex">
+        <nav id="secondary-nav" class="w-100 flex">
                     <div className='w-100 flex'>
                         <div id="search-input">
                             <input
