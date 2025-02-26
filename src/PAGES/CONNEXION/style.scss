@@ -1,0 +1,46 @@
+
+#login-signup {
+    margin-bottom: 100px;
+    flex-direction: row-reverse;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 15px;
+        padding: 20px;
+        width: 30%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
+    }
+
+    #login, #sign-up {
+        background-color: white;
+        height: 50vh;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            input {
+                padding: 15px 20px 15px 20px;
+                border-radius: 5px;
+                border: 1px solid rgb(202, 202, 202);
+            }
+
+        }
+    }
+
+    #sign-up {
+        background-color: rgb(202, 202, 202);
+        // justify-content: center;
+    }
+}
+
+label {
+    display: block;
+}

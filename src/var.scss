@@ -83,6 +83,22 @@ body {
     border: 1px solid transparent;
 }
 
+.btn4 {
+    background-color: #ffd900;
+    color: $font-main-color;
+    border: none;
+    padding: 15px 20px 15px 20px;
+    border-radius: 5px;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
+    z-index: 3;
+}
+
+.btn4:hover {
+    background-color: #eccc12;
+}
+
 
 
 // GENERAL CLASSES

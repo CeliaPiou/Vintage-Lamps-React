@@ -34,6 +34,11 @@
         padding-right: 30px;
 
         li {
+
+            svg {
+                width: 20px;
+                height: auto;
+            }
             a {
                 svg {
                     width: 20px;
@@ -281,7 +286,7 @@ a {
     button {
         border: none;
         background-color: var.$font-inverse-color;
-        padding: 30px;
+        padding: 10px;
         cursor: pointer;
     }
 
@@ -340,7 +345,23 @@ a {
     }
 }
 
+// .blur-visible {
+//     opacity: 100%;
+//     position: fixed;
+//     z-index: 150;
+//     top: 0;
+//     background-color: rgba(0, 0, 0, 0.74);
+//     width: 100vw;
+//     height: 100%;
+// }
 
+// .blur-hidden {
+//     opacity: 0%;
+//     position: fixed;
+//     z-index: 0;
+//     top: 0;
+//     background-color: rgba(0, 0, 0, 0);
+// }
 
 // RESPONSIVE
 //// TABLETTES
