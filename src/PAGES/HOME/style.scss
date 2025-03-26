@@ -1,52 +1,45 @@
 @use '../../var.scss';
 
 #container-links {
+    display: flex;
+    width: 80vw;
+    margin: auto;
+    gap: 10px;
+    margin-top: 50px;
 
-    #metal-card {
-        background-image: url(../../assets/metal.jpg);
-    }
-    #glass-card {
-        background-image: url(../../assets/glass.jpg);
-    }
-    #news-card {
-        background-image: url(../../assets/news.webp);
-    }
-
-    .card {
-        background-size: cover;
-        position: relative;
+    div {
+        border-radius: 15px;
         display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        height: 350px;
-        overflow: hidden;
-        transition: all 0.3s ease-in-out;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #252525;
 
+        width: 100%;
+        max-width: 500px;
+        height: 300px;
+    }
 
-        .btn2 {
-            z-index: 1 !important;
-        }
+    img {
+        transition: all 0.3s ease-out;
+        transition-delay: 0.2s;
+    }
 
-        .color-block {
-            position: absolute;
-            left: 0;
-            bottom: -700px;
-            background-color: var.$font-fun-color;
-            width: 500px;
-            height: 300px;
-            z-index: 0;
-            transition: all 0.5s ease-out;
+    div:hover {
+        transition: all 1s ease-in-out;
+
+        // background: rgb(59,126,161);
+        // background: radial-gradient(circle, rgba(59,126,161,1) 5%, rgba(0,50,98,1) 100%);
+
+        background: rgb(255,217,0);
+        background: radial-gradient(circle, rgba(255,217,0,1) 5%, rgba(210,159,0,1) 100%);
+
+        img {
+            transition: all 0.7s ease-out;
+            transform: scale(1.1);
         }
     }
 
-    .card:hover {
-        transition: all 0.3s ease-in-out;
-        filter: saturate(2);
-        .color-block {
-            opacity: 100%;
-            bottom: -200px;
-        }
-    }
 
 }
 

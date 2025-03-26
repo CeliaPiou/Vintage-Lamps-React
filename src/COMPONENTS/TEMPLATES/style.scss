@@ -48,19 +48,6 @@
         }
     }
 
-
-
-        #search-input {
-
-
-            input {
-
-            }
-
-            button {
-
-            }
-        }
 }
 a {
     text-decoration: none;
@@ -72,8 +59,9 @@ a {
     background-image:
     linear-gradient(60deg, #2727273a, #262626b7)
     ,
-    // url(https://images.pexels.com/photos/568290/pexels-photo-568290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1),
-    url(https://images.pexels.com/photos/30783191/pexels-photo-30783191/free-photo-of-pensive-woman-in-vintage-office-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    url(https://images.pexels.com/photos/568290/pexels-photo-568290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+    // url(https://images.pexels.com/photos/30783191/pexels-photo-30783191/free-photo-of-pensive-woman-in-vintage-office-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+    ;
     background-size: cover;
     background-attachment:fixed;
     margin: 0;
@@ -121,6 +109,8 @@ a {
         top: 0;
         left: 0;
         right: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.185);
+
     }
 
     #hero-section-text {

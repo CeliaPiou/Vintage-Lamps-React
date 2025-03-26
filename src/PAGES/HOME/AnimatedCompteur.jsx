@@ -9,12 +9,12 @@ const AnimatedCounter = () => {
     const interval = setInterval(() => {
       setCount(prevCount => {
 
-        if (prevCount < 207) {
+        if (prevCount < 212) {
           return prevCount + 1;
         }
         else {
           clearInterval(interval); // Arrête l'animation quand le nombre atteint 200
-          return 207;
+          return 212;
         }
       });
     }, 5);
