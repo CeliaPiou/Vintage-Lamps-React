@@ -4,6 +4,9 @@ import '../../var.scss'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import Burger from './Burger'
+import gradient from '../../assets/img/gradient.svg'
+
+
 
 const Header = () => {
 
@@ -11,7 +14,7 @@ const Header = () => {
 
     const handleClick = () => {
         setWidth('500px');
-    }
+    };
 
     useEffect(() => {
         const navbar = document.getElementById('primary-nav');
@@ -99,9 +102,13 @@ const Header = () => {
                         delectus ratione officia similique aut dolores eaque
                         voluptatem molestias, voluptatum, eligendi atque dolorum.</p>
                         <button
-                        className='btn1'
+                        className='btn4'
                         >
                         Discover our lamps
+                        <img
+                            src={gradient}
+                            width={500}
+                            className='btn-effect'></img>
                         </button>
             </div>
 

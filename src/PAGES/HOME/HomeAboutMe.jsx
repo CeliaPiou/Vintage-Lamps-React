@@ -12,7 +12,7 @@ const HomeAboutMe = () => {
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Quam pariatur fugiat veritatis. Consectetur tenetur, aut
                     praesentium velit ducimus quia nemo fugit. </p>
-                <button className='btn1'>En savoir plus</button>
+                <button className='btn4'>En savoir plus</button>
             </div>
 
         </section>

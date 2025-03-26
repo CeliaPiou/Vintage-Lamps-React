@@ -48,51 +48,9 @@ body {
 }
 
 // BOUTONS
-.btn1 {
-    background-color: transparent;
-    color: #f4f4f4;
-    padding: 15px 20px 15px 20px;
-    border: 1px solid #f4f4f4;
-    width: 250px;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-}
-.btn1:hover{
-    background-color: $font-inverse-color;
-    color: $font-fun-color;
-}
-
-.btn2 {
-    background-color: transparent;
-    color: $font-discreet-color;
-    padding: 15px 20px 15px 20px;
-    border: 1px solid $font-discreet-color;
-    width: 250px;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-}
-.btn2:hover {
-    border: 1px solid $font-main-color;
-    color: $font-main-color;
-}
-
-.btn3 {
-    background-color: $bg-color;
-    color: $font-main-color;
-    padding: 15px 20px 15px 20px;
-    border: 1px solid $font-discreet-color;
-    width: 200px;
-    transition: all 0.6s ease-in-out;
-    cursor: pointer;
-    z-index: 3;
-}
-.btn3:hover {
-    background-color: $font-main-color;
-    color: $font-inverse-color;
-    border: 1px solid transparent;
-}
 
 .btn4 {
+    position: relative;
     background-color: #ffd900;
     color: $font-main-color;
     border: none;
@@ -102,11 +60,29 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
     z-index: 3;
+    height: 50px;
+    font-size: 12;
+    max-width: 250px;
+    overflow: hidden;
+}
+.btn-effect {
+    mix-blend-mode: normal;
+    opacity: 100%;
+    position: absolute;
+    top: 0;
+    left: -500px;
+    transition: all 0.6s ease-out;
+}
+.btn4:hover {
+    background-color: #ffffff;
+    color:rgb(0, 0, 0);
+    .btn-effect {
+        left: 300px;
+
+
+    }
 }
 
-.btn4:hover {
-    background-color: #eccc12;
-}
 
 
 

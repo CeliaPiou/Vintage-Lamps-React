@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import arrowToRight from '../../assets/icons/arrow-forward.svg'
+import arrowToLeft from '../../assets/icons/arrow-previous.svg'
 
 const HomeLatestProducts = () => {
 
@@ -29,22 +31,67 @@ const HomeLatestProducts = () => {
         },
 
     ]
-    )
+    );
+
+    const [position, setPosition] = useState(0);
+
+    // const carroussel = document.getElementById('carroussel');
+
+    // useEffect(() => {
+
+    //     const rightArrow = document.getElementById('next-arrow');
+
+    //     rightArrow ? rightArrow.addEventListener('click', () => {
+
+    //         setPosition(prevPosition => prevPosition + 300);
+    //         console.log(position)
+
+    //     })
+    //     : console.log("Pas de flèche")
+
+
+    // }, [])
+
+    const handleNextClick = () => {
+        setPosition(prevPosition => {
+            return prevPosition - 250;
+        });
+    };
+
+    const handlePrevClick = () => {
+        setPosition(prevPosition => {
+            return prevPosition + 250
+        })
+    }
 
 
   return (
 
-    <section id="latest-products" className='container mt-small flex justify-center column'>
+    <section id="latest-products" className=' mt-small flex justify-center column'>
 
-        <div>
+            <h2>Les nouveautés</h2>
 
-        <h2>Les nouveautés</h2>
+            <div className='container-of-arrows'>
+                <div className='arrow-round'>
+                    <img id="previous-arrow" onClick={handlePrevClick} src={arrowToLeft}></img>
+                </div>
+                <div className='arrow-round'>
+                    <img id='next-arrow' onClick={handleNextClick} src={arrowToRight}></img>
+                </div>
+            </div>
 
-            <div className='flex justify-center' id="carroussel">
+            <div
+                className='flex justify-center'
+                id="carroussel"
+                >
 
                 {product.map((item) => (
 
-                    <div key={item.id} className='card'>
+                    <div key={item.id} className='card'
+                    style={{
+                        transform: `translateX(${position}px)`,
+                        transition: 'transform 0.3s ease-in-out'
+                    }}>
 
                         <img
                             src={item.img}
@@ -63,13 +110,9 @@ const HomeLatestProducts = () => {
 
                 ))}
 
-
             </div>
 
-        </div>
-
-        <button className='mt-small btn3'>Voir plus?</button>
-
+            <button className='mt-small btn4'>Voir plus?</button>
 
     </section>
   )

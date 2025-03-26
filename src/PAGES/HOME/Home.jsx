@@ -14,8 +14,8 @@ const Home = () => {
     <main>
 
       <ContainerLinks />
-      <HomeAboutMe />
       <HomeLatestProducts />
+      <HomeAboutMe />
       <HomeSquares />
       <AnimatedCounter />
       <HomeLatestAvis />

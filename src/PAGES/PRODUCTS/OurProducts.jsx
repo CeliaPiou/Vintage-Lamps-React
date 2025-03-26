@@ -100,7 +100,7 @@ const OurProducts = () => {
                     <p><strong>{prod.name}</strong></p>
                     <p>{prod.price},00 €</p>
 
-                    <button className='btn3'>Add to cart</button>
+                    <button className='btn4'>Add to cart</button>
 
 
 

@@ -20,7 +20,7 @@ const HomeDelivery = () => {
             By choosing pick-up, you help reduce carbon emissions, avoid unnecessary packaging,
             and contribute to a more sustainable future. Plus, you’re supporting local businesses and creating a stronger community connection.
             Make a positive impact today—skip the delivery and come pick up your order!</p>
-            <button className='btn2'>Know more</button>
+            <button className='btn4'>Know more</button>
         </div>
 
     </section>

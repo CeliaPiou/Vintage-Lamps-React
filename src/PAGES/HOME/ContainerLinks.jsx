@@ -17,30 +17,29 @@ const ContainerLinks = () => {
         </div>
 
         <div className='card-cta'>
+        <button className='btn4'>Metal shade lamps</button>
+
           <img
-            // src="https://i.ibb.co/LhP98B1p/erasebg-transformed-3-1.png"
             src="https://i.ibb.co/DfhtSdnb/erasebg-transformed-3.webp"
-            // src="https://i.ibb.co/39JXr3wp/erasebg-transformed-2.webp"
             alt="vintage mid-century rockabilly lamp"
             width={250}/>
-          <button className='btn4'>Metal shade lamps</button>
         </div>
 
 
         {/* <div id='metal-card' className='card'>
-          <button className='btn3'>
+          <button className='btn4'>
             Voir nos lampes en métal
           </button>
           <div class='color-block'></div>
         </div>
 
         <div id='glass-card' className='card'>
-          <button className='btn3'>Voir nos lampes en verre</button>
+          <button className='btn4'>Voir nos lampes en verre</button>
           <div class='color-block'></div>
         </div>
 
         <div id='news-card' className='card'>
-          <button className='btn3'>Voir nos nouveautés</button>
+          <button className='btn4'>Voir nos nouveautés</button>
           <div class='color-block'></div>
         </div> */}
 
