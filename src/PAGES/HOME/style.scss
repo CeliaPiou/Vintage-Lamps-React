@@ -74,18 +74,24 @@
 }
 
 #latest-products {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 100px;
 
     .container-of-arrows {
-        display: flex;
+        display: none;
+        // display: flex;
         justify-content: space-between;
-        width: 100%;
+        width: 90vw;
 
         .arrow-round {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(235, 235, 235, 0.644);
-            border: 0.3px solid rgba(0, 0, 0, 0.048);
+            text-align: center;
+            background-color: rgba(243, 243, 243, 0.644);
+            border: 0.3px solid rgba(114, 114, 114, 0.048);
             width: 20px;
             height: 20px;
             border-radius: 50px;
@@ -101,9 +107,13 @@
     }
 
     #carroussel {
-        flex-direction: row;
+        display: flex;
+        width: 90vw;
+        justify-content: center;
         flex-wrap: nowrap;
+        flex-direction: row;
         gap: 15px;
+        padding: 20px;
 
         .card {
             max-width: 200px;
@@ -117,6 +127,11 @@
         .card:hover {
             img { filter:saturate(3)}
         }
+    }
+
+    button {
+        margin-top: 60px;
+        margin: auto;
     }
 }
 
@@ -261,19 +276,27 @@
     #latest-products {
         width: 100%;
         overflow-x: hidden;
+        justify-content: space-evenly;
+        gap:0;
 
-        h2 {
-            // text-align: center;
+        .container-of-arrows {
+            display: flex;
         }
 
         #carroussel {
+            justify-content: flex-start;
+            padding-left: 0;
+            margin-left: 0;
+            position: relative;
             flex-wrap: nowrap;
             overflow-x: hidden;
             gap: 15px;
             width: 100%;
+            padding: 20px;
         }
 
         button {
+            margin-top: 30px;
             align-self: self-start;
         }
     }

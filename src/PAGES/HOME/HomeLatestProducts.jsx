@@ -53,21 +53,34 @@ const HomeLatestProducts = () => {
     // }, [])
 
     const handleNextClick = () => {
-        setPosition(prevPosition => {
-            return prevPosition - 250;
-        });
+
+        if (position <= - 1000) {
+            setPosition(0);
+        }
+
+        else {
+            setPosition(prevPosition => {
+                return prevPosition - 250;
+            })
+        }
     };
 
     const handlePrevClick = () => {
-        setPosition(prevPosition => {
-            return prevPosition + 250
-        })
+
+        if(position >= 0) {
+            setPosition(0);
+        }
+        else {
+            setPosition(prevPosition => {
+                return prevPosition + 250;
+            })
+        }
     }
 
 
   return (
 
-    <section id="latest-products" className=' mt-small flex justify-center column'>
+    <section id="latest-products" className='flex justify-center column'>
 
             <h2>Les nouveautés</h2>
 
@@ -81,7 +94,7 @@ const HomeLatestProducts = () => {
             </div>
 
             <div
-                className='flex justify-center'
+                className=''
                 id="carroussel"
                 >
 
@@ -112,7 +125,7 @@ const HomeLatestProducts = () => {
 
             </div>
 
-            <button className='mt-small btn4'>Voir plus?</button>
+            <button className='btn4'>Voir plus ?</button>
 
     </section>
   )
