@@ -2,6 +2,7 @@
 
 
 // DASHBOARD
+
 li.dashboard {
     width: 180px;
     display: flex;
@@ -14,7 +15,6 @@ li.dashboard:hover {
     // background-color: var.$font-fun2-color;
     background-color: white;
 }
-
 #dashboard-content {
 
     h1 {
@@ -74,6 +74,17 @@ li.dashboard:hover {
                 gap: 20px;
                 padding: 30px;
 
+                #form-dashboard-img, #form-dashboard-infos {
+                    padding: 0 15px 40px 15px;
+                    border-radius: 30px;
+                    background-color: rgb(228, 228, 228);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+
+
+
                 label {
                     display: none;
                 }
@@ -83,11 +94,15 @@ li.dashboard:hover {
                     width: 50vw;
                     max-width: 600px;
                 }
+
             }
         }
     }
 }
 
+
+
+// Responsive
 @media screen and (max-width:1300px) {
 
     li.dashboard span {

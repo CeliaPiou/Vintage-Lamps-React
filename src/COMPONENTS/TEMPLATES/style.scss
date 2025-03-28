@@ -345,20 +345,6 @@ a {
     }
 }
 
-// DASHBOARD
-li.dashboard {
-    width: 180px;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 3px 5px 3px 2px;
-    border-radius: 9px;
-}
-li.dashboard:hover {
-    // background-color: var.$font-fun2-color;
-    background-color: white;
-}
-
 // RESPONSIVE
 //// TABLETTES
 @media screen and (max-width:1024px) {

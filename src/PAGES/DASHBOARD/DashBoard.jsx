@@ -34,20 +34,20 @@ const DashBoard = () => {
             setOrders(false);
             setCustomers(false)
         }
-        const handleSelectedProducts= () => {
+        const handleSelectedProducts = () => {
             // alert('hi')
             setDashboard(false);
             setProducts(true);
             setOrders(false);
             setCustomers(false)
         }
-        const handleSelectedOrders= () => {
+        const handleSelectedOrders = () => {
             setDashboard(false);
             setProducts(false);
             setOrders(true);
             setCustomers(false)
         }
-        const handleSelectedCustomers= () => {
+        const handleSelectedCustomers = () => {
             setDashboard(false);
             setProducts(false);
             setOrders(false);
@@ -58,7 +58,7 @@ const DashBoard = () => {
 
         <>
 
-            <aside style={styles.dashMenu}>
+            <aside id="dashboard-menu" style={styles.dashMenu}>
 
                 <nav style={{display: "flex", cursor:'pointer', alignItems: "center", justifyContent: "center"}}>
                     <ul style={{display: "flex", flexDirection: "column", gap: "30px"}}>

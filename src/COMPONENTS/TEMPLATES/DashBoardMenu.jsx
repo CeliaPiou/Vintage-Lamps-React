@@ -3,8 +3,7 @@ import { useState } from 'react'
 
 const DashBoardMenu = () => {
 
-
-          // 🎨 Styles sous forme d'objet
+          // Styles
         const styles = {
             dashMenu: {
                 position: "relative",
@@ -27,7 +26,7 @@ const DashBoardMenu = () => {
         const [orders, setOrders] = useState(false);
         const [customers, setCustomers] = useState(false);
 
-
+        // Const pour savoir sur quelle catégorie on clique
         const handleSelectedDashboard = () => {
             setDashboard(true);
             setProducts(false);
@@ -55,8 +54,6 @@ const DashBoardMenu = () => {
         }
 
         return (
-
-
 
             <header style={styles.dashMenu}>
 
