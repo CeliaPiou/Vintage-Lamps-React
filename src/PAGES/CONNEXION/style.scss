@@ -8,6 +8,7 @@
     gap: 20px;
 
     div {
+        opacity: 0;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -15,6 +16,20 @@
         padding: 20px;
         width: 30%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
+
+        animation-name: appearsFromFade;
+        animation-delay: 0.2s;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes appearsFromFade {
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 100%;
+        }
     }
 
     #login, #sign-up {
@@ -43,4 +58,19 @@
 
 label {
     display: block;
+}
+
+@media screen and (max-width:1024px) {
+
+    #login-signup {
+        position: relative;
+        top: -150px;
+        flex-direction: column-reverse;
+        align-items: center;
+
+        div {
+            width: 90vw !important
+        }
+    }
+
 }

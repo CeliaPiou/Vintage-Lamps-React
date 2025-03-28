@@ -1,5 +1,9 @@
 @use '../../var.scss';
 
+* {
+    transition: all 0.4s ease-in-out;
+}
+
 #container-links {
     display: flex;
     width: 80vw;

@@ -1,113 +1,96 @@
 import './style.scss'
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import gradient from '../../assets/img/gradient.svg'
 
 const Connexion = () => {
+  const [signUp, setSignUp] = useState(false);
 
-  useEffect(() => {
+  const handleClickSignIn = () => {
+    setSignUp(false);
+  };
 
-    let signUp = false;
-
-      const buttonSignUp = document.getElementById("btn-signup");
-      buttonSignUp.addEventListener('click', () => {
-
-        if (signUp === false) {
-
-          signUp = true;
-
-          const block = document.getElementById('login-signup');
-          block.style.flexDirection = "row";
-
-          const signup = document.getElementById('sign-up');
-          signup.style.backgroundColor = "white";
-          signup.innerHTML = `
-          <h2>SIGN UP</h2>
-          <form action="post">
-          <label for="Email"></label>
-          <input id="Email" placeholder='Enter your mail'></input>
-
-          <label for="Password"></label>
-          <input id="Password" placeholder='Enter your password'></input>
-          </form>
-
-          <button class="btn4 mt-small" type='submit'>CONTINUE</button>
-          `
-
-          const login = document.getElementById('login');
-          login.innerHTML = `
-          <h2>LOGIN</h2>
-          <p>Already have an account ?</p>
-          <button class="btn4" id="btn-login">LOGIN</button>
-          `
-          login.style.backgroundColor = "rgb(202, 202, 202)";
-
-        }
-
-      })
-
-      const buttonLogIn = document.getElementById('btn-login');
-      buttonLogIn.addEventListener('click', () => {
-          signUp = false;
-
-          const block = document.getElementById('login-signup');
-          block.style.flexDirection = "reverse-row";
-
-          const signup = document.getElementById('sign-up');
-          signup.style.backgroundColor = "rgb(202, 202, 202)";
-          signup.innerHTML = `
-          <h2>SIGN UP</h2>
-          <span>Need an account ?</span>
-          <span> <button className='btn4 mt-small' id="btn-signup">SIGN UP !</button></span>
-          `
-
-          const login = document.getElementById('login');
-          login.innerHTML = `
-          <h2>LOGIN</h2>
-
-          <form action="post">
-            <label for="Email"></label>
-            <input id="Email" placeholder='Enter your mail'></input>
-
-            <label for="Password"></label>
-            <input id="Password" placeholder='Enter your password'></input>
-          </form>
-
-          <button className="btn4 mt-small" type='submit'>LOGIN</button>
-          <p>Forgot password ?</p>
-          `
-          login.style.backgroundColor = "white";
-      })
-
-  }, [])
-
+  const handleClickSignUp = () => {
+    setSignUp(true);
+  };
 
   return (
+
+    // Pour inverser les blocks : style={{ flexDirection: signUp ? "row" : "row-reverse" }}
     <section id="login-signup">
 
-      <div id="sign-up">
+      {/* == Tu veux t'inscrire ? */}
+      <div id="sign-up" style={{ backgroundColor: signUp ?  "rgb(255, 202, 29)" : "white",
+      width: signUp ? "50vw" : "30vw"}}>
         <h2>SIGN UP</h2>
-        <span>Need an account ?</span>
-        <span> <button className='btn4 mt-small' id="btn-signup">SIGN UP !</button></span>
+        {signUp ? (
+
+          // == Soit tu t'inscris, formulaire pour s'inscrire
+          <>
+            <form action="post">
+              <label htmlFor="Email">Email</label>
+              <input id="Email" placeholder="Enter your mail" />
+              <label htmlFor="Password">Password</label>
+              <input id="Password" placeholder="Enter your password" />
+            </form>
+            <button className="btn4 mt-small" type="submit">CONTINUE</button>
+          </>
+        ) : (
+
+          // == Soit juste un bouton pour faire apparaitre le formulaire de connexion
+          <>
+            <span>Need an account?</span>
+            <span>
+              <button className="btn4 mt-small" onClick={handleClickSignUp} id="btn-signup">
+                <img
+                  src={gradient}
+                  width={500}
+                  className='btn-effect'></img>
+                SIGN UP!
+              </button>
+            </span>
+          </>
+        )}
       </div>
 
-      <div id="login">
+      {/* == Tu veux te connecter ? */}
+      <div id="login" style={{ backgroundColor: signUp ? "white" : "rgb(255, 202, 29)",
+        width: signUp ? "30vw" : "50vw"
+       }}>
         <h2>LOGIN</h2>
+        {signUp ? (
 
-        <form action="post">
-          <label for="Email"></label>
-          <input id="Email" placeholder='Enter your mail'></input>
+          // == Soit bouton pour faire apparaitre le formulaire d'inscription
+          <>
+            <p>Already have an account?</p>
+            <button className="btn4" id="btn-login" onClick={handleClickSignIn}>
+              <img
+                src={gradient}
+                width={500}
+                className='btn-effect'>
+              </img>
+              LOGIN
+            </button>
+          </>
+        ) : (
 
-          <label for="Password"></label>
-          <input id="Password" placeholder='Enter your password'></input>
-        </form>
+          // == Soit formulaire pour se connecter
+          <>
+            <form action="post">
+              <label htmlFor="Email">Email</label>
+              <input id="Email" placeholder="Enter your mail" />
 
-        <button className="btn4 mt-small" type='submit'>LOGIN</button>
-        <p>Forgot password ?</p>
+              <label htmlFor="Password">Password</label>
+              <input id="Password" placeholder="Enter your password" />
+            </form>
+            <button className="btn4 mt-small" type="submit">
+              LOGIN
+            </button>
+            <p>Forgot password?</p>
+          </>
+        )}
       </div>
-
-
     </section>
-  )
-}
+  );
+};
 
-export default Connexion
+export default Connexion;

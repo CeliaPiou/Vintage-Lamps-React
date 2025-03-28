@@ -14,7 +14,6 @@ const HeaderSmall = () => {
 
     useEffect(() => {
         const navbar = document.getElementById('primary-nav')
-        console.log(navbar)
 
         window.addEventListener('scroll', function() {
 

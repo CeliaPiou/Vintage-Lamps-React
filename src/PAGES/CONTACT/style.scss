@@ -6,16 +6,41 @@
     justify-content: space-around;
     height: 500px;
     align-items: center;
-    background-color: var.$font-fun-color;
+    background-color: var.$font-discreet-color;
     color: var.$font-main-color;
     padding-right: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
+    overflow: hidden;
 
     div {
+        position: relative;
+        top:0;
+        left:-1000px;
+        opacity: 0;
         padding: 50px;
         width: 50%;
+        animation-name : appearingFromLeft;
+        animation-duration: 0.7s;
+        animation-delay: 0.7s;
+        animation-fill-mode: forwards;
+        text-align: right;
+    }
+
+    @keyframes appearingFromLeft {
+        from {
+            left: -1000px;
+            opacity: 0;
+        }
+        to {
+            left: 0px;
+            opacity: 100%
+        }
+
     }
 
     form {
+        position: relative;
+        left: -2000px;
         width: 50%;
         background-color: var.$bg-color;
         height: 300px;
@@ -27,21 +52,30 @@
         justify-content: center;
         padding: 20px;
         align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
+
+        animation-name: appearingFromLeft;
+        animation-duration: 0.7s;
+        animation-delay: 0.3s;
+        animation-fill-mode: forwards;
+
 
         label {
             display: none;
         }
 
         input {
-            padding: 10px;
+            padding: 15px;
             border: none;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s ease-in-out;
+            padding-bottom: 3px;
+            border-bottom: 3px solid var.$font-fun2-color;
+            transition: all 0.1s ease-in-out;
             width: 80%;
         }
 
         input:hover {
-            border-bottom: 2px solid var.$font-fun2-color;
+            padding-bottom: 0px;
+            border-bottom: 6px solid var.$font-fun2-color;
             svg {
                 background-color: white;
             }

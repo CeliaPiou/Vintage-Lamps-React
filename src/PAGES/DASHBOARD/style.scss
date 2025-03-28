@@ -1,0 +1,100 @@
+@use '../../var.scss';
+
+
+// DASHBOARD
+li.dashboard {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 3px 5px 3px 2px;
+    border-radius: 9px;
+}
+li.dashboard:hover {
+    // background-color: var.$font-fun2-color;
+    background-color: white;
+}
+
+#dashboard-content {
+
+    h1 {
+        text-align: center;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    position: absolute;
+    background-color: white;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: 80vw;
+    height: 93vh;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    .container-dashboard {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+
+        .article-dashboard {
+            text-align: center;
+            background-color: #F2F2F2;
+            padding: 10px;
+            border-radius: 30px;
+            max-width: 350px;
+            height: 300px;
+        }
+
+        .article-dashboard:hover {
+            cursor: pointer;
+            background-color: #F2F2F2;
+            transform: scale(1.01);
+            box-shadow:  2px 3px 8px rgba(172, 172, 172, 0.459);
+        }
+
+        .article-dashboard-zoom {
+
+            h2 {
+                font-size: 1.1rem;
+            }
+            text-align: center;
+            background-color: #F2F2F2;
+            padding: 10px;
+            border-radius: 30px;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 30px;
+
+                label {
+                    display: none;
+                }
+
+                input {
+                    padding: 10px;
+                    width: 50vw;
+                    max-width: 600px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1300px) {
+
+    li.dashboard span {
+        display: none;
+    }
+    li.dashboard {
+        width: 39px;
+    }
+
+}
