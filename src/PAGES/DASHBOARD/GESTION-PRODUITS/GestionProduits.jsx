@@ -1,15 +1,16 @@
 import React, { useState, useEffect }from 'react'
-import AddProduct from './AddProduct';
 import axios from 'axios';
+
+
+import AddProduct from './AddProduct';
+import UpdateArticle from './UpdateArticle';
 
 
 const GestionProduits = () => {
 
 
     // Chercher le contenu first:
-
     const [articles, setArticles] = useState([])
-
     useEffect(() => {
 
         const fetchArticles = async () => {
@@ -31,11 +32,15 @@ const GestionProduits = () => {
     }, [])
 
     // Gestion de la page
-
     const [addArticle, setAddArticle] = useState(false);
+    const [updateArt, setUpdateArt] = useState(false);
 
     const handleClickAddArticle = () => {
         setAddArticle(true)
+    }
+
+    const handleClickUpdateArticle = () => {
+        setUpdateArt(true)
     }
 
   return (
@@ -47,6 +52,8 @@ const GestionProduits = () => {
 
             {addArticle ?
                 <AddProduct />
+                : updateArt ?
+                <UpdateArticle />
                 :
                 <>
                 <article className='article-dashboard'>
@@ -55,28 +62,23 @@ const GestionProduits = () => {
                 </article>
 
                 <article className='article-dashboard'>
-                    <h2>Modifier une lampe</h2>
+                    <h2>Modifier et/ou supprimer</h2>
 
-                    {articles.map(art => (
-                        <div>{art.name}</div>
-                    ))}
+                    <div>
+                        {articles
+                        .sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
+                        .slice(0,3)
+                        .map(art => (
+                            <div key={art._id} className='dashboard-card'>
+                                <span>{art.name}</span>
+                                <img src={art.picture.img} alt={art.name}></img>
+                            </div>
+                        ))}
+                    </div>
 
-                    <button className='btn4'>Voir le reste</button>
+                    <button onClick={handleClickUpdateArticle} className='btn4'>Voir le reste</button>
                 </article>
 
-                <article className='article-dashboard'>
-                    <h2>Supprimer une lampe</h2>
-                    <img src='#'></img>
-                    <button className='btn4'>Ajouter</button>
-
-                    <img src='#'></img>
-                    <button className='btn4'>Ajouter</button>
-
-                    <img src='#'></img>
-                    <button className='btn4'>Ajouter</button>
-
-                    <button className='btn4'>Voir le reste</button>
-                </article>
             </>}
 
         </div>

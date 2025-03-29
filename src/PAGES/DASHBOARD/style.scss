@@ -2,7 +2,6 @@
 
 
 // DASHBOARD
-
 li.dashboard {
     width: 180px;
     display: flex;
@@ -26,7 +25,7 @@ li.dashboard:hover {
     justify-content: center;
     padding-left: 10px;
     position: absolute;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     top: 10px;
     right: 10px;
     bottom: 10px;
@@ -44,11 +43,19 @@ li.dashboard:hover {
 
         .article-dashboard {
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
             background-color: #F2F2F2;
             padding: 10px;
             border-radius: 30px;
-            max-width: 350px;
-            height: 300px;
+            width: 350px;
+            min-height: 200px;
+
+            div {
+                display: flex;
+            }
         }
 
         .article-dashboard:hover {
@@ -59,31 +66,40 @@ li.dashboard:hover {
         }
 
         .article-dashboard-zoom {
+            padding-top: 10px;
+            background-color: rgb(255, 255, 255);
+            width: 70vw;
 
             h2 {
                 font-size: 1.1rem;
             }
             text-align: center;
-            background-color: #F2F2F2;
             padding: 10px;
             border-radius: 30px;
 
             form {
                 display: flex;
-                flex-direction: column;
                 gap: 20px;
                 padding: 30px;
+                flex-direction: column;
 
-                #form-dashboard-img, #form-dashboard-infos {
-                    padding: 0 15px 40px 15px;
-                    border-radius: 30px;
-                    background-color: rgb(228, 228, 228);
+                #container-form-dashboard {
                     display: flex;
-                    flex-direction: column;
-                    gap: 5px;
+                    width: 100%;
+                    gap: 10px;
+                    margin: auto;
+
+                    #form-dashboard-img, #form-dashboard-infos {
+                        width: 50%;
+                        padding: 0 15px 40px 15px;
+                        border-radius: 30px;
+                        background-color: rgb(228, 228, 228);
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                    }
+
                 }
-
-
 
                 label {
                     display: none;
@@ -91,15 +107,80 @@ li.dashboard:hover {
 
                 input {
                     padding: 10px;
-                    width: 50vw;
+                    width: 90%;
                     max-width: 600px;
                 }
 
+            }
+
+            .button-container {
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                gap: 10px;
+
+                button:nth-last-child(1) {
+                    background-color: rgb(194, 194, 194);
+                }
             }
         }
     }
 }
 
+// Modifier Art
+.dashboard-card {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 30px;
+    gap: 10px;
+
+    span {
+        display: none;
+        position: absolute;
+        top: 50%;
+        background-color: rgba(255, 228, 110, 0.267);
+        padding: 3px;
+    }
+    img {
+        width: 90px;
+        height:90px;
+        border-radius: 80px;
+        object-fit: cover;
+    }
+}
+.dashboard-card:hover {
+    span{display: block; z-index:1;};
+    img{transform:scale(1.1)}
+}
+
+// Modifier Art Detail Liste of Arts
+.dashboard-all-articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    .dashboard-all-article-block {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(87, 87, 87, 0.24);
+        max-width: 200px;
+        overflow: hidden;
+        padding: 5px;
+        height: 250px;
+        border-radius: 8px;
+
+        img {
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    }
+}
 
 
 // Responsive
@@ -110,6 +191,25 @@ li.dashboard:hover {
     }
     li.dashboard {
         width: 39px;
+    }
+
+    // Dans l'ajout d'article, mode column si responsive
+    #dashboard-content {
+
+        .container-dashboard {
+
+            .article-dashboard-zoom {
+                form {
+                    #container-form-dashboard {
+                        flex-direction: column;
+                        align-items: center;
+                        #form-dashboard-img, #form-dashboard-infos {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

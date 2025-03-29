@@ -55,7 +55,7 @@ const DashBoardMenu = () => {
 
         return (
 
-            <header style={styles.dashMenu}>
+            <aside style={styles.dashMenu}>
 
                 <nav style={{display: "flex", cursor:'pointer', alignItems: "center", justifyContent: "center"}}>
                     <ul style={{display: "flex", flexDirection: "column", gap: "30px"}}>
@@ -106,7 +106,7 @@ const DashBoardMenu = () => {
                     </ul>
                 </nav>
 
-            </header>
+            </aside>
         )
 }
 
