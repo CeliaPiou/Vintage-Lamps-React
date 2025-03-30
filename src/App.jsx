@@ -12,14 +12,15 @@ import About from './PAGES/ABOUT/About'
 import Connexion from './PAGES/CONNEXION/Connexion'
 import Contact from './PAGES/CONTACT/Contact'
 import OurProducts from './PAGES/PRODUCTS/OurProducts'
-
+//--
 import DashBoard from './PAGES/DASHBOARD/DashBoard'
-
+import UpdateArtDetail from './PAGES/DASHBOARD/GESTION-PRODUITS/UpdateArtDetail'
 
 
 function App() {
 
   return (
+
     <div className='App'>
 
     <Routes>
@@ -41,6 +42,7 @@ function App() {
 
       <Route path='/' element={<LayoutDSH/>}>
 
+        <Route path='/dashboard/update/:id' element={<UpdateArtDetail/>}/>
         <Route path='/dashboard' element={<DashBoard />} />
 
       </Route>

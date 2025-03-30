@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 const UpdateArticle = () => {
 
@@ -32,12 +33,15 @@ const UpdateArticle = () => {
         <section className='dashboard-all-articles-container'>
 
         {articles.map(art => (
-            <div
-                key={art._id}
-                className='dashboard-all-article-block'>
-                <img src={art.picture.img} alt={art.name} width={200}></img>
-                {art.name}
-            </div>
+
+            <Link to={{ pathname: `/dashboard/update/${art._id}`}}>
+                <div
+                    key={art._id}
+                    className='card'>
+                    <img src={art.picture.img} alt={art.name} height={250}></img>
+                    {art.name}
+                </div>
+            </Link>
         ))}
 
         </section>
