@@ -245,6 +245,11 @@ const UpdateArtDetail = () => {
                             <input type='text' value={articleModifie.picture?.img4} name='img4' id='img4' placeholder="URL de l'image 4" onChange={handleChange} />
                         </div>
 
+                        <div>
+                            <label htmlFor='video'>Vidéo</label>
+                            <input type='text' value={articleModifie.picture?.img4} name='video' id='video' placeholder="URL de la vidéo" onChange={handleChange} />
+                        </div>
+
                     </div>
                 </div>
 

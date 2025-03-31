@@ -24,3 +24,43 @@ main {
 img {
     object-fit: cover;
 }
+
+// Detail Product
+#detail-product {
+    display:flex;
+    width: 90vw;
+    gap: 30px;
+    margin: auto;
+
+    #detail-product-left {
+        width: 50%;
+        display: flex;
+        #images-container-small {
+            cursor: pointer;
+            height: 90vh;
+            overflow:hidden;
+            img, video {
+                display: flex;
+                flex-direction: column;
+                width: 8vw;
+                margin: 5px;
+                height: 20vh;
+                object-fit: cover;
+            }
+        }
+        #image-container-big {
+            display:flex;
+            height: 90vh;
+            overflow:hidden;
+            img {
+                width: 35vw;
+                margin: 5px;
+            }
+        }
+    }
+
+    #detail-product-right {
+        background-color: blue;
+        width: 50%;
+    }
+}

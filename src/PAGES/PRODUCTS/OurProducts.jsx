@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './style.scss'
+import { Link } from 'react-router-dom'
 
 const OurProducts = () => {
 
@@ -41,16 +42,13 @@ const OurProducts = () => {
             <ul>
                 <li>Tous les Produits</li>
                 <li>Type de Produit</li>
-                <li>Type de Produit</li>
-                <li>Type de Produit</li>
-                <li>Type de Produit</li>
             </ul>
         </nav>
 
         <section id="latest-products" className='mt-big container flex justify-center'>
 
             {product.map((prod) => (
-
+                <Link to={{ pathname: `/products/${prod._id}` }}>
                 <div className="cardy"
                 id={prod._id}
                 onMouseEnter={() => beCard(prod._id)}
@@ -66,8 +64,8 @@ const OurProducts = () => {
                     <span className='p-price'>- {prod.price},00 €</span></p>
 
                     <button className='btn5'>Add to cart - {prod.price},00 €</button>
-
                 </div>
+                </Link>
 
             ))}
 

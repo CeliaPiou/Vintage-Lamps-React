@@ -73,6 +73,7 @@ const HomeLatestProducts = () => {
                     .slice(0,8)
                     .map((item) => (
 
+                        <Link to={{ pathname: `/products/${item._id}` }}>
                         <div key={item.id} className='card'
                         style={{
                             transform: `translateX(${position}px)`,
@@ -97,6 +98,7 @@ const HomeLatestProducts = () => {
                             <button className='btn5'>Add to cart</button>
 
                         </div>
+                        </Link>
                 ))}
             </div>
             <Link to={{ pathname: `/products` }}>

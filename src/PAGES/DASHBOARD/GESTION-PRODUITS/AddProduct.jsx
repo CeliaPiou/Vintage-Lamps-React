@@ -11,7 +11,8 @@ const AddProduct = () => {
             img1: '',
             img2: '',
             img3: '',
-            img4: ''
+            img4: '',
+            video: ''
         },
         name: '',
         price: '',
@@ -171,6 +172,11 @@ const AddProduct = () => {
                             <div>
                                 <label htmlFor='img4'>Image supplémentaire 4</label>
                                 <input type='text' name='img4' id='img4' placeholder="URL de l'image 4" onChange={handleChange} />
+                            </div>
+
+                            <div>
+                                <label htmlFor='video'>Vidéo</label>
+                                <input type='text' name='video' id='video' placeholder="URL de la vidéo" onChange={handleChange} />
                             </div>
 
                         </div>
