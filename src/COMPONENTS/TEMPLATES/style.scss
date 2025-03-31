@@ -2,6 +2,7 @@
 
 #secondary-nav {
     background-color: var.$font-inverse-color;
+    // background-color: transparent;
     height: 60px;
     display: flex;
     justify-content: space-around;
@@ -60,7 +61,8 @@ a {
     linear-gradient(60deg, #2727273a, #262626b7)
     ,
     ////// Our images
-    url('../../assets/img/glass-lamp.JPG')
+    // url('../../assets/img/glass-lamp.JPG')
+    url('https://i.etsystatic.com/16538771/r/il/7378b2/4858918966/il_794xN.4858918966_5s7c.jpg')
     // url('../../assets/img/v2.jpg')
     // url('../../assets/img/v3.jpg')
     // url('../../assets/img/gradient.svg')
@@ -346,18 +348,6 @@ a {
 }
 
 
-li.dashboard {
-    width: 180px;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 3px 5px 3px 2px;
-    border-radius: 9px;
-}
-li.dashboard:hover {
-    // background-color: var.$font-fun2-color;
-    background-color: white;
-}
 
 // RESPONSIVE
 //// TABLETTES

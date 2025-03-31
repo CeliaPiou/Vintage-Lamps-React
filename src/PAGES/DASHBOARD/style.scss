@@ -182,6 +182,47 @@ li.dashboard:hover {
     }
 }
 
+// Modifier art Précisémment
+#dashboard-update-article {
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+
+        .dashboard-container {
+            display:flex;
+            background-color: #fcfcfc;
+            justify-content: center;
+            align-items: start;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 30px;
+            img {
+                width: 35%;
+                max-width: 500px;
+                align-self: center;
+                border-radius: 200px;
+                aspect-ratio: 1/1;
+            }
+            div {
+                input, textarea {
+                    padding: 5px 10px 5px 10px;
+                    background-color: white;
+                    border:1px solid rgb(216, 216, 216);
+                }
+
+                textarea {
+                    width: 180%;
+                    height: 90px;
+                    font-family: 'jost';
+                }
+            }
+        }
+    }
+}
+
 
 // Responsive
 @media screen and (max-width:1300px) {

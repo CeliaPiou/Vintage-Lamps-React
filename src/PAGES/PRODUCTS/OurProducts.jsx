@@ -1,60 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import './style.scss'
 
 const OurProducts = () => {
 
-        const [product, setProduct] = useState([
-            {
-                id: 1,
-                name: `HC signed - Mushroom lamp art deco modernist bauhaus`,
-                price: `150`,
-                img: `https://i.etsystatic.com/16538771/r/il/5f95da/6583041901/il_794xN.6583041901_cth2.jpg`
-            },
-            {
-                id: 2,
-                name: `Vintage antique mid century lamp`,
-                price: `139`,
-                img: `https://i.etsystatic.com/16538771/r/il/43795e/6509798875/il_794xN.6509798875_q8to.jpg`
-            },
-            {
-                id: 3,
-                name: `DEGUE - Art déco vintage wall lamp`,
-                price: `199`,
-                img: `https://i.etsystatic.com/16538771/r/il/ccefde/6658406597/il_794xN.6658406597_72p0.jpg`
-            },
-            {
-                id: 4,
-                name: `DEGUE - Vintage art deco table`,
-                price: `175`,
-                img: `https://i.etsystatic.com/16538771/r/il/8f6f0b/6553232574/il_794xN.6553232574_oa09.jpg`
-            },
-            {
-                id: 5,
-                name: `HC signed - Mushroom lamp art deco modernist bauhaus`,
-                price: `150`,
-                img: `https://i.etsystatic.com/16538771/r/il/5f95da/6583041901/il_794xN.6583041901_cth2.jpg`
-            },
-            {
-                id: 6,
-                name: `Vintage antique mid century lamp`,
-                price: `139`,
-                img: `https://i.etsystatic.com/16538771/r/il/43795e/6509798875/il_794xN.6509798875_q8to.jpg`
-            },
-            {
-                id: 7,
-                name: `DEGUE - Art déco vintage wall lamp`,
-                price: `199`,
-                img: `https://i.etsystatic.com/16538771/r/il/ccefde/6658406597/il_794xN.6658406597_72p0.jpg`
-            },
-            {
-                id: 8,
-                name: `DEGUE - Vintage art deco table`,
-                price: `175`,
-                img: `https://i.etsystatic.com/16538771/r/il/8f6f0b/6553232574/il_794xN.6553232574_oa09.jpg`
+        const [product, setProduct] = useState([]);
+        useEffect(() => {
+            const fetchArticles = async() => {
+                try{
+                    const { data, status } = await axios.get('http://localhost:8000/lv/articles/all');
+                    if(status===200) setProduct(data)
+                }
+                catch(error){
+                    console.log(error.message)
+                }
             }
 
-        ]
-        )
+            fetchArticles();
+        }, [])
+
 
         function beCard(id) {
             let div = document.getElementById(id);
@@ -83,26 +47,25 @@ const OurProducts = () => {
             </ul>
         </nav>
 
-        <section className='mt-big container flex justify-center'>
+        <section id="latest-products" className='mt-big container flex justify-center'>
 
             {product.map((prod) => (
 
                 <div className="cardy"
-                id={prod.id}
-                onMouseEnter={() => beCard(prod.id)}
-                onMouseLeave={() => beCardy(prod.id)}>
+                id={prod._id}
+                onMouseEnter={() => beCard(prod._id)}
+                onMouseLeave={() => beCardy(prod._id)}>
 
-                    <img src={prod.img}
+                    <img src={prod.picture?.img}
                         alt={prod.name}
                         width={200}
-                        height={200}></img>
+                        height={220}></img>
 
-                    <p><strong>{prod.name}</strong></p>
-                    <p>{prod.price},00 €</p>
+                    <p className='p-name'><strong>{prod.name}</strong></p>
+                    <p><span className='p-brand'>{prod.brand} </span>
+                    <span className='p-price'>- {prod.price},00 €</span></p>
 
-                    <button className='btn4'>Add to cart</button>
-
-
+                    <button className='btn5'>Add to cart - {prod.price},00 €</button>
 
                 </div>
 

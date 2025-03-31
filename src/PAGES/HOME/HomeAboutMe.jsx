@@ -1,5 +1,7 @@
 import React from 'react'
 
+import gradient from '../../assets/img/gradient.svg'
+
 const HomeAboutMe = () => {
 
   return (
@@ -12,7 +14,12 @@ const HomeAboutMe = () => {
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Quam pariatur fugiat veritatis. Consectetur tenetur, aut
                     praesentium velit ducimus quia nemo fugit. </p>
-                <button className='btn4'>En savoir plus</button>
+                <button className='btn4'>En savoir plus
+                    <img
+                        src={gradient}
+                        width={500}
+                        className='btn-effect'></img>
+                </button>
             </div>
 
         </section>

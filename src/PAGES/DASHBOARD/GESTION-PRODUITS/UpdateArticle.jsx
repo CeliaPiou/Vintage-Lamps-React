@@ -12,7 +12,7 @@ const UpdateArticle = () => {
         const fetchArticles = async () => {
 
             try{
-                const { data, status } = await axios.get('http://localhost:8080/lv/articles/all');
+                const { data, status } = await axios.get('http://localhost:8000/lv/articles/all');
                 if(status === 200) {
                     setArticles(data)
                 }

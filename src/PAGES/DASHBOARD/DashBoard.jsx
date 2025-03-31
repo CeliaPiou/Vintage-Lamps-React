@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
 import './style.scss'
+
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 import GestionProduits from './GESTION-PRODUITS/GestionProduits'
 
 const DashBoard = () => {
 
-          // 🎨 Styles sous forme d'objet
+          // Styles sous forme d'objet
         const styles = {
             dashMenu: {
                 position: "relative",
@@ -21,6 +25,8 @@ const DashBoard = () => {
                 alignItems: "center"
             }
         }
+
+        const navigate = useNavigate()
 
         const [dashboard, setDashboard] = useState(true);
         const [products, setProducts] = useState(false);
@@ -53,7 +59,6 @@ const DashBoard = () => {
             setOrders(false);
             setCustomers(true)
         }
-
 
 
     return (
@@ -103,7 +108,8 @@ const DashBoard = () => {
                     </li>
 
                     {/* Quitter */}
-                    <li className="dashboard">
+                    <li onClick={() => navigate(`/`)}
+                        className="dashboard">
                         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#666666"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>
                         <span>Quitter le dashboard</span>
                     </li>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect }from 'react'
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 import AddProduct from './AddProduct';
 import UpdateArticle from './UpdateArticle';
@@ -16,7 +16,7 @@ const GestionProduits = () => {
         const fetchArticles = async () => {
 
             try{
-                const { data, status } = await axios.get('http://localhost:8080/lv/articles/all')
+                const { data, status } = await axios.get('http://localhost:8000/lv/articles/all')
 
                 if(status === 200) {
                     setArticles(data)
@@ -69,10 +69,12 @@ const GestionProduits = () => {
                         .sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
                         .slice(0,3)
                         .map(art => (
+                            <Link to={{pathname: `/dashboard/update/${art._id}`}}>
                             <div key={art._id} className='dashboard-card'>
                                 <span>{art.name}</span>
                                 <img src={art.picture.img} alt={art.name}></img>
                             </div>
+                            </Link>
                         ))}
                     </div>
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect }from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-// import DashBoard from '../DashBoard'
 
 const UpdateArtDetail = () => {
     const navigate = useNavigate();
@@ -33,14 +32,16 @@ const UpdateArtDetail = () => {
             img1: '',
             img2: '',
             img3: '',
-            img4: ''
+            img4: '',
+            video: ''
         },
         name: '',
         price: '',
         brand: '',
         material: '',
         color: '',
-        period: ''
+        period: '',
+        description: ''
     })
     useEffect(() => {
         if (article) {
@@ -51,12 +52,11 @@ const UpdateArtDetail = () => {
                 brand: article.brand || '',
                 material: article.material || '',
                 color: article.color || '',
-                period: article.period || ''
+                period: article.period || '',
+                description: article.description  || ''
             });
         }
     }, [article]);
-
-
 
     // Mettre à jour l'état 'article' lorsque l'admin saisit du texte dans les champs de formulaire
     const handleChange = (event) => {
@@ -84,10 +84,6 @@ const UpdateArtDetail = () => {
 
         event.preventDefault()
 
-        console.log("ID envoyé:", id); // 🔍 Vérifier l'ID
-        console.log("Données envoyées:", articleModifie);
-        // console.log('Article bien récupéré :', article);
-
         try{
             const response = await axios.put('http://localhost:8000/lv/articles/'+id+'/update', articleModifie);
             alert("Article modifié");
@@ -103,16 +99,33 @@ const UpdateArtDetail = () => {
         navigate('/dashboard');
     }
 
+    // Pour la suppression
+    const handleDelete = async(event) => {
+        event.preventDefault()
+
+        try{
+            const result = await axios.delete('http://localhost:8000/lv/articles/'+id+'/delete');
+            alert("L'article a été supprimé")
+        }
+        catch(error){
+            console.error('Error: ', error)
+        }
+
+    }
+
   return (
 
     <>
+    {/* <DashBoard/> */}
 
-        <article className='article-dashboard-zoom'>
+    <section id='dashboard-update-article'>
 
             <form onSubmit={handleSubmit}>
 
-                <div id="container-form-dashboard">
-                    <div id="form-dashboard-infos">
+                <div className='dashboard-container'>
+                    <img src={article.picture?.img}></img>
+
+                    <div >
                         <h3>Infos générales</h3>
 
                         <div>
@@ -182,9 +195,20 @@ const UpdateArtDetail = () => {
                             onChange={handleChange}
                             ></input>
                         </div>
+
+                        <div>
+                            <label htmlFor='description'>Description (facultatif)</label>
+                            <textarea id='description'
+                            style={{"resize":"none"}}
+                            placeholder="Description"
+                            value={articleModifie.description}
+                            name="description"
+                            onChange={handleChange}
+                            ></textarea>
+                        </div>
                     </div>
 
-                    <div id="form-dashboard-img">
+                    <div >
                         <h3>Images</h3>
 
                         <div>
@@ -227,11 +251,12 @@ const UpdateArtDetail = () => {
                 <div className="button-container">
                     <button type="submit" className='btn4'>Modifier</button>
                     <button type="button" onClick={handleReturn} className='btn4'>Revenir en arrière</button>
+                    <button type="button" onClick={handleDelete} className='btn4'>Supprimer l'article</button>
                 </div>
 
             </form>
 
-        </article>
+    </section>
 
     </>
 

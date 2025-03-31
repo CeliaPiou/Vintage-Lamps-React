@@ -84,24 +84,30 @@
     margin-top: 100px;
 
     .container-of-arrows {
-        display: none;
-        // display: flex;
+        // display: none;
+        display: flex;
         justify-content: space-between;
         width: 90vw;
 
+
         .arrow-round {
+            transform: scale(1.5);
             display: flex;
+            z-index: 1;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-color: rgba(243, 243, 243, 0.644);
-            border: 0.3px solid rgba(114, 114, 114, 0.048);
+            // background-color: rgba(255, 255, 255, 0.233);
+            // border: 0.3px solid rgba(114, 114, 114, 0.048);
             width: 20px;
             height: 20px;
             border-radius: 50px;
-            padding: 15px;
+            padding: 10px;
+
+
         }
         .arrow-round:hover {
+            background-color: rgba(255, 255, 255, 0.692);
             cursor: pointer;
             img {
                 transform: scale(1.2);
@@ -113,7 +119,7 @@
     #carroussel {
         display: flex;
         width: 90vw;
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: nowrap;
         flex-direction: row;
         gap: 15px;
@@ -134,8 +140,8 @@
     }
 
     button {
-        margin-top: 60px;
-        margin: auto;
+        align-self: center;
+        width: 300px;
     }
 }
 
