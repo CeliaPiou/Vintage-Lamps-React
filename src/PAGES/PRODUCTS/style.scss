@@ -49,18 +49,74 @@ img {
             }
         }
         #image-container-big {
+            display: flex;
+            margin: 5px;
             display:flex;
             height: 90vh;
+            width: 80%;
             overflow:hidden;
+            img{
+                transform: scale(1.01)
+            }
+        }
+        #image-container-big:hover {
             img {
-                width: 35vw;
-                margin: 5px;
+                transform: scale(1.3);
             }
         }
     }
 
     #detail-product-right {
-        background-color: blue;
         width: 50%;
     }
+}
+
+@media screen and (max-width: 1000px) {
+
+    #detail-product {
+        margin-top: 0;
+        flex-direction: column;
+        width: 100vw;
+        margin: auto;
+
+        #detail-product-left {
+            width: 100%;
+            justify-content: space-around;
+            max-height: 520px;
+
+            #images-container-small {
+
+                img {
+                    height: 80px;
+                    width: 80px;
+                }
+            }
+
+            #image-container-big {
+                display: flex;
+                justify-content: center;
+                width: 70vw;
+                overflow: hidden;
+                max-height: 505px; // 6 photos x 80px + 5px de marge entre chaq
+
+                img {
+                    object-fit: cover;
+                    width: 70vw;
+                }
+            }
+        }
+
+        #detail-product-right {
+            padding-bottom: 20px;
+            margin: auto;
+            width: 90vw;
+            text-align: center;
+
+            button {
+                width: 250px !important;
+            }
+
+        }
+    }
+
 }

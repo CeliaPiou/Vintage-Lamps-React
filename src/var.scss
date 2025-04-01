@@ -6,11 +6,14 @@
 // $font-fun2-color: #ffd900;
 
 // VARIANTE COL
+$color-yellow: #ffd900;
+$font-fun2-color: #fdb515;
+
+
 $font-main-color: #262626;
 $font-inverse-color : #ffffff ;
 $font-discreet-color : #c4820e;
 $font-fun-color: #003262;
-$font-fun2-color: #fdb515;
 
 $bg-color: #ffffff;
 $bg-dark-color: #282c34;
@@ -52,6 +55,7 @@ body {
 .btn4 {
     position: relative;
     background-color: #ffd900;
+    // background-color: $font-fun2-color;
     color: $font-main-color;
     border: none;
     padding: 15px 20px 15px 20px;

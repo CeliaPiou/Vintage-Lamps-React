@@ -54,6 +54,115 @@ a {
     text-decoration: none;
 }
 
+#hero-section-small {
+    position: relative;
+    // background-color: var.$bg-dark-color;
+    background-image:
+    // Dark voile
+    // linear-gradient(60deg, #2727273a, #262626b7)
+    linear-gradient(60deg, #ff660e27, #5a501a65)
+
+    ,
+    ////// Our images
+    // url('../../assets/img/glass-lamp.JPG')
+    // url('https://i.etsystatic.com/16538771/r/il/7378b2/4858918966/il_794xN.4858918966_5s7c.jpg')
+    // url('../../assets/img/v2.jpg')
+    // url('../../assets/img/v3.jpg')
+    url('../../assets/img/gradient.svg')
+
+
+
+    ////// Pexels
+    // url(https://images.pexels.com/photos/568290/pexels-photo-568290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+    // url(https://images.pexels.com/photos/30783191/pexels-photo-30783191/free-photo-of-pensive-woman-in-vintage-office-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+    ;
+    background-size: cover;
+    background-attachment:fixed;
+    background-position: center;
+    margin: 0;
+    height: 10dvh;
+    color: var.$font-inverse-color;
+
+
+    #primary-nav {
+        color: var.$font-inverse-color;
+        transition: all 0.2s ease-in-out;
+        padding: 0 50px 0 50px;
+
+        ul {
+            gap: 4vw;
+            padding: 5px 20px 5px 20px;
+
+            li {
+                color:var.$font-fun2-color;
+                border-bottom: 0 solid var.$font-fun2-color;
+                padding-bottom: 10px;
+                transition: all 100ms ease-out;
+                transition-delay: 0.1s;
+                text-transform: uppercase;
+                font-weight: 500;
+                font-size: 14px;
+            }
+            svg {
+                width: 20px;
+                fill: var.$font-fun2-color;
+            }
+
+            li:hover {
+                padding-bottom: 5px;
+                border-bottom: 5px solid var.$font-fun2-color;
+            }
+        }
+    }
+
+    #primary-nav:hover {
+        background-color: white;
+        height:72px;
+    }
+
+    .fixed {
+        z-index: 10;
+        background-color: var.$font-inverse-color;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.185);
+
+    }
+
+    #hero-section-text {
+        // position: absolute;
+        // left: 10vw;
+        // bottom: 5vh;
+        // height: 60vh;
+        // max-width: 500px;
+
+        padding: 50px;
+        height: 40dvh;
+        margin-top: 0;
+        padding-top: 20vh;
+        align-items: center;
+        gap:0;
+        max-width: 500px;
+
+
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            // width: 0;
+            // overflow: hidden;
+            // white-space: nowrap;
+            // font-family: var.$font-big;
+            font-size: clamp(15px, 15vw, 42px);
+            letter-spacing: 0.3rem;
+            // border-right: 5px solid;
+            margin: 0;
+
+            // animation: typewriter 2s steps(14) forwards, blink .4s step-end infinite alternate;
+        }
+    }
+}
 #hero-section {
     position: relative;
     // background-color: var.$bg-dark-color;
@@ -87,7 +196,7 @@ a {
         padding: 0 50px 0 50px;
 
         ul {
-            gap: 8vw;
+            gap: 4vw;
             padding: 5px 20px 5px 20px;
 
             li {
@@ -99,6 +208,10 @@ a {
                 text-transform: uppercase;
                 font-weight: 500;
                 font-size: 14px;
+            }
+            svg {
+                width: 20px;
+                fill: var.$font-fun2-color;
             }
 
             li:hover {
@@ -177,77 +290,6 @@ a {
 
 }
 
-#hero-section-smaller {
-    position: relative;
-    // background-image: linear-gradient(60deg, #2727276e, #262626b7)
-    // , url(https://images.pexels.com/photos/1432516/pexels-photo-1432516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
-    // background-size: cover;
-    // background-attachment: fixed;
-    margin: 0;
-    height: 15vh;
-    color: var.$font-inverse-color;
-
-
-    #primary-nav {
-        color: var.$font-inverse-color;
-        background-color: var.$font-inverse-color;
-        transition: all 0.2s ease-in-out;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.089);
-
-
-
-        ul {
-            gap: 8vw;
-            padding: 5px 20px 5px 20px;
-
-            li {
-                color:var.$font-fun2-color;
-                border-bottom: 0 solid var.$font-fun2-color;
-                padding-bottom: 10px;
-                transition: all 100ms ease-out;
-                transition-delay: 0.1s;
-                text-transform: uppercase;
-                font-weight: 500;
-                font-size: 14px;
-            }
-
-            li:hover {
-                padding-bottom: 5px;
-                border-bottom: 5px solid var.$font-fun2-color;
-            }
-        }
-    }
-
-    #primary-nav:hover {
-        background-color: var.$font-inverse-color;
-    }
-
-    .fixed {
-        z-index: 10;
-        background-color: var.$font-inverse-color;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-    }
-
-    #hero-section-text {
-        align-items: flex-end;
-        position: absolute;
-        left: 50px;
-        bottom: 50px;
-        height: 60vh;
-        // max-width: 500px;
-
-        h1 {
-            font-family: var.$font-big;
-            font-size: 42px;
-            margin: 0;
-        }
-
-    }
-}
 
 #pre-footer{
     gap: 10vw;

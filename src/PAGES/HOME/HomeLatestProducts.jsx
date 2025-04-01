@@ -29,13 +29,13 @@ const HomeLatestProducts = () => {
     const [position, setPosition] = useState(0);
     const handleNextClick = () => {
 
-        if (position <= - 1000) {
+        if (position <= - 100) {
             setPosition(0);
         }
 
         else {
             setPosition(prevPosition => {
-                return prevPosition - 250;
+                return prevPosition - 30;
             })
         }
     };
@@ -76,7 +76,7 @@ const HomeLatestProducts = () => {
                         <Link to={{ pathname: `/products/${item._id}` }}>
                         <div key={item.id} className='card'
                         style={{
-                            transform: `translateX(${position}px)`,
+                            transform: `translateX(${position}vw)`,
                             transition: 'transform 0.3s ease-in-out'
                         }}>
 

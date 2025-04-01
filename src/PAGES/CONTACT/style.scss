@@ -1,12 +1,13 @@
 @use '../../var.scss';
 
 #contact {
+    margin-top: 30px;
     border-radius: 20px;
     display: flex;
     justify-content: space-around;
     height: 500px;
     align-items: center;
-    background-color: var.$font-discreet-color;
+    background-color: var.$font-fun2-color;
     color: var.$font-main-color;
     padding-right: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
@@ -42,7 +43,6 @@
         position: relative;
         left: -2000px;
         width: 50%;
-        background-color: var.$bg-color;
         height: 300px;
         width: clamp(200px, 30vw, 500px);
         gap: 20px;
@@ -50,6 +50,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        background-color: white;
         padding: 20px;
         align-items: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);

@@ -37,6 +37,13 @@ li.dashboard:hover {
     .container-dashboard {
         display: flex;
         flex-wrap: wrap;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        // ne dépasse pas la taille de l'écran
+        height: 100vh;
+        overflow: scroll;
         align-items: center;
         justify-content: center;
         gap: 15px;
@@ -161,9 +168,15 @@ li.dashboard:hover {
 
 // Modifier Art Detail Liste of Arts
 .dashboard-all-articles-container {
+    background-color: white;
     display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
     flex-wrap: wrap;
     gap: 6px;
+    height: 100vh;
+    overflow: scroll;
     .dashboard-all-article-block {
         display: flex;
         flex-direction: column;

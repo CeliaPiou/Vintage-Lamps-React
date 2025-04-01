@@ -1,14 +1,15 @@
 import './style.scss'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import GestionProduits from './GESTION-PRODUITS/GestionProduits'
 
 const DashBoard = () => {
 
-          // Styles sous forme d'objet
+        // Styles sous forme d'objet
         const styles = {
             dashMenu: {
                 position: "relative",
@@ -28,6 +29,7 @@ const DashBoard = () => {
 
         const navigate = useNavigate()
 
+        // Gestion de la page
         const [dashboard, setDashboard] = useState(true);
         const [products, setProducts] = useState(false);
         const [orders, setOrders] = useState(false);
@@ -60,6 +62,39 @@ const DashBoard = () => {
             setCustomers(true)
         }
 
+        // Récupération des datas
+        const [ lampes, setLampes ] = useState([]);
+        useEffect(() => {
+            const fetchLampes = async () => {
+                try{
+                    const { data, status } = await axios.get('http://localhost:8000/lv/articles/all');
+                    if(status === 200) {
+                        setLampes(data)
+                    }
+                }
+                catch(error) {
+                    console.log(error.message)
+                }
+            }
+
+            fetchLampes()
+        }, [])
+
+        const [ users, setUsers ] = useState([]);
+        useEffect(() => {
+            const fetchUsers = async () => {
+                try{
+                    const {data, status} = await axios.get('http://localhost:8000/lv/users/all')
+                    if(status===200) setUsers(data)
+                }
+                catch(error) {
+                    console.log(error.message)
+                }
+            }
+
+            fetchUsers();
+        }, [])
+
 
     return (
 
@@ -78,6 +113,7 @@ const DashBoard = () => {
                     }}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#666666"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
                         <span>Dashboard</span>
+
                     </li>
 
                     {/* Products */}
@@ -131,7 +167,40 @@ const DashBoard = () => {
                 <div>customers section</div>
 
                 :
-                <div>DashBoard</div>
+                // Le Dashboard
+                <div className='container-dashboard'>
+
+                    <article className='article-dashboard'>
+                        <h2>Nouvelle commande</h2>
+                        <p>Pas de nouvelles commandes en cours</p>
+                    </article>
+
+                    <article className='article-dashboard'>
+                        <h2>Total généré</h2>
+                        <h3>0</h3>
+                    </article>
+
+                    <article className='article-dashboard'>
+                        <h2>Nombre de commandes</h2>
+                    </article>
+
+                    <article className='article-dashboard'>
+                        <h2>Nombre de clients</h2>
+                        <p><strong>{users.length}</strong> clients sont actuellement enregistrées</p>
+
+                    </article>
+
+                    <article className='article-dashboard'>
+                        <h2>Nombre de lampes</h2>
+                        <p><strong>{lampes.length}</strong> lampes sont actuellement enregistrées</p>
+                    </article>
+
+                    <article className='article-dashboard'>
+                        <h2>Répartition commandes</h2>
+                    </article>
+
+                </div>
+
                 }
 
             </section>
