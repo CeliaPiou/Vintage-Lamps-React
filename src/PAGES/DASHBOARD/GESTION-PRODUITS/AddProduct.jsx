@@ -72,7 +72,6 @@ const AddProduct = () => {
             <article className='article-dashboard-zoom'>
 
                 <form onSubmit={handleSubmit}>
-
                     <div id="container-form-dashboard">
                         <div id="form-dashboard-infos">
                             <h3>Infos générales</h3>

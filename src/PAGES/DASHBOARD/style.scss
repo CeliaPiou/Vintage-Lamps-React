@@ -170,13 +170,15 @@ li.dashboard:hover {
 .dashboard-all-articles-container {
     background-color: white;
     display: flex;
-    position: absolute;
+    // position: absolute;
     top: 0;
     left: 0;
+    right: 0;
     flex-wrap: wrap;
     gap: 6px;
     height: 100vh;
     overflow: scroll;
+
     .dashboard-all-article-block {
         display: flex;
         flex-direction: column;
@@ -193,6 +195,7 @@ li.dashboard:hover {
             border-radius: 8px;
         }
     }
+
 }
 
 // Modifier art Précisémment
@@ -232,6 +235,23 @@ li.dashboard:hover {
                     font-family: 'jost';
                 }
             }
+        }
+    }
+    .button-container{
+        display: flex;
+        gap: 20px;
+
+        button:nth-child(1) {
+            background-color: rgb(67, 196, 67);
+        }
+
+        button:nth-child(2) {
+            background-color: rgb(177, 170, 170);
+            color: white;
+        }
+        button:nth-child(3){
+            background-color: rgb(201, 53, 8);
+            color: white;
         }
     }
 }

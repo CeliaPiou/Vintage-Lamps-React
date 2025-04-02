@@ -41,7 +41,13 @@ const DetailProduct = () => {
             <div id="detail-product-left">
 
                 <div id="images-container-small">
-                    {article.picture?.video && <video src={article.picture.video} alt="" autoPlay/>}
+                {article.picture?.video && (
+                    <video style={{ display: "block" }} width="600" height="400">
+                        <source src={article.picture?.video} type="video/mp4" />
+                        <source src={article.picture?.video} type="video/webm" />
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                    )}
                     {article.picture?.img && <img src={article.picture.img} alt="" onClick={() => handleChangePic(article.picture.img)} />}
                     {article.picture?.img1 && <img src={article.picture.img1} alt="" onClick={() => handleChangePic(article.picture.img1)} />}
                     {article.picture?.img2 && <img src={article.picture.img2} alt="" onClick={() => handleChangePic(article.picture.img2)} />}

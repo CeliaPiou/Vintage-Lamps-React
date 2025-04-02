@@ -254,7 +254,7 @@ const UpdateArtDetail = () => {
                 </div>
 
                 <div className="button-container">
-                    <button type="submit" className='btn4'>Modifier</button>
+                    <button type="submit" className='btn4'>Mettre à jour</button>
                     <button type="button" onClick={handleReturn} className='btn4'>Revenir en arrière</button>
                     <button type="button" onClick={handleDelete} className='btn4'>Supprimer l'article</button>
                 </div>

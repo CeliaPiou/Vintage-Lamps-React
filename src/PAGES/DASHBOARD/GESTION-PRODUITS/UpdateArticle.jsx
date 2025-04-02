@@ -15,6 +15,7 @@ const UpdateArticle = () => {
                 const { data, status } = await axios.get('http://localhost:8000/lv/articles/all');
                 if(status === 200) {
                     setArticles(data)
+                    console.log(data)
                 }
             }
             catch(error){
@@ -31,7 +32,6 @@ const UpdateArticle = () => {
 
     return (
         <section className='dashboard-all-articles-container'>
-
         {articles.map(art => (
 
             <Link to={{ pathname: `/dashboard/update/${art._id}`}}>

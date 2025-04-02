@@ -2,6 +2,9 @@ import './style.scss'
 import React, { useState } from 'react'
 import gradient from '../../assets/img/gradient.svg'
 
+import SeConnecter from './SeConnecter';
+import Sinscrire from './Sinscrire';
+
 const Connexion = () => {
   const [signUp, setSignUp] = useState(false);
 
@@ -25,15 +28,7 @@ const Connexion = () => {
         {signUp ? (
 
           // == Soit tu t'inscris, formulaire pour s'inscrire
-          <>
-            <form action="post">
-              <label htmlFor="Email">Email</label>
-              <input id="Email" placeholder="Enter your mail" />
-              <label htmlFor="Password">Password</label>
-              <input id="Password" placeholder="Enter your password" />
-            </form>
-            <button className="btn4 mt-small" type="submit">CONTINUE</button>
-          </>
+          < Sinscrire />
         ) : (
 
           // == Soit juste un bouton pour faire apparaitre le formulaire de connexion
@@ -74,19 +69,8 @@ const Connexion = () => {
         ) : (
 
           // == Soit formulaire pour se connecter
-          <>
-            <form action="post">
-              <label htmlFor="Email">Email</label>
-              <input id="Email" placeholder="Enter your mail" />
+          < SeConnecter />
 
-              <label htmlFor="Password">Password</label>
-              <input id="Password" placeholder="Enter your password" />
-            </form>
-            <button className="btn4 mt-small" type="submit">
-              LOGIN
-            </button>
-            <p>Forgot password?</p>
-          </>
         )}
       </div>
     </section>

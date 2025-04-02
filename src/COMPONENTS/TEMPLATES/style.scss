@@ -325,16 +325,24 @@ a {
     position: fixed;
     top:0;
     left:0;
+    width: 100vw;
     z-index: 200;
+    background-color: rgb(255, 255, 255);
 
-    button {
-        border: none;
-        background-color: var.$font-inverse-color;
-        padding: 10px;
-        cursor: pointer;
+    svg {
+        width: 25px;
     }
 
+    // Bouton burger sur lequel cliquer
+    button {
+        border: none;
+        background-color: white;
+        padding: 10px;
+        cursor: pointer;
+        text-align: left;
+    }
 
+    // Menu déroulant
     #hidden-nav-burger {
         background-color: white;
         position: fixed;
@@ -390,7 +398,6 @@ a {
 }
 
 
-
 // RESPONSIVE
 //// TABLETTES
 @media screen and (max-width:1024px) {
@@ -407,7 +414,17 @@ a {
     }
 
     #menu-burger {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            padding: 0 20px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10vw;
+        }
     }
 
     #hero-section-text  {
@@ -426,6 +443,9 @@ a {
         flex-direction: column;
         align-items: center;
         gap: 20px;
+    }
+    #hero-section-small {
+        height: 50px;
     }
 
 }
