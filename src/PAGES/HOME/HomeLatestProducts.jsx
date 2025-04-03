@@ -13,7 +13,7 @@ const HomeLatestProducts = () => {
     useEffect(() => {
         const fetchArticles = async() => {
             try{
-                const { data, status } = await axios.get('http://localhost:8000/lv/articles/all')
+                const { data, status } = await axios.get('http://localhost:8000/lv/articles/new')
                 if(status === 200) setProduct(data);
                 console.log(product)
             }
@@ -29,13 +29,13 @@ const HomeLatestProducts = () => {
     const [position, setPosition] = useState(0);
     const handleNextClick = () => {
 
-        if (position <= - 100) {
+        if (position <= - 1500) {
             setPosition(0);
         }
 
         else {
             setPosition(prevPosition => {
-                return prevPosition - 30;
+                return prevPosition - 245;
             })
         }
     };
@@ -46,7 +46,7 @@ const HomeLatestProducts = () => {
         }
         else {
             setPosition(prevPosition => {
-                return prevPosition + 250;
+                return prevPosition + 245;
             })
         }
     }
@@ -69,14 +69,13 @@ const HomeLatestProducts = () => {
 
             <div id="carroussel">
                 {product
-                    .sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
                     .slice(0,8)
                     .map((item) => (
 
                         <Link to={{ pathname: `/products/${item._id}` }}>
                         <div key={item.id} className='card'
                         style={{
-                            transform: `translateX(${position}vw)`,
+                            transform: `translateX(${position}px)`,
                             transition: 'transform 0.3s ease-in-out'
                         }}>
 
@@ -101,7 +100,7 @@ const HomeLatestProducts = () => {
                         </Link>
                 ))}
             </div>
-            <Link to={{ pathname: `/products` }}>
+            <Link to={{ pathname: `/news` }}>
                 <button className='btn4'>Toutes les nouveautés
                 <img
                         src={gradient}

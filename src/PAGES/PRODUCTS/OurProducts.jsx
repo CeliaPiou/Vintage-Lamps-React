@@ -1,15 +1,24 @@
+import './style.scss'
+
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import './style.scss'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 const OurProducts = () => {
 
         const [product, setProduct] = useState([]);
+        const location = useLocation(); // Récupère l'URL
+
         useEffect(() => {
             const fetchArticles = async() => {
                 try{
-                    const { data, status } = await axios.get('http://localhost:8000/lv/articles/all');
+                    // Change l'URL à récupérer selon l'url utilisé
+                    const urlToFetch = location.pathname === "/news"
+                    ? "http://localhost:8000/lv/articles/new"
+                    : "http://localhost:8000/lv/articles/all";
+
+                    const { data, status } = await axios.get(urlToFetch);
                     if(status===200) setProduct(data)
                 }
                 catch(error){
@@ -18,20 +27,19 @@ const OurProducts = () => {
             }
 
             fetchArticles();
-        }, [])
+        }, [location.pathname])
 
-
+        // Changement de styles
         function beCard(id) {
             let div = document.getElementById(id);
             div.classList.toggle('cardy');
             div.classList.toggle('card');
-        }
-
+        };
         function beCardy(id) {
             let div = document.getElementById(id);
             div.classList.toggle('card');
             div.classList.toggle('cardy');
-        }
+        };
 
 
     return (

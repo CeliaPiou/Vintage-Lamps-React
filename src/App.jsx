@@ -38,6 +38,8 @@ function App() {
         <Route path='/connexion' element={<Connexion />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/products' element={<OurProducts />} />
+        <Route path='/news' element={<OurProducts />} />
+
         <Route path="/products/:id" element={<DetailProduct />} />
 
       </Route>

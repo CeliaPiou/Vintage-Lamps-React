@@ -56,17 +56,26 @@ const HomeLatestAvis = () => {
             {avis.map((avi) => (
 
             <div key={avi.id}
-                className='card'
+                className='card flip-card-container'
             >
+                <div className="flip-card">
+                <div className='card-front'>
+                    <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{avi.date}</p>
+                    <p style={{fontSize: '1.2rem', margin: 0, fontWeight: 'bold'}}>{avi.username}</p>
+                    <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{avi.starsRating}</p>
 
-                <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{avi.date}</p>
-                <p style={{fontSize: '1.2rem', margin: 0, fontWeight: 'bold'}}>{avi.username}</p>
+                    <img
+                                src={avi.img}
+                                width={200}
+                                height={200}
+                    ></img>
+                </div>
+                <div className="card-back">
+                    <strong>{avi.username} {avi.starsRating}</strong>
+                    <p>''{avi.comment},,</p>
+                </div>
+                </div>
 
-                <img
-                            src={avi.img}
-                            width={200}
-                            height={200}
-                ></img>
             </div>
 
 ))}

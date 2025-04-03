@@ -287,3 +287,29 @@ li.dashboard:hover {
     }
 
 }
+
+@media screen and (max-width: 720px) {
+    // Dans la modification d'art, modle column si responsive
+    #dashboard-update-article {
+
+        form {
+
+            .dashboard-container {
+                height: 100vh;
+                overflow: scroll;
+                flex-direction: column;
+                justify-content: flex-start;
+
+                img {
+                    width: 50%;
+                }
+
+            }
+
+            .button-container {
+                padding-bottom: 40px;
+            }
+        }
+    }
+
+}
