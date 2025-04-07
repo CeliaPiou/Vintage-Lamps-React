@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
+import useCart from '../../COMPONENTS/useCart'
+
 import arrowToRight from '../../assets/icons/arrow-forward.svg'
 import arrowToLeft from '../../assets/icons/arrow-previous.svg'
 import gradient from '../../assets/img/gradient.svg'
@@ -51,17 +53,22 @@ const HomeLatestProducts = () => {
         }
     }
 
+    // Pour le panier
+    const { cart, addItem } = useCart();
+
 
   return (
 
     <section id="latest-products" className='flex justify-center column'>
 
-            <h2>Les nouveautés</h2>
-
             <div className='container-of-arrows'>
+
                 <div className='arrow-round'>
                     <img id="previous-arrow" onClick={handlePrevClick} src={arrowToLeft}></img>
                 </div>
+
+                <h2>Les nouveautés</h2>
+
                 <div className='arrow-round'>
                     <img id='next-arrow' onClick={handleNextClick} src={arrowToRight}></img>
                 </div>
@@ -100,6 +107,7 @@ const HomeLatestProducts = () => {
                         </Link>
                 ))}
             </div>
+
             <Link to={{ pathname: `/news` }}>
                 <button className='btn4'>Toutes les nouveautés
                 <img

@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
+import useCart from '../../COMPONENTS/useCart'
+
 const DetailProduct = () => {
+
+    const { cart, addItem } = useCart();
 
     const params = useParams();
     const { id } = params;
@@ -57,6 +61,7 @@ const DetailProduct = () => {
                 <div id="image-container-big">
                     <img src={bigPicture} alt={bigPicture} />
                 </div>
+                {/* {console.log(article.picture.img4)} */}
 
             </div>
 
@@ -72,8 +77,7 @@ const DetailProduct = () => {
                 <p>Colors: {article.color}</p>
                 <p>From: {article.period}</p>
 
-                <button className='btn5'>Add to cart</button>
-
+                <button onClick={() => addItem(article)} className='btn5'>Add to cart</button>
 
             </div>
 

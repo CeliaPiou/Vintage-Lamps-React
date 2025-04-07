@@ -13,6 +13,7 @@ import Connexion from './PAGES/CONNEXION/Connexion'
 import Contact from './PAGES/CONTACT/Contact'
 import OurProducts from './PAGES/PRODUCTS/OurProducts'
 import DetailProduct from './PAGES/PRODUCTS/DetailProduct'
+import Panier from './PAGES/PANIER/Panier'
 //--
 import DashBoard from './PAGES/DASHBOARD/DashBoard'
 import UpdateArtDetail from './PAGES/DASHBOARD/GESTION-PRODUITS/UpdateArtDetail'
@@ -36,6 +37,7 @@ function App() {
 
         <Route path='/about' element={<About />} />
         <Route path='/connexion' element={<Connexion />} />
+        <Route path='/cart' element={<Panier/>} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/products' element={<OurProducts />} />
         <Route path='/news' element={<OurProducts />} />

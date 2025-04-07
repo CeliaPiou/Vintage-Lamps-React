@@ -5,7 +5,12 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
+import useCart from '../../COMPONENTS/useCart'
+
+
 const OurProducts = () => {
+
+    const { cart, addItem } = useCart();
 
         const [product, setProduct] = useState([]);
         const location = useLocation(); // Récupère l'URL
@@ -56,24 +61,24 @@ const OurProducts = () => {
         <section id="latest-products" className='mt-big container flex justify-center'>
 
             {product.map((prod) => (
-                <Link to={{ pathname: `/products/${prod._id}` }}>
                 <div className="cardy"
                 id={prod._id}
                 onMouseEnter={() => beCard(prod._id)}
                 onMouseLeave={() => beCardy(prod._id)}>
 
-                    <img src={prod.picture?.img}
-                        alt={prod.name}
-                        width={200}
-                        height={220}></img>
+                    <Link to={{ pathname: `/products/${prod._id}` }}>
+                        <img src={prod.picture?.img}
+                            alt={prod.name}
+                            width={200}
+                            height={220}></img>
 
-                    <p className='p-name'><strong>{prod.name}</strong></p>
-                    <p><span className='p-brand'>{prod.brand} </span>
-                    <span className='p-price'>- {prod.price},00 €</span></p>
+                        <p className='p-name'><strong>{prod.name}</strong></p>
+                        <p><span className='p-brand'>{prod.brand} </span>
+                        <span className='p-price'>- {prod.price},00 €</span></p>
+                    </Link>
 
-                    <button className='btn5'>Add to cart - {prod.price},00 €</button>
+                    <button onClick={() => {addItem(prod)}} className='btn5'>Add to cart - {prod.price},00 €</button>
                 </div>
-                </Link>
 
             ))}
 

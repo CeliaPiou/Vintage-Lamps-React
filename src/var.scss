@@ -39,11 +39,6 @@ body {
         }
     }
 }
-
-.bg-red {
-    background-color: rgba(0, 0, 0, 0.61);
-}
-
 .small-info {
     color: $bg-dark-color;
     font-size: 0.9rem;
@@ -106,7 +101,6 @@ body {
     background-color: white;
     color: black;
 }
-
 
 
 
@@ -272,6 +266,9 @@ a {color: inherit}
     font-size: 14px;
     letter-spacing: 0.1rem;
 }
+
+
+// Responsive du container
 
 @media screen and (max-width:1024px) {
 
