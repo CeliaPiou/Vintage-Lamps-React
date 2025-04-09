@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.scss'
 import { useState, useEffect } from 'react'
-import useCart from '../../COMPONENTS/useCart'
+import useCart from '../../UTILS/hooks/useCart'
 
 const Panier = () => {
 

@@ -1,11 +1,14 @@
 import React from 'react'
-import useCart from '../useCart'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+
+// Contexte Panier
+import { CartContext } from '../../UTILS/contexts/CartContext'
 
 const CartAlert = () => {
 
-    const { cart, removeItem } = useCart();
+    // const [cart, setCart] = useState([])
+    const { removeItem, cart } = useContext(CartContext);
 
     // Afficher/retirer le déroulé
     const cartContentVisble = () => {
@@ -24,10 +27,9 @@ const CartAlert = () => {
     onMouseEnter={() => cartContentVisble()}
     onMouseLeave={() => cartContentInvisible()}
     >
-        <p>This article was added to your cart !</p>
         {cart.length >= 1 ?
         <>
-            {/* {cart.map((item) => (
+            {cart.map((item) => (
                 <div>
                     <img src={item.picture?.img} alt={item.name} width={50}></img>
                     <span>{item.name} | {item.price},00€</span>
@@ -35,7 +37,7 @@ const CartAlert = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                     </button>
                 </div>
-            ))} */}
+            ))}
         </>
         :
         <p>Votre panier est vide</p>

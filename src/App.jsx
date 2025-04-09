@@ -7,6 +7,7 @@ import LayoutSH from './COMPONENTS/TEMPLATES/LayoutSH'
 import LayoutDSH from './COMPONENTS/TEMPLATES/LayoutDSH'
 
 // LES PAGES
+import Login from './PAGES/CONNEXION/Login'
 import Home from './PAGES/HOME/Home'
 import About from './PAGES/ABOUT/About'
 import Connexion from './PAGES/CONNEXION/Connexion'
@@ -17,6 +18,11 @@ import Panier from './PAGES/PANIER/Panier'
 //--
 import DashBoard from './PAGES/DASHBOARD/DashBoard'
 import UpdateArtDetail from './PAGES/DASHBOARD/GESTION-PRODUITS/UpdateArtDetail'
+
+// SERVICES
+import PrivateRouter from './UTILS/helpers/PrivateRouter'
+import PublicRouter from './UTILS/helpers/PublicRouter'
+
 
 
 function App() {
@@ -35,6 +41,7 @@ function App() {
 
       <Route path='/' element={<LayoutSH />}>
 
+        <Route path='/login' element={< Login/>} />
         <Route path='/about' element={<About />} />
         <Route path='/connexion' element={<Connexion />} />
         <Route path='/cart' element={<Panier/>} />
@@ -46,12 +53,13 @@ function App() {
 
       </Route>
 
-      <Route path='/' element={<LayoutDSH/>}>
+      <Route element={<PrivateRouter />} >
+        <Route path='/' element={<LayoutDSH/>}>
 
-        <Route path='/dashboard/update/:id' element={<UpdateArtDetail/>}/>
-        <Route path='/dashboard' element={<DashBoard />} />
-
-      </Route>
+          <Route path='/dashboard/update/:id' element={<UpdateArtDetail/>}/>
+          <Route path='/dashboard' element={<DashBoard />} />
+        </Route >
+      </Route >
 
     </Routes>
 

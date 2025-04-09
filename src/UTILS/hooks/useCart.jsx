@@ -5,10 +5,6 @@ const useCart = () => {
     const [isModified, setIsModified] = useState(false);
     const [cart, setCart] = useState([]);
 
-    useEffect(() => {
-        console.log("Actualisation de panier")
-    }, [isModified])
-
 
     // Va vérifier au chargement des composants si Cart existe,
     // Si oui, va le convertir en objet JS

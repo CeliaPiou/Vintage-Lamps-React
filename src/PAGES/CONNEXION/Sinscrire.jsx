@@ -1,6 +1,11 @@
 import React, { useState }from 'react'
 import axios from 'axios'
 
+// CONSTANT
+import URLS from '../../UTILS/constants/Api'
+import { REGISTER_FIELDS } from '../../UTILS/configs/FormFields';
+
+
 const Sinscrire = () => {
 
     // Initialisation de l'état pour les informations de l'user
@@ -13,7 +18,6 @@ const Sinscrire = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setUser(prevUser => ({ ...prevUser, [name]: value }));
-        console.log(user)
     }
 
     // pour la soumission du formulaire
@@ -22,7 +26,7 @@ const Sinscrire = () => {
         event.preventDefault()
 
         try{
-            const response = await axios.post('http://localhost:8000/lv/users/add', user);
+            const response = await axios.post(URLS.POST_REGISTER, user);
             alert("utilisateur enregistré");
         }
         catch(error){

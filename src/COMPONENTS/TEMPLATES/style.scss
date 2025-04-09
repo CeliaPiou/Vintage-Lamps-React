@@ -61,9 +61,9 @@ a {
     top: 70px;
     color: rgb(17, 17, 17);
     position: fixed;
-    width: 50vw;
+    width: 30vw;
     height: 100vh;
-    z-index: 1 !important;
+    z-index: 2 !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -172,7 +172,6 @@ a {
         left: 0;
         right: 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.185);
-
     }
 
     #hero-section-text {
@@ -206,6 +205,7 @@ a {
         }
     }
 }
+
 #hero-section {
     position: relative;
     // background-color: var.$bg-dark-color;
@@ -235,6 +235,7 @@ a {
         color: var.$font-inverse-color;
         transition: all 0.2s ease-in-out;
         padding: 0 50px 0 50px;
+        z-index: 1;
 
         ul {
             gap: 4vw;
@@ -264,7 +265,7 @@ a {
 
     #primary-nav:hover {
         background-color: white;
-        height:80px;
+        height:77px;
     }
 
     .fixed {
@@ -420,24 +421,55 @@ a {
             font-weight: 500;
             font-size: 14px;
         }
-
         li:hover {
             padding-bottom: 5px;
             border-bottom: 5px solid var.$font-fun2-color;
         }
     }
-
     .hidden {
         opacity: 0;
         left: -1200px;
     }
-
     .visible {
         opacity:100;
         left: 0;
     }
 }
 
+// Gestion des menus déroulant de la nav
+.drop-drown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .dropdown-child {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        width: 10px !important;
+        top: -100vh;
+        left: 0;
+        opacity: 0;
+        background-color:white;
+        transition: all 0.6s ease-out;
+        transition-delay: 0.3s;
+        border-bottom-right-radius: 7px;
+        border-bottom-left-radius: 7px;
+        z-index: 2;
+
+    }
+}
+.drop-drown:hover, .dropdown-child:hover {
+
+    .dropdown-child {
+        width: 180px !important;
+        left: -100px;
+        top: 50px;
+        opacity: 100%;
+    }
+}
 
 // RESPONSIVE
 //// TABLETTES

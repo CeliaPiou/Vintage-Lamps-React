@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
+
+// Les styles
 import './style.scss'
 import '../../var.scss'
-import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import gradient from '../../assets/img/gradient.svg'
+
+// Les composants
 import Burger from './Burger'
 import CartAlert from './CartAlert'
-import gradient from '../../assets/img/gradient.svg'
+
+// Contextes
+import { AuthContext } from '../../UTILS/contexts/AuthContext'
 
 
 
 const Header = () => {
+
+    // Afficher/Gérer la connexion :
+    const { logout, auth } = useContext(AuthContext);
 
     // Afficher/retirer le déroulé du panier
     const cartContentVisble = () => {
@@ -65,9 +74,28 @@ const Header = () => {
                         <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" ><path d="M80-120v-80h800v80H80Zm40-120v-280h120v280H120Zm200 0v-480h120v480H320Zm200 0v-360h120v360H520Zm200 0v-600h120v600H720Z"/></svg></li>
                     </Link>
 
-                    <Link to={{ pathname: `/connexion` }}>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg></li>
-                    </Link>
+
+                    {!auth ?
+
+                        <Link to={{ pathname: `/connexion` }}>
+                            <li className='drop-drown'>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg>
+                            </li>
+                        </Link>
+
+                    :
+                    <>
+                        <li className='drop-drown'>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg>
+
+                            <div className='dropdown-child'>
+                                <p>Bonjour, {auth.others?.username}</p>
+                                <button className="btn5" onClick={logout}>Se déconnecter</button>
+                            </div>
+                        </li>
+                    </>
+
+                    }
 
                     <Link to={{ pathname: `/cart`}}>
                         <li

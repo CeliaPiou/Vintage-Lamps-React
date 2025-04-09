@@ -1,35 +1,34 @@
 import './style.scss'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
-import useCart from '../../COMPONENTS/useCart'
-
+import { CartContext } from '../../UTILS/contexts/CartContext';
 
 const OurProducts = () => {
 
-    const { cart, addItem } = useCart();
+    const { cart, addItem } = useContext(CartContext);
 
-        const [product, setProduct] = useState([]);
-        const location = useLocation(); // Récupère l'URL
+    const [product, setProduct] = useState([]);
+    const location = useLocation(); // Récupère l'URL
 
-        useEffect(() => {
-            const fetchArticles = async() => {
-                try{
-                    // Change l'URL à récupérer selon l'url utilisé
-                    const urlToFetch = location.pathname === "/news"
-                    ? "http://localhost:8000/lv/articles/new"
-                    : "http://localhost:8000/lv/articles/all";
+    useEffect(() => {
+        const fetchArticles = async() => {
+            try{
+                // Change l'URL à récupérer selon l'url utilisé
+                const urlToFetch = location.pathname === "/news"
+                ? "http://localhost:8000/lv/articles/new"
+                : "http://localhost:8000/lv/articles/all";
 
-                    const { data, status } = await axios.get(urlToFetch);
-                    if(status===200) setProduct(data)
-                }
-                catch(error){
-                    console.log(error.message)
-                }
+                const { data, status } = await axios.get(urlToFetch);
+                if(status===200) setProduct(data)
             }
+            catch(error){
+                console.log(error.message)
+            }
+        }
 
             fetchArticles();
         }, [location.pathname])

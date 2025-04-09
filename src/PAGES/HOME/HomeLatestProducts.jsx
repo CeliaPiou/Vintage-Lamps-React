@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import useCart from '../../COMPONENTS/useCart'
+import useCart from '../../UTILS/hooks/useCart'
 
 import arrowToRight from '../../assets/icons/arrow-forward.svg'
 import arrowToLeft from '../../assets/icons/arrow-previous.svg'
@@ -17,7 +17,6 @@ const HomeLatestProducts = () => {
             try{
                 const { data, status } = await axios.get('http://localhost:8000/lv/articles/new')
                 if(status === 200) setProduct(data);
-                console.log(product)
             }
             catch(error){
                 console.log(error.message)
