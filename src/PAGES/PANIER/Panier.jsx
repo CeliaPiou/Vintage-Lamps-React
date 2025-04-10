@@ -1,11 +1,11 @@
 import React from 'react'
 import './style.scss'
-import { useState, useEffect } from 'react'
-import useCart from '../../UTILS/hooks/useCart'
+import { useState, useEffect, useContext } from 'react'
+import { CartContext } from '../../UTILS/contexts/CartContext'
 
 const Panier = () => {
 
-    const { cart, addItem, removeItem, clearCart } = useCart();
+    const { cart, addItem, removeItem, clearCart } = useContext(CartContext)
     const [ total, setTotal ] = useState(0);
 
 

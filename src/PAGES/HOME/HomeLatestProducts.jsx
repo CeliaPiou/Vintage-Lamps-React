@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
-import useCart from '../../UTILS/hooks/useCart'
 
 import arrowToRight from '../../assets/icons/arrow-forward.svg'
 import arrowToLeft from '../../assets/icons/arrow-previous.svg'
 import gradient from '../../assets/img/gradient.svg'
 
+import { CartContext } from '../../UTILS/contexts/CartContext'
+
 const HomeLatestProducts = () => {
 
     // Pour la récupération d'articles
     const [product, setProduct] = useState([]);
+
     useEffect(() => {
         const fetchArticles = async() => {
             try{
@@ -25,6 +26,9 @@ const HomeLatestProducts = () => {
 
         fetchArticles();
     }, [])
+
+    // Pour le panier
+    const { cart, addItem } = useContext(CartContext);
 
     // Pour le carroussel
     const [position, setPosition] = useState(0);
@@ -52,8 +56,6 @@ const HomeLatestProducts = () => {
         }
     }
 
-    // Pour le panier
-    const { cart, addItem } = useCart();
 
 
   return (
@@ -100,7 +102,7 @@ const HomeLatestProducts = () => {
                             </span>
                             <br/>
 
-                            <button className='btn5'>Add to cart</button>
+                            <button onClick={addItem} className='btn5'>Add to cart</button>
 
                         </div>
                         </Link>

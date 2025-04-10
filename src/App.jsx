@@ -7,7 +7,6 @@ import LayoutSH from './COMPONENTS/TEMPLATES/LayoutSH'
 import LayoutDSH from './COMPONENTS/TEMPLATES/LayoutDSH'
 
 // LES PAGES
-import Login from './PAGES/CONNEXION/Login'
 import Home from './PAGES/HOME/Home'
 import About from './PAGES/ABOUT/About'
 import Connexion from './PAGES/CONNEXION/Connexion'
@@ -41,7 +40,6 @@ function App() {
 
       <Route path='/' element={<LayoutSH />}>
 
-        <Route path='/login' element={< Login/>} />
         <Route path='/about' element={<About />} />
         <Route path='/connexion' element={<Connexion />} />
         <Route path='/cart' element={<Panier/>} />
