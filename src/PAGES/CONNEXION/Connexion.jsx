@@ -18,7 +18,6 @@ const Connexion = () => {
 
   return (
 
-    // Pour inverser les blocks : style={{ flexDirection: signUp ? "row" : "row-reverse" }}
     <section id="login-signup">
 
       {/* == Tu veux t'inscrire ? */}
@@ -49,8 +48,7 @@ const Connexion = () => {
 
       {/* == Tu veux te connecter ? */}
       <div id="login" style={{ backgroundColor: signUp ? "white" : "rgb(255, 202, 29)",
-        width: signUp ? "30vw" : "50vw"
-       }}>
+        width: signUp ? "30vw" : "50vw"}}>
         <h2>LOGIN</h2>
         {signUp ? (
 

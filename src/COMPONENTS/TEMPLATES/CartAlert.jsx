@@ -8,7 +8,7 @@ import { CartContext } from '../../UTILS/contexts/CartContext'
 const CartAlert = () => {
 
     // const [cart, setCart] = useState([])
-    const { removeItem, cart } = useContext(CartContext);
+    const { removeItem, cart, clearCart } = useContext(CartContext);
 
     // Afficher/retirer le déroulé
     const cartContentVisble = () => {
@@ -45,6 +45,8 @@ const CartAlert = () => {
         <Link to={{ pathname: `/cart`}} >
             <button className='btn5'>Voir mon panier</button>
         </Link>
+
+        <button onClick={clearCart} className='btn5'>Vider mon panier</button>
         </div>
   )
 }
