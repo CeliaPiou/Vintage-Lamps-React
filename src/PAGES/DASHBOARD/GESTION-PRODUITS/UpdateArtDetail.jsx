@@ -2,6 +2,9 @@ import React, { useState, useEffect }from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
+import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
+
+
 const UpdateArtDetail = () => {
     const navigate = useNavigate();
 
@@ -85,7 +88,8 @@ const UpdateArtDetail = () => {
         event.preventDefault()
 
         try{
-            const response = await axios.put('http://localhost:8000/lv/articles/'+id+'/update', articleModifie);
+
+            const response = await AXIOS_INSTANCE.put("http://localhost:8000/lv/articles/"+id+'/update', articleModifie);
             alert("Article modifié");
         }
         catch(error){
@@ -104,7 +108,7 @@ const UpdateArtDetail = () => {
         event.preventDefault()
 
         try{
-            const result = await axios.delete('http://localhost:8000/lv/articles/'+id+'/delete');
+            const result = await AXIOS_INSTANCE.delete('http://localhost:8000/lv/articles/'+id+'/delete');
             alert("L'article a été supprimé")
         }
         catch(error){

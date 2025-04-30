@@ -1,5 +1,6 @@
 import React, { useState }from 'react'
 import axios from 'axios'
+import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
 
 
 const AddProduct = () => {
@@ -50,7 +51,7 @@ const AddProduct = () => {
         console.log('Article bien récupéré :', article);
 
         try{
-            const response = await axios.post('http://localhost:8000/lv/articles/add', article);
+            const response = await AXIOS_INSTANCE.post('http://localhost:8000/lv/articles/add', article);
             alert("Article ajouté");
         }
         catch(error){
