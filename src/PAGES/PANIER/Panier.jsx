@@ -69,6 +69,7 @@ const Panier = () => {
         ) : (
         <h3>+ <strong>You'll surely like these</strong> +</h3>
         )}
+
         // Mettre un carroussel ici
 
 
