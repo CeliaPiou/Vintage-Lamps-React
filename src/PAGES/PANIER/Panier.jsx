@@ -2,13 +2,17 @@ import React from 'react'
 import './style.scss'
 import { useState, useEffect, useContext } from 'react'
 import { CartContext } from '../../UTILS/contexts/CartContext'
+import { useNavigate } from 'react-router-dom'
+import AXIOS_INSTANCE from '../../UTILS/services/AxiosInstance'
 
 const Panier = () => {
 
-    const { cart, addItem, removeItem, clearCart } = useContext(CartContext)
+    const { cart, removeItem, clearCart } = useContext(CartContext);
     const [ total, setTotal ] = useState(0);
+    const navigate = useNavigate();
 
 
+    // Calcul du prix
     useEffect(() => {
         const fetchPrices =  () => {
             let allPrices = 0;
@@ -22,6 +26,24 @@ const Panier = () => {
 
     }, [cart])
 
+    // Validation de la commande, TBR avec paiement later
+    const handleSubmit = async () => {
+
+        try{
+
+            const orderData = {
+                price: total,
+                articles: cart.map(item => item._id)
+            }
+            const response = await AXIOS_INSTANCE.post('http://localhost:8000/lv/orders/add', orderData);
+            alert('Commande validée !');
+        }
+        catch(error){
+            console.error('Error:', error);
+        }
+
+        navigate('/order-approuved');
+    }
 
 
 
@@ -63,7 +85,7 @@ const Panier = () => {
 
         {cart.length >= 1 ? (
         <div className='button-container'>
-            <button className='btn4' type='submit'>Valider le panier</button>
+            <button className='btn4' onClick={() => handleSubmit()} type='submit'>Valider le panier</button>
             <button className='btn4' onClick={() => clearCart()} type='button'>Vider le panier</button>
         </div>
         ) : (

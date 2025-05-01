@@ -14,6 +14,7 @@ import Contact from './PAGES/CONTACT/Contact'
 import OurProducts from './PAGES/PRODUCTS/OurProducts'
 import DetailProduct from './PAGES/PRODUCTS/DetailProduct'
 import Panier from './PAGES/PANIER/Panier'
+import Paiement from './PAGES/PANIER/Paiement'
 //--
 import DashBoard from './PAGES/DASHBOARD/DashBoard'
 import UpdateArtDetail from './PAGES/DASHBOARD/GESTION-PRODUITS/UpdateArtDetail'
@@ -46,6 +47,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/products' element={<OurProducts />} />
         <Route path='/news' element={<OurProducts />} />
+        <Route path='/order-approuved' element={<Paiement/>} />
 
         <Route path="/products/:id" element={<DetailProduct />} />
 
