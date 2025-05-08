@@ -1,0 +1,71 @@
+import './App.css'
+import { Routes, Route } from "react-router-dom"
+
+// Les LAYOUT
+import Layout from './COMPONENTS/TEMPLATES/Layout'
+import LayoutSH from './COMPONENTS/TEMPLATES/LayoutSH'
+import LayoutDSH from './COMPONENTS/TEMPLATES/LayoutDSH'
+
+// LES PAGES
+import Home from './PAGES/HOME/Home'
+import About from './PAGES/ABOUT/About'
+import Connexion from './PAGES/CONNEXION/Connexion'
+import Contact from './PAGES/CONTACT/Contact'
+import OurProducts from './PAGES/PRODUCTS/OurProducts'
+import DetailProduct from './PAGES/PRODUCTS/DetailProduct'
+import Panier from './PAGES/PANIER/Panier'
+import Paiement from './PAGES/PANIER/Paiement'
+//--
+import DashBoard from './PAGES/DASHBOARD/DashBoard'
+import UpdateArtDetail from './PAGES/DASHBOARD/GESTION-PRODUITS/UpdateArtDetail'
+
+// SERVICES
+import PrivateRouter from './UTILS/helpers/PrivateRouter'
+import PublicRouter from './UTILS/helpers/PublicRouter'
+
+
+
+function App() {
+
+  return (
+
+    <div className='App'>
+
+    <Routes>
+
+      <Route path='/' element={<Layout />}>
+
+        <Route index element={<Home />}/>
+
+      </Route>
+
+      <Route path='/' element={<LayoutSH />}>
+
+        <Route path='/about' element={<About />} />
+        <Route path='/connexion' element={<Connexion />} />
+        <Route path='/cart' element={<Panier/>} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/products' element={<OurProducts />} />
+        <Route path='/news' element={<OurProducts />} />
+        <Route path='/order-approuved' element={<Paiement/>} />
+
+        <Route path="/products/:id" element={<DetailProduct />} />
+
+      </Route>
+
+      <Route element={<PrivateRouter />} >
+        <Route path='/' element={<LayoutDSH/>}>
+
+          <Route path='/dashboard/update/:id' element={<UpdateArtDetail/>}/>
+          <Route path='/dashboard' element={<DashBoard />} />
+
+        </Route >
+      </Route >
+
+    </Routes>
+
+    </div>
+  )
+}
+
+export default App
