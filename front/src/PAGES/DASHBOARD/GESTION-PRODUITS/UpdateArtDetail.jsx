@@ -16,7 +16,7 @@ const UpdateArtDetail = () => {
 
         const fetchArticles = async() => {
             try{
-                const { data, status } = await axios.get(`http://localhost:8000/lv/articles/`+id);
+                const { data, status } = await AXIOS_INSTANCE.get(`http://localhost:8000/lv/articles/`+id);
                 if (status === 200) setArticle(data);
             }
             catch(error){
@@ -86,9 +86,10 @@ const UpdateArtDetail = () => {
     const handleSubmit = async (event) => {
 
         event.preventDefault()
+        console.log(id)
+
 
         try{
-
             const response = await AXIOS_INSTANCE.put("http://localhost:8000/lv/articles/"+id+'/update', articleModifie);
             alert("Article modifié");
         }

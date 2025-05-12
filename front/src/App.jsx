@@ -18,6 +18,7 @@ import Paiement from './PAGES/PANIER/Paiement'
 //--
 import DashBoard from './PAGES/DASHBOARD/DashBoard'
 import UpdateArtDetail from './PAGES/DASHBOARD/GESTION-PRODUITS/UpdateArtDetail'
+import UpdateOrder from './PAGES/DASHBOARD/GESTION-CDES/UpdateOrder'
 
 // SERVICES
 import PrivateRouter from './UTILS/helpers/PrivateRouter'
@@ -57,6 +58,7 @@ function App() {
         <Route path='/' element={<LayoutDSH/>}>
 
           <Route path='/dashboard/update/:id' element={<UpdateArtDetail/>}/>
+          <Route path="/dashboard/update-order/:id" element={<UpdateOrder/>}/>
           <Route path='/dashboard' element={<DashBoard />} />
 
         </Route >

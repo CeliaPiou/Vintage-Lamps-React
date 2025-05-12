@@ -74,6 +74,21 @@ const signIn = async (req, res, next) => {
     }
 
 }
+const logout = async(req, res, next) => {
+    try{
+        res
+        .clearCookie('access_token', {
+            httpOnly: true,
+            sameSite: 'strict',
+            secure: false
+        })
+        .status(200).json({ message: "Déconnecté"})
+    }
+    catch(error){
+        next(createError(404, "Erreur... :", error.message))
+
+    }
+}
 const deleteUser = async(req, res, next) => {
     try{
 
@@ -115,6 +130,7 @@ module.exports = {
     postUser,
     getAllUsers,
     signIn,
+    logout,
     deleteUser,
     updateUser
 }

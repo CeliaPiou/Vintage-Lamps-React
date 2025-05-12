@@ -19,6 +19,10 @@ export const CartProvider = ({ children }) => {
 
     const isFilled = () => {
         const currentCart = localStorage.getItem('cart');
+        if(!currentCart) {
+            const emptyCart = [];
+            localStorage.setItem('cart', JSON.stringify(emptyCart))
+        }
         const currentCartParsed = currentCart ? JSON.parse(currentCart) : null;
         setCart(currentCartParsed);
     }
@@ -32,15 +36,19 @@ export const CartProvider = ({ children }) => {
 
     // Fonction pour ajouter un nouvel article
     const addItem = (item) => {
-        const updatedCart = [...cart, item];
-        updateCart(updatedCart);
-        setCartIsUpdated(!cartIsUpdated)
-        console.log(cartIsUpdated)
 
-        // Pop-up, article ajouté
-        alert('Item added to your cart !')
-        // const containerCart = document.getElementById('container-cart');
-        // containerCart.classList.add('container-cart-visible');
+        const checkArt = cart.find(art => art._id === item._id);
+
+        if(checkArt === undefined) {
+            const updatedCart = [...cart, item];
+            updateCart(updatedCart);
+            setCartIsUpdated(!cartIsUpdated)
+            // Pop-up, article ajouté
+            alert('Item added to your cart !')
+        }
+        else {
+            alert("L'article est déjà dans votre panier")
+        }
     };
 
     // Supprimer un article par son ID

@@ -50,10 +50,18 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(false)
     }
 
-    const logout = () => {
-        setAuth(null);
-        localStorage.removeItem('auth')
-        navigate(`/`)
+    const logout = async () => {
+
+        try{
+            await AXIOS_INSTANCE.get('http://localhost:8000/lv/users/logout');
+            setAuth(null);
+            localStorage.removeItem('auth');
+            navigate(`/`)
+        }
+        catch(error){
+            console.log("Error: ", error.message)
+        }
+
     }
 
     return (

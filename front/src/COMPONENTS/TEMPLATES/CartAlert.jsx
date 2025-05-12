@@ -27,10 +27,10 @@ const CartAlert = () => {
     onMouseEnter={() => cartContentVisble()}
     onMouseLeave={() => cartContentInvisible()}
     >
-        {cart.length >= 1 ?
+        {cart?.length >= 1 ?
         <>
             {cart.map((item) => (
-                <div>
+                <div key={item._id}>
                     <img src={item.picture?.img} alt={item.name} width={50}></img>
                     <span>{item.name} | {item.price},00€</span>
                     <button id='remove-item-cart' onClick={() => removeItem(item._id)} type='button'>

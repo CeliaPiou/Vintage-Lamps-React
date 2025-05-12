@@ -81,7 +81,7 @@ const HomeLatestProducts = () => {
                     .map((item) => (
 
                         <Link to={{ pathname: `/products/${item._id}` }}>
-                        <div key={item.id} className='card'
+                        <div key={item._id} className='card'
                         style={{
                             transform: `translateX(${position}px)`,
                             transition: 'transform 0.3s ease-in-out'

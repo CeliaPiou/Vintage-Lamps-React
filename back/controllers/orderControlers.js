@@ -38,7 +38,7 @@ const postOrder = async(req, res, next) => {
 
 const getAllOrders = async (req, res, next) => {
     try{
-        const response = await Orders.find();
+        const response = await Orders.find().populate("articles");
         res.status(200).json(response)
     }
     catch(error) {
@@ -48,7 +48,17 @@ const getAllOrders = async (req, res, next) => {
 
 const getOneOrder = async(req, res, next) => {
     try{
-        const response = await Orders.findById(req.params.id)
+
+        // Need to be authentified to see orders
+        if(!req.user || !req.user.id) return next(createError(401, "Authentification required"));
+        const response = await Orders.findById(req.params.id).populate("articles");
+
+        // Need to be admin or to have created the order to see it
+        const userCreator = response.user;
+        const me = await Users.findById(req.user.id);
+        const role = me.role;
+
+        if(role !== "admin" && userCreator !== me) return next(createError(401, "You're not the admin nor the creator of this order."))
         res.status(200).json(response)
 
     }

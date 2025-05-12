@@ -153,6 +153,7 @@ const OurProducts = () => {
             {product.map((prod) => (
                 <div className="cardy"
                 id={prod._id}
+                key={prod._id}
                 onMouseEnter={() => beCard(prod._id)}
                 onMouseLeave={() => beCardy(prod._id)}>
 
