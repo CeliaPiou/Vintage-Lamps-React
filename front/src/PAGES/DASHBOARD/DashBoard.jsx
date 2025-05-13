@@ -7,6 +7,7 @@ import axios from 'axios'
 
 import GestionProduits from './GESTION-PRODUITS/GestionProduits'
 import GestionCdes from './GESTION-CDES/GestionCdes'
+import GestionUser from './GESTION-USER/GestionUser'
 
 
 const DashBoard = () => {
@@ -192,7 +193,7 @@ const DashBoard = () => {
                 < GestionCdes />
 
                 : customers ?
-                <div>customers section</div>
+                < GestionUser />
 
                 :
                 // Le Dashboard

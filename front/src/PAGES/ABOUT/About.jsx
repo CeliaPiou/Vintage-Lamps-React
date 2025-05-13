@@ -1,11 +1,12 @@
 import React from 'react'
+import michel from "./../../assets/img/mich.jpg"
 
 const About = () => {
   return (
     <section>
 
-      <article>
-        <img src='../../img/tools.jpg' alt=''></img>
+      <article className='flex'>
+        <img src={michel} alt=''></img>
         <div>
           <strong><h2>Love stories lead to everything; breakups too.</h2></strong>
           <p>It all started with a breakup, about five years ago. My ex-companion had great taste as far as interior design.

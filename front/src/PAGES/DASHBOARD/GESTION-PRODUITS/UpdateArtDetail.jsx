@@ -86,8 +86,6 @@ const UpdateArtDetail = () => {
     const handleSubmit = async (event) => {
 
         event.preventDefault()
-        console.log(id)
-
 
         try{
             const response = await AXIOS_INSTANCE.put("http://localhost:8000/lv/articles/"+id+'/update', articleModifie);
