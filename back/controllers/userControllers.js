@@ -40,6 +40,16 @@ const getAllUsers = async (req, res, next) => {
         next(createError(404, 'Error: ', error.message))
     }
 }
+const getOneUser = async (req, res, next) => {
+    try {
+        const result = await Users.findById(req.params.id).populate("orders");
+        res.status(200).json(result)
+
+    }
+    catch(error){
+        next(createError(404, "Error: ", error.message))
+    }
+}
 const signIn = async (req, res, next) => {
 
     try{
@@ -91,7 +101,6 @@ const logout = async(req, res, next) => {
 }
 const deleteUser = async(req, res, next) => {
     try{
-
         // Vérifier si l'email est déjà enregistré
         const findUser = await Users.findById(req.params.id)
         if(!findUser) return next(createError(404, 'User not found'))
@@ -110,7 +119,8 @@ const updateUser = async(req, res, next) => {
         if(!req.user || !req.user.id) return next(createError(401, "Authentification required"));
 
         // Vérifie si t'es un admin ensuite ?
-        if(req.user.role !== "admin") return next(createError(403, "You must be an admin to interact with the orders"));
+        const me = await Users.findById(req.user.id);
+        if(me.role !== "admin") return next(createError(403, "You must be an admin to interact with the orders"));
 
         // Est-ce que l'user existe ?
         const user = await Users.findById(req.params.id)
@@ -129,6 +139,7 @@ const updateUser = async(req, res, next) => {
 module.exports = {
     postUser,
     getAllUsers,
+    getOneUser,
     signIn,
     logout,
     deleteUser,

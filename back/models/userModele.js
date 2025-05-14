@@ -17,7 +17,13 @@ const userSchema = mongoose.Schema(
             type: String,
             enum: ['user', 'admin'],
             default: 'user'
-        }
+        },
+        orders: [{
+            type: mongoose.Schema.Types.ObjectId, ref: "Commandes"
+        }],
+        avis: [{
+            type: mongoose.Schema.Types.ObjectId, ref: "Avis"
+        }],
     } , { timestamps: { createdAt: true} }
 )
 

@@ -38,31 +38,66 @@ const DashBoard = () => {
         const [orders, setOrders] = useState(false);
         const [customers, setCustomers] = useState(false);
 
+        // Au chargement de la page, voir si une option a déjà été choisie
+        useEffect(() => {
+            const localSto = localStorage.getItem('dashboard');
+
+            if(!localSto) {
+                localStorage.setItem("dashboard", "dashboard")
+            };
+
+            if(localSto === "products") {
+                setDashboard(false);
+                setProducts(true);
+                setOrders(false);
+                setCustomers(false);
+            };
+
+            if(localSto === "orders") {
+                setDashboard(false);
+                setProducts(false);
+                setOrders(true);
+                setCustomers(false);
+            };
+
+            if(localSto === "customers") {
+                setDashboard(false);
+                setProducts(false);
+                setOrders(false);
+                setCustomers(true);
+            };
+
+        }, [])
 
         const handleSelectedDashboard = () => {
             setDashboard(true);
             setProducts(false);
             setOrders(false);
-            setCustomers(false)
+            setCustomers(false);
+            localStorage.setItem("dashboard", "dashboard")
         }
         const handleSelectedProducts = () => {
-            // alert('hi')
             setDashboard(false);
             setProducts(true);
             setOrders(false);
-            setCustomers(false)
+            setCustomers(false);
+            localStorage.setItem("dashboard", "products")
         }
         const handleSelectedOrders = () => {
             setDashboard(false);
             setProducts(false);
             setOrders(true);
-            setCustomers(false)
+            setCustomers(false);
+            localStorage.setItem("dashboard", "orders")
+
         }
         const handleSelectedCustomers = () => {
             setDashboard(false);
             setProducts(false);
             setOrders(false);
-            setCustomers(true)
+            setCustomers(true);
+            localStorage.setItem("dashboard", "customers")
+
         }
 
         // Récupération des datas
@@ -122,7 +157,12 @@ const DashBoard = () => {
         useEffect(() => {
             const ordersToShip = commandes.filter(item => item.isShipped!= true);
             setCommandesToSend(ordersToShip);
-        }, [commandes])
+        }, [commandes]);
+
+        const quitter = () => {
+            localStorage.removeItem('dashboard');
+            navigate(`/`);
+        }
 
 
     return (
@@ -173,7 +213,7 @@ const DashBoard = () => {
                     </li>
 
                     {/* Quitter */}
-                    <li onClick={() => navigate(`/`)}
+                    <li onClick={() => quitter()}
                         className="dashboard">
                         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#666666"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>
                         <span>Quitter le dashboard</span>

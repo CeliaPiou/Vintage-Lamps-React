@@ -15,10 +15,12 @@ import OurProducts from './PAGES/PRODUCTS/OurProducts'
 import DetailProduct from './PAGES/PRODUCTS/DetailProduct'
 import Panier from './PAGES/PANIER/Panier'
 import Paiement from './PAGES/PANIER/Paiement'
-//--
+
+//-- Dashboard Materials
 import DashBoard from './PAGES/DASHBOARD/DashBoard'
 import UpdateArtDetail from './PAGES/DASHBOARD/GESTION-PRODUITS/UpdateArtDetail'
 import UpdateOrder from './PAGES/DASHBOARD/GESTION-CDES/UpdateOrder'
+import UpdateUser from './PAGES/DASHBOARD/GESTION-USER/UpdateUser'
 
 // SERVICES
 import PrivateRouter from './UTILS/helpers/PrivateRouter'
@@ -34,12 +36,14 @@ function App() {
 
     <Routes>
 
+      {/* PAGE PUBLIQUE GRAND HEADER */}
       <Route path='/' element={<Layout />}>
 
         <Route index element={<Home />}/>
 
       </Route>
 
+      {/* PAGES PUBLIQUES AVEC PETIT HEADER */}
       <Route path='/' element={<LayoutSH />}>
 
         <Route path='/about' element={<About />} />
@@ -54,13 +58,13 @@ function App() {
 
       </Route>
 
+      {/* DASHBOARD RESERVE A L'ADMIN */}
       <Route element={<PrivateRouter />} >
         <Route path='/' element={<LayoutDSH/>}>
-
           <Route path='/dashboard/update/:id' element={<UpdateArtDetail/>}/>
           <Route path="/dashboard/update-order/:id" element={<UpdateOrder/>}/>
+          <Route path="/dashboard/update-user/:id" element={<UpdateUser/>} />
           <Route path='/dashboard' element={<DashBoard />} />
-
         </Route >
       </Route >
 

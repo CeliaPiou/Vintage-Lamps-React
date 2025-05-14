@@ -23,7 +23,7 @@ const postOrder = async(req, res, next) => {
         // Ajout de la commande dans le compte user
         const addOrderinUser = await Users.findByIdAndUpdate(
             req.user.id,
-            {$push: {post: newOrder._id}},
+            {$push: { orders: newOrder._id }},
             { new: true }
         );
 
