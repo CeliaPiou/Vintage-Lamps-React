@@ -31,6 +31,7 @@ const GestionProduits = () => {
         fetchArticles();
     }, [])
 
+
     // Gestion de la page
     const [addArticle, setAddArticle] = useState(false);
     const [updateArt, setUpdateArt] = useState(false);
@@ -43,7 +44,8 @@ const GestionProduits = () => {
         setUpdateArt(true)
     }
 
-  return (
+
+    return (
     <>
 
         <h1>Gestion des articles</h1>
@@ -86,7 +88,7 @@ const GestionProduits = () => {
         </div>
 
     </>
-  )
+    )
 }
 
 export default GestionProduits

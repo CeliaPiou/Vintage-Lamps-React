@@ -48,7 +48,6 @@ const AddProduct = () => {
     const handleSubmit = async (event) => {
 
         event.preventDefault()
-        console.log('Article bien récupéré :', article);
 
         try{
             const response = await AXIOS_INSTANCE.post('http://localhost:8000/lv/articles/add', article);

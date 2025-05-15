@@ -5,7 +5,8 @@ dotenv.config();
 
 // Importation du modèle
 const Orders = require('../models/ordersModele');
-const Users = require('../models/userModele')
+const Users = require('../models/userModele');
+const Articles = require('../models/articleModele')
 
 
 // Les controllers
@@ -27,12 +28,24 @@ const postOrder = async(req, res, next) => {
             { new: true }
         );
 
+        // Modifier l'availability de l'article
+        console.log("Articles dans le req.body:", req.body.articles);
+
+        const articleIds = req.body.articles;
+        console.log("Article IDs extraits:", articleIds);
+
+        await Articles.updateMany(
+            { _id: { $in: articleIds } },
+            { $set: { availability: false } }
+        );
+
+
         // Return this new Order
         res.status(201).json(newOrder);
     }
 
     catch(error) {
-        next(createError(404, "Error, ", error.message))
+        next(createError(500, "Error, ", error.message))
     }
 }
 
@@ -85,7 +98,7 @@ const updateOrder = async(req, res, next) => {
         res.status(200).json(result)
     }
     catch(error){
-        next(createError(404, "Error, ", error.message))
+        next(createError(500, "Error, ", error.message))
     }
 }
 

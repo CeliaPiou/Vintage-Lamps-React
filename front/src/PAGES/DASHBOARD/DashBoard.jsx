@@ -150,8 +150,21 @@ const DashBoard = () => {
 
             };
             fetchOrders();
-
         }, [])
+
+        const [ total, setTotal ] = useState();
+        useEffect(() => {
+                const fetchPrices =  () => {
+                    let allPrices = 0;
+                    commandes.map((item) => {
+                        allPrices += item.price
+                    });
+                    setTotal(allPrices)
+                };
+
+                fetchPrices();
+
+            }, [commandes])
 
         const [ commandesToSend, setCommandesToSend ] = useState([]);
         useEffect(() => {
@@ -163,6 +176,8 @@ const DashBoard = () => {
             localStorage.removeItem('dashboard');
             navigate(`/`);
         }
+
+
 
 
     return (
@@ -249,7 +264,7 @@ const DashBoard = () => {
 
                     <article className='article-dashboard'>
                         <h2>Total généré</h2>
-                        <h3>0</h3>
+                        <h3>{total} €</h3>
                     </article>
 
                     <article className='article-dashboard'>

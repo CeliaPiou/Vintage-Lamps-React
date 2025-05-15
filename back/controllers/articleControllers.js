@@ -33,8 +33,9 @@ const postArticle = async (req,res,next) => {
 
 const getAllArticles = async (req, res, next) => {
     try{
-        const result = await Articles.find()
-        res.status(200).json(result)
+        const result = await Articles.find();
+        const tri = await result.filter(item => item.availability === true)
+        res.status(200).json(tri)
     }
     catch(error){
         next(createError(404, 'Error: ', error.message))
@@ -53,7 +54,7 @@ const getNewArticles = async (req, res, next) => {
 
 const getOneArticle = async (req, res, next) => {
     try{
-        const result = await Articles.findById(req.params.id)
+        const result = await Articles.findById(req.params.id).populate("category")
         res.status(200).json(result)
     }
     catch(error){

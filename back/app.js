@@ -11,6 +11,7 @@ const userRouter = require('./router/user.router')
 const articleRouter = require('./router/article.router')
 const orderRouter = require('./router/orders.router')
 const avisRouter = require('./router/avis.router')
+const categoryRouter = require('./router/category.router.js')
 
 
 /// CONNEXION MONGO
@@ -30,7 +31,8 @@ app.use(cors({
 app.use('/lv/users', userRouter);
 app.use('/lv/articles', articleRouter);
 app.use('/lv/orders', orderRouter);
-app.use('/lv/avis', avisRouter)
+app.use('/lv/avis', avisRouter);
+app.use('/lv/category', categoryRouter)
 
 
 
