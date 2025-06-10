@@ -35,11 +35,7 @@ const UpdateArtDetail = () => {
         fontSize: "0.9rem",
         borderRadius: "20px"
     }
-    const option = {
-        backgroundColor: "white",
-        padding: "5px",
-        border: "1px solid rgb(214, 214, 214)"
-    }
+
 
     // Récupérer les infos de l'art déjà
     const params = useParams();
@@ -74,7 +70,7 @@ const UpdateArtDetail = () => {
             }
         };
         fetchCat();
-    }, [categories])
+    }, [])
 
     // Initialisation de l'état pour les informations avec un objet contenant des valeurs vides
     const [articleModifie, setArticleModifie] = useState({
@@ -93,10 +89,20 @@ const UpdateArtDetail = () => {
         color: '',
         period: '',
         description: '',
-        category: ''
+        category: Array.isArray(article.category)
+                ? article.category.map(cat => (typeof cat === 'string' ? cat : cat._id))
+                : article.category? [article.category._id] : []
+
     })
     useEffect(() => {
         if (article) {
+
+            const normalizedCategory = Array.isArray(article.category)
+            ? article.category.map(cat => typeof cat === 'string' ? cat : cat._id)
+            : article.category
+                ? [article.category._id]
+                : [];
+
             setArticleModifie({
                 picture: article.picture || { img: '', img1: '', img2: '', img3: '', img4: '' },
                 name: article.name || '',
@@ -107,7 +113,7 @@ const UpdateArtDetail = () => {
                 color: article.color || '',
                 period: article.period || '',
                 description: article.description  || '',
-                category: article.category || ''
+                category: normalizedCategory
             });
         }
     }, [article]);
@@ -126,9 +132,37 @@ const UpdateArtDetail = () => {
                     ...prevArt.picture,
                     [name]: value
                 }
-        }));
+            }));
 
-        } else {
+        }
+
+        // Tentative si c'est une image on met à jour 'category'
+        if (name === 'category') {
+            const isChecked = event.target.checked;
+            const catId = value;
+
+            setArticleModifie(prevArt => {
+                const alreadyThere = prevArt.category.includes(catId);
+                let updatedCategories;
+
+                if (isChecked && !alreadyThere) {
+                    updatedCategories = [...prevArt.category, catId];
+                } else if (!isChecked && alreadyThere) {
+                    updatedCategories = prevArt.category.filter(c => c !== catId);
+                } else {
+                    updatedCategories = prevArt.category;
+                }
+
+                return {
+                    ...prevArt,
+                    category: updatedCategories
+                };
+            });
+            return; // important pour ne pas continuer la suite du handleChange
+        }
+
+
+        else {
         // Sinon on met à jour les autres champs normalement
             setArticleModifie(prevArt => ({ ...prevArt, [name]: value }));
         }
@@ -136,7 +170,6 @@ const UpdateArtDetail = () => {
 
     // pour la soumission du formulaire
     const handleSubmit = async (event) => {
-
         event.preventDefault()
 
         try{
@@ -235,14 +268,45 @@ const UpdateArtDetail = () => {
                             {/* Categorie */}
                             <div>
                                 <div id='hover-to-make-appear'>
-                                    <strong>Catégorie : </strong>{article.category? article.category.name : "Pas encore de catégorie"}
+                                    <strong>Catégorie : </strong> {
+
+                                        // Si il y'a une catégorie, et qu'il n'y en a qu'une
+                                        article.category && article.category.length === 1 ?
+                                            <>
+                                            {article.category[0].name}
+                                            </>
+
+                                        // Si il y'a une catégorie et qu'il y'en a plusieurs
+                                        : article.category && article.category.length > 1 ?
+                                            article.category.map((cat, idx) => (
+                                                <>
+                                                    {cat.name} {idx < article.category.length - 1 ? ', ' : ''}
+                                                </>
+                                            ))
+
+                                        : "Pas encore de catégorie"}
                                     <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="grey"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
 
                                     {/* Toutes les catégories existantes */}
                                     <div id='reveal-categories' onChange={handleChange} >
                                         {categories.map(c => (
                                             <div>
-                                                <input name='category' type='checkbox' value={c._id} id={c.name}/>
+                                                {/* <input name='category'
+                                                    type='checkbox'
+                                                    value={c._id}
+                                                    onChange={handleChange}
+                                                    id={c.name}
+                                                    /> */}
+
+<input
+    name="category"
+    type="checkbox"
+    value={c._id}
+    id={c.name}
+    checked={articleModifie.category.includes(c._id)}
+    onChange={handleChange}
+/>
+
                                                 <label htmlFor={c.name}>{c.name}</label>
                                             </div>
                                         ))}

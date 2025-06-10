@@ -64,6 +64,7 @@ const deleteCat = async(req, res, next) => {
         if (!cat) return next(createError(404, "This category doesn't exist"))
 
         const deleted = await Category.findByIdAndDelete(req.params.id);
+
         res.status(200).json(deleted)
     }
     catch(error){

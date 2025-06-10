@@ -264,11 +264,14 @@ li.dashboard:hover {
             }
         }
 
+        #hover-to-make-appear {
+            transition: all 0.8s ease-in-out;
+        }
         #hover-to-make-appear:hover {
             transition: all 0.5s ease-in;
 
             #reveal-categories {
-                height: fit-content;
+                height: 100px;
             }
         }
         #reveal-categories {
@@ -279,6 +282,7 @@ li.dashboard:hover {
                 display:flex;
                 width: 100%;
                 flex-wrap: nowrap;
+                align-items: center;
                 input {
                     width: 20%;
                     border: none;

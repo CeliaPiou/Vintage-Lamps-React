@@ -8,7 +8,7 @@ const AjouterCat = ({addCat, setAddCat}) => {
     // Initialisation de l'état pour les informations avec un objet contenant des valeurs vides
     const [cat, setCat] = useState({
         name: "",
-        img: ""
+        image: ""
     })
 
     // Mettre à jour l'état 'article' lorsque l'admin saisit du texte dans les champs de formulaire
@@ -25,7 +25,6 @@ const AjouterCat = ({addCat, setAddCat}) => {
             const response = await AXIOS_INSTANCE.post('http://localhost:8000/lv/category/add', cat);
             alert("Catégorie ajoutée !");
             setAddCat(false)
-
         }
         catch(error) {
             console.log("Error : ", error.message)
@@ -77,6 +76,7 @@ const AjouterCat = ({addCat, setAddCat}) => {
             </form>
 
         </section>
+
     )
 }
 

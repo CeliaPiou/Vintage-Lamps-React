@@ -5,7 +5,8 @@ dotenv.config();
 
 // Importation du modèle
 const Articles = require('../models/articleModele');
-const Users = require('../models/userModele')
+const Users = require('../models/userModele');
+const Category = require('../models/categoryModele');
 
 
 // Let's go
@@ -22,6 +23,13 @@ const postArticle = async (req,res,next) => {
         const newArticle = await Articles.create({
             ...req.body,
         })
+
+        // Ajout de l'article dans la catégorie
+        const addArtToCategory = await Category.findByIdAndUpdate(
+            req.body._id,
+            {$push: { articles: newArticle._id }},
+            { new: true }
+        );
 
         res.status(201).json(newArticle);
 
@@ -77,10 +85,30 @@ const updateArticle = async(req, res, next) => {
 
         // Tout ok, alors :
         const result = await Articles.findByIdAndUpdate(req.params.id, req.body, {new:true});
+
+        // Concernant la modification des catégories...:
+        const newCategoryIds = req.body.category;
+
+        // Si il y'a déjà des catégories liées, on les retire:
+        if (article.category && article.category.length > 0) {
+            await Category.updateMany(
+                { _id: { $in: article.category } },
+                { $pull: { articles: article._id } }
+            );
+        }
+
+        // Je rajoute l'article dans la/les catégories
+        if (newCategoryIds && newCategoryIds.length > 0) {
+            await Category.updateMany(
+                { _id: { $in: newCategoryIds } },
+                { $addToSet: { articles: article._id } }
+            );
+        }
+
         res.status(201).json(result);
     }
     catch(error){
-        next(createError(404, 'Error: ', error.message))
+        next(createError(500, 'Error: ', error.message))
     }
 }
 

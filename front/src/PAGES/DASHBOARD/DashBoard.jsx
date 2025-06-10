@@ -2,12 +2,12 @@ import './style.scss'
 
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import GestionProduits from './GESTION-PRODUITS/GestionProduits'
 import GestionCdes from './GESTION-CDES/GestionCdes'
 import GestionUser from './GESTION-USER/GestionUser'
+import GestionCat from './GESTION-CATEGORY/GestionCat'
 
 
 const DashBoard = () => {
@@ -37,6 +37,7 @@ const DashBoard = () => {
         const [products, setProducts] = useState(false);
         const [orders, setOrders] = useState(false);
         const [customers, setCustomers] = useState(false);
+        const [catClicked, setCatClicked] = useState(false);
 
         // Au chargement de la page, voir si une option a déjà été choisie
         useEffect(() => {
@@ -51,6 +52,8 @@ const DashBoard = () => {
                 setProducts(true);
                 setOrders(false);
                 setCustomers(false);
+                setCatClicked(false)
+
             };
 
             if(localSto === "orders") {
@@ -58,6 +61,8 @@ const DashBoard = () => {
                 setProducts(false);
                 setOrders(true);
                 setCustomers(false);
+                setCatClicked(false)
+
             };
 
             if(localSto === "customers") {
@@ -65,7 +70,17 @@ const DashBoard = () => {
                 setProducts(false);
                 setOrders(false);
                 setCustomers(true);
+                setCatClicked(false)
+
             };
+
+            if(localSto === "categories") {
+                setDashboard(false);
+                setProducts(false);
+                setOrders(false);
+                setCustomers(false);
+                setCatClicked(true)
+            }
 
         }, [])
 
@@ -74,6 +89,8 @@ const DashBoard = () => {
             setProducts(false);
             setOrders(false);
             setCustomers(false);
+            setCatClicked(false);
+
             localStorage.setItem("dashboard", "dashboard")
         }
         const handleSelectedProducts = () => {
@@ -81,6 +98,8 @@ const DashBoard = () => {
             setProducts(true);
             setOrders(false);
             setCustomers(false);
+            setCatClicked(false);
+
             localStorage.setItem("dashboard", "products")
         }
         const handleSelectedOrders = () => {
@@ -88,6 +107,8 @@ const DashBoard = () => {
             setProducts(false);
             setOrders(true);
             setCustomers(false);
+            setCatClicked(false);
+
             localStorage.setItem("dashboard", "orders")
 
         }
@@ -96,8 +117,19 @@ const DashBoard = () => {
             setProducts(false);
             setOrders(false);
             setCustomers(true);
+            setCatClicked(false);
+
             localStorage.setItem("dashboard", "customers")
 
+        }
+        const handleSelectedCat = () => {
+            setDashboard(false);
+            setProducts(false);
+            setOrders(false);
+            setCustomers(false);
+            setCatClicked(true);
+
+            localStorage.setItem("dashboard", "categories")
         }
 
         // Récupération des datas
@@ -116,6 +148,23 @@ const DashBoard = () => {
             }
 
             fetchLampes()
+        }, [])
+
+        const [ categories, setCategories ] = useState([]);
+        useEffect(() => {
+            const fetchCat = async () => {
+                try {
+                    const { data, status } = await axios.get('http://localhost:8000/lv/category/all')
+                    if (status === 200) {
+                        setCategories(data)
+                    }
+                }
+                catch(error){
+                    console.log(error.message)
+                }
+            }
+
+            fetchCat()
         }, [])
 
         const [ users, setUsers ] = useState([]);
@@ -170,6 +219,7 @@ const DashBoard = () => {
         useEffect(() => {
             const ordersToShip = commandes.filter(item => item.isShipped!= true);
             setCommandesToSend(ordersToShip);
+            console.log(ordersToShip)
         }, [commandes]);
 
         const quitter = () => {
@@ -218,6 +268,16 @@ const DashBoard = () => {
                         <span>Commandes</span>
                     </li>
 
+                    {/* Catégories */}
+                    <li
+                        onClick={handleSelectedCat}
+                        className="dashboard"
+                        style={catClicked? {backgroundColor: "#ffd900"} :  {backgroundColor: "transparent"}}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#666666"><path d="M856-390 570-104q-12 12-27 18t-30 6q-15 0-30-6t-27-18L103-457q-11-11-17-25.5T80-513v-287q0-33 23.5-56.5T160-880h287q16 0 31 6.5t26 17.5l352 353q12 12 17.5 27t5.5 30q0 15-5.5 29.5T856-390ZM513-160l286-286-353-354H160v286l353 354ZM260-640q25 0 42.5-17.5T320-700q0-25-17.5-42.5T260-760q-25 0-42.5 17.5T200-700q0 25 17.5 42.5T260-640Zm220 160Z"/></svg>
+                        <span>Catégories</span>
+                    </li>
+
                     {/* Customers */}
                     <li onClick={handleSelectedCustomers}
                         className="dashboard"
@@ -249,6 +309,9 @@ const DashBoard = () => {
 
                 : customers ?
                 < GestionUser />
+
+                : catClicked ?
+                < GestionCat />
 
                 :
                 // Le Dashboard
@@ -284,7 +347,8 @@ const DashBoard = () => {
                     </article>
 
                     <article className='article-dashboard'>
-                        <h2>Répartition commandes</h2>
+                        <h2>Les catégories</h2>
+                        <p>{categories.length} catégories sont enregistrées</p>
                     </article>
 
                 </div>

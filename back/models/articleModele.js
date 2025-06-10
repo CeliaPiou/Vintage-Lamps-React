@@ -52,9 +52,7 @@ const articleSchema = mongoose.Schema(
         description: {
             type: String
         },
-        category: {
-            type: mongoose.Schema.Types.ObjectId, ref: "Category",
-        },
+        category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
     } , { timestamps: { createdAt: true} }
 )
 

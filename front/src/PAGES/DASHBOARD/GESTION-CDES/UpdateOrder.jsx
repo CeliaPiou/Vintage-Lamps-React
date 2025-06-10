@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
 
 const UpdateOrder = () => {
@@ -56,6 +55,8 @@ const UpdateOrder = () => {
     try{
       const response = await AXIOS_INSTANCE.put("http://localhost:8000/lv/orders/update/"+id, orderModified);
       alert("Commande modifiée");
+      navigate("/dashboard")
+
     }
     catch(error) {
       console.log("Error : ", error.message)

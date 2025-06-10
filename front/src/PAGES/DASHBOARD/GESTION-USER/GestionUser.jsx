@@ -11,7 +11,6 @@ const GestionUser = () => {
             try{
                 const { data, status } = await AXIOS_INSTANCE.get('http://localhost:8000/lv/users/all');
                 if (status == 200) setUsers(data)
-                    console.log(data)
 
             }
             catch(error){
@@ -19,7 +18,7 @@ const GestionUser = () => {
             }
         }
         fetchCustomers();
-    }, [users]);
+    }, []);
 
     const deleteUser = async (id) => {
 
@@ -54,7 +53,7 @@ return (
                 { users.length !== 0 ?
                     users
                     .sort((a,b) => new Date(a.createdAt) - new Date(b.createdAt))
-                    .map(item => (
+                    .map((item) => (
                         <>
                             <tr key={item._id}>
                                 <td>{item.username} <br/> {item.email}</td>
@@ -67,7 +66,6 @@ return (
                                     <svg onClick={() => deleteUser(item._id)} xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="red"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                                 </td>
                             </tr>
-
                         </>
 
                     ))
