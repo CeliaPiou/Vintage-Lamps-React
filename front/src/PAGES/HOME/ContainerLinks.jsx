@@ -8,7 +8,7 @@ const ContainerLinks = () => {
 
       <section id="container-links"  className='flex mt-big justify-center'>
 
-        <div className='card-cta'>
+        <div className=''>
           <img
             src="https://i.ibb.co/r2KVYgP1/erasebg-transformed-1.webp"
             alt="modernist art deco glass lamp"
@@ -16,7 +16,7 @@ const ContainerLinks = () => {
           <button className='btn4'>Glass shade lamps</button>
         </div>
 
-        <div className='card-cta'>
+        <div className=''>
         <button className='btn4'>Metal shade lamps</button>
 
           <img

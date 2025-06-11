@@ -6,6 +6,7 @@ const categoryControllers = require("../controllers/categoryControllers")
 
 router.post('/add', verifieToken, categoryControllers.createCategory)
 router.get('/all', categoryControllers.getAllCategories)
+router.get('/get', categoryControllers.getVisiblesCategories)
 router.delete('/delete/:id', verifieToken, categoryControllers.deleteCat)
 router.put('/update/:id', verifieToken, categoryControllers.updateCat)
 router.get('/:id', categoryControllers.getOneCat)

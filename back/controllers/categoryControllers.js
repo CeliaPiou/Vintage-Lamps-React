@@ -39,6 +39,16 @@ const getAllCategories = async (req, res, next) => {
         next(createError(500, "Error, ", error.message))
     }
 }
+const getVisiblesCategories = async (req, res, next) => {
+    try{
+        const result = await Category.find();
+        const tri = await result.filter(item => item.visible == true)
+        res.status(200).json(tri)
+    }
+    catch(error){
+        next(createError(500, 'Error with getting the visible categories: ', error.message))
+    }
+}
 const getOneCat = async (req, res, next) => {
     try{
         // Pas besoin d'être connecté ni admin pour les voir
@@ -95,9 +105,11 @@ const updateCat = async (req, res, next) => {
     }
 }
 
+
 module.exports = {
     createCategory,
     getAllCategories,
+    getVisiblesCategories,
     getOneCat,
     deleteCat,
     updateCat

@@ -13,6 +13,8 @@ import Connexion from './PAGES/CONNEXION/Connexion'
 import Contact from './PAGES/CONTACT/Contact'
 import OurProducts from './PAGES/PRODUCTS/OurProducts'
 import DetailProduct from './PAGES/PRODUCTS/DetailProduct'
+import OurCategories from './PAGES/CATEGORIES/OurCategories'
+import DetailCategory from './PAGES/CATEGORIES/DetailCategory'
 import Panier from './PAGES/PANIER/Panier'
 import Paiement from './PAGES/PANIER/Paiement'
 
@@ -52,10 +54,12 @@ function App() {
         <Route path='/cart' element={<Panier/>} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/products' element={<OurProducts />} />
-        <Route path='/news' element={<OurProducts />} />
+        <Route path='/categories' element={<OurCategories />} />
         <Route path='/order-approuved' element={<Paiement/>} />
 
         <Route path="/products/:id" element={<DetailProduct />} />
+        <Route path="/categories/:id" element={<DetailCategory />} />
+
 
       </Route>
 

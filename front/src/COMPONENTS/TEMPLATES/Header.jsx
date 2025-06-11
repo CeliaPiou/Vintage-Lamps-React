@@ -65,7 +65,7 @@ const Header = () => {
 
                 <ul className='flex'>
                     <Link to={{ pathname: `/products` }}><li>Nos Produits</li></Link>
-                    <Link to={{ pathname: `/news` }}><li>Nouveautés</li></Link>
+                    <Link to={{ pathname: `/categories` }}><li>Nos catégories</li></Link>
                     <Link to={{ pathname: `/about` }}><li>A propos</li></Link>
                     <Link to={{ pathname: `/contact` }}><li>Contact</li></Link>
 

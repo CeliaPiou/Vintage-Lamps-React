@@ -18,9 +18,7 @@ const OurProducts = () => {
         const fetchArticles = async() => {
             try{
                 // Change l'URL à récupérer selon l'url utilisé
-                const urlToFetch = location.pathname === "/news"
-                ? "http://localhost:8000/lv/articles/new"
-                : "http://localhost:8000/lv/articles/all";
+                const urlToFetch =  "http://localhost:8000/lv/articles/all";
 
                 const { data, status } = await axios.get(urlToFetch);
                 if(status === 200) {
