@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from 'react'
 import { CartContext } from '../../UTILS/contexts/CartContext'
 import { useNavigate } from 'react-router-dom'
 import AXIOS_INSTANCE from '../../UTILS/services/AxiosInstance'
+import Carrousel from '../../COMPONENTS/TEMPLATES/Carrousel'
 
 const Panier = () => {
 
@@ -90,8 +91,7 @@ const Panier = () => {
         ) : (
         <h3>+ <strong>You'll surely like these</strong> +</h3>
         )}
-
-        // Mettre un carroussel ici
+        <Carrousel/>
 
 
     </section>

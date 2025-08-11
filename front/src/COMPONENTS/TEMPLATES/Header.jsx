@@ -96,6 +96,15 @@ const Header = () => {
                         <div className='dropdown-child'>
                             <p>Bonjour, {auth.others?.username}</p>
                             <button className="btn5" onClick={logout}>Se déconnecter</button>
+                            {auth?.others?.role!="admin"?
+                            <>
+                                <Link to={{ pathname: `/account` }}>
+                                    <button className='btn5'>Mon compte</button>
+                                </Link>
+                            </>
+                            :
+                            ""
+                            }
                         </div>
                     </li>
                 </>
