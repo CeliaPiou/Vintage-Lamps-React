@@ -1,16 +1,20 @@
+import './style.scss'
+
 import React from 'react'
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../UTILS/contexts/AuthContext'
+import { AuthContext } from '../../../UTILS/contexts/AuthContext';
 import axios from 'axios';
+
+import { formatDate } from '../../../UTILS/helpers/FormatDate.jsx'
+
 
 
 const DashboardUser = () => {
 
     const { auth } = useContext(AuthContext);
 
-    const [orders, setOrders] = useState([]);
+    // Récupérer les infos de l'user
     const [user, setUser] = useState([]);
-
     useEffect(() => {
 
         const fetchUser = async () => {
@@ -32,6 +36,9 @@ const DashboardUser = () => {
 
     }, [])
 
+    // Montrer les commandes au click
+    const [showOrders, setShowOrders] = useState(false);
+
 
     return (
         <>
@@ -43,22 +50,31 @@ const DashboardUser = () => {
                     {auth.others?.orders.length>0?
                     // Afficher les commandes passées
                     <>
-                        {/* Vous avez passé {auth.others?.orders.length} commandes. Voir le détail. */}
-                        Vous avez passé {user.orders?.length} commandes. Voir le détail.
-                        {console.log(user.orders)}
+                        Vous avez passé {user.orders?.length} commandes.
+                        <br/>
 
-                        <div id='container-of-orders'>
-                            {user.orders?.map(order => (
-                                <div className='order-box'>
-                                    <div className='grey-part'>
-                                        <h3>Cde effectuée le {order.createdAt}</h3>
-                                        <p>Total {order.price},00 € </p>
-                                        <p>N° de commande {order._id} </p>
+                        <button onClick={() => setShowOrders(!showOrders)} className="">
+                        {showOrders ? "Masquer le détail" : "Voir le détail"}
+                        </button>
+
+                        {showOrders && (
+                            <div id='container-of-orders'>
+                                {user.orders?.map(order => (
+                                    <div className='order-box'>
+                                        <div className='grey-part'>
+                                            <h3>Cde effectuée le {formatDate(order.createdAt)}</h3>
+                                            <p>Total {order.price},00 € </p>
+                                            <p>Statut : {order.isShipped ? "Expédié" : "En attente d'expédition"} </p>
+                                            <p>N° de commande {order._id} </p>
+                                        </div>
+
+                                        <div className='content-order'>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-
+                                )
+                                )}
+                            </div>
+                        )}
                     </>
                     :
                     // Si pas de commandes:
