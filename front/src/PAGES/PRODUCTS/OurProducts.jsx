@@ -17,7 +17,6 @@ const OurProducts = () => {
     useEffect(() => {
         const fetchArticles = async() => {
             try{
-                // Change l'URL à récupérer selon l'url utilisé
                 const urlToFetch =  "http://localhost:8000/lv/articles/all";
 
                 const { data, status } = await axios.get(urlToFetch);

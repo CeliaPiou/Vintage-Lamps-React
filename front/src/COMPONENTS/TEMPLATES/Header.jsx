@@ -19,7 +19,6 @@ const Header = () => {
     // Afficher/Gérer la connexion :
     const { logout, auth } = useContext(AuthContext);
 
-
     // Afficher/retirer le déroulé du panier
     const cartContentVisble = () => {
         const containerCart = document.getElementById('container-cart');

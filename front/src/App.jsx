@@ -26,6 +26,8 @@ import UpdateOrder from './PAGES/DASHBOARD/GESTION-CDES/UpdateOrder'
 import UpdateUser from './PAGES/DASHBOARD/GESTION-USER/UpdateUser'
 import UpdateCat from './PAGES/DASHBOARD/GESTION-CATEGORY/UpdateCat'
 
+import DashboardUser from './PAGES/DASHBOARD/DASHBOARD-USER/DashboardUser'
+
 // -- Services
 import PrivateRouter from './UTILS/helpers/PrivateRouter'
 import PublicRouter from './UTILS/helpers/PublicRouter'
@@ -62,6 +64,13 @@ function App() {
         <Route path="/categories/:id" element={<DetailCategory />} />
 
         <Route path='*' element={<Error/>} />
+
+      </Route>
+
+      {/* DASHBOARD RESERVE AUX USERS */}
+      <Route path="/" element={<LayoutSH />}>
+
+        <Route path="/account" element={<DashboardUser/>} />
 
       </Route>
 
