@@ -3,7 +3,9 @@ import './style.scss'
 import React from 'react'
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../UTILS/contexts/AuthContext';
-import axios from 'axios';
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 
 import { formatDate } from '../../../UTILS/helpers/FormatDate.jsx'
 
@@ -41,19 +43,19 @@ const DashboardUser = () => {
 
 
     return (
-        <>
+        <main id='dashboard-user'>
             <h2>Bonjour {auth.others?.username} !</h2>
 
-            <main>
+            <div>
                 <h2>+ Historique des commandes +</h2>
-                <div>
+                <div id='historic-orders'>
                     {auth.others?.orders.length>0?
                     // Afficher les commandes passées
                     <>
                         Vous avez passé {user.orders?.length} commandes.
                         <br/>
 
-                        <button onClick={() => setShowOrders(!showOrders)} className="">
+                        <button className='invisible-button' onClick={() => setShowOrders(!showOrders)}>
                         {showOrders ? "Masquer le détail" : "Voir le détail"}
                         </button>
 
@@ -69,6 +71,15 @@ const DashboardUser = () => {
                                         </div>
 
                                         <div className='content-order'>
+                                            Mettre la liste des articles
+                                        </div>
+
+                                        <div>
+                                            {order.isShipped &&
+                                            <Link to={{ pathname: `/order/${order._id}`}}>
+                                                <button className='invisible-button'>Laisser un avis sur cette commande</button>
+                                            </Link>
+                                            }
                                         </div>
                                     </div>
                                 )
@@ -86,8 +97,8 @@ const DashboardUser = () => {
                 <div> </div>
 
                 <h2>+ Mes échanges +</h2>
-            </main>
-        </>
+            </div>
+        </main>
     )
 }
 

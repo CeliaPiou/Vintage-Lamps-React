@@ -51,7 +51,6 @@ const HomeLatestAvis = () => {
             <h2 className='text-center'>Vos avis</h2>
 
             <div className='flex container justify-center' id="reviews">
-                {/* Penser à faire une animation flip-card pour afficher le comm */}
 
             {avis.map((avi) => (
 

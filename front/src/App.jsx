@@ -71,6 +71,9 @@ function App() {
       <Route path="/" element={<LayoutSH />}>
 
         <Route path="/account" element={<DashboardUser/>} />
+        <Route path="/order/:id" element={<DashboardUser/>} />
+        {/* A modifier */}
+
 
       </Route>
 

@@ -124,21 +124,21 @@ const Header = () => {
             </nav>
 
             <div id="hero-section-text" className='flex'>
-                    <h1 className='typewriter'>Vintage Lamps</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ipsum ea esse dolore! Earum impedit, expedita rerum a
-                        delectus ratione officia similique aut dolores eaque
-                        voluptatem molestias, voluptatum, eligendi atque dolorum.</p>
-                        <button
-                        className='btn4'
-                        >
-                        Discover our lamps
-                        <img
-                            src={gradient}
-                            width={500}
-                            className='btn-effect'></img>
-                        </button>
-            </div>
+                <h1 className='typewriter'>Vintage Lamps</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsum ea esse dolore! Earum impedit, expedita rerum a
+                    delectus ratione officia similique aut dolores eaque
+                    voluptatem molestias, voluptatum, eligendi atque dolorum.</p>
+                    <button
+                    className='btn4'
+                    >
+                    Discover our lamps
+                    <img
+                        src={gradient}
+                        width={500}
+                        className='btn-effect'></img>
+                    </button>
+        </div>
 
         </section>
 
