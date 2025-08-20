@@ -6,14 +6,13 @@ import { AuthContext } from '../../../UTILS/contexts/AuthContext';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-
 import { formatDate } from '../../../UTILS/helpers/FormatDate.jsx'
 
 
 
 const DashboardUser = () => {
 
-    const { auth } = useContext(AuthContext);
+    const { auth, logout } = useContext(AuthContext);
 
     // Récupérer les infos de l'user
     const [user, setUser] = useState([]);
@@ -45,6 +44,8 @@ const DashboardUser = () => {
     return (
         <main id='dashboard-user'>
             <h2>Bonjour {auth.others?.username} !</h2>
+            <button className="invisible-button" onClick={logout}>Se déconnecter</button>
+
 
             <div>
                 <h2>+ Historique des commandes +</h2>

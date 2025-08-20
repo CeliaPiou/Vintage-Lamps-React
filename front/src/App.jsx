@@ -27,6 +27,7 @@ import UpdateUser from './PAGES/DASHBOARD/GESTION-USER/UpdateUser'
 import UpdateCat from './PAGES/DASHBOARD/GESTION-CATEGORY/UpdateCat'
 
 import DashboardUser from './PAGES/DASHBOARD/DASHBOARD-USER/DashboardUser'
+import Avis from './PAGES/DASHBOARD/DASHBOARD-USER/Avis'
 
 // -- Services
 import PrivateRouter from './UTILS/helpers/PrivateRouter'
@@ -71,7 +72,7 @@ function App() {
       <Route path="/" element={<LayoutSH />}>
 
         <Route path="/account" element={<DashboardUser/>} />
-        <Route path="/order/:id" element={<DashboardUser/>} />
+        <Route path="/order/:id" element={<Avis/>} />
         {/* A modifier */}
 
 

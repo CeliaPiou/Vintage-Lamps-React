@@ -16,6 +16,9 @@ const avisSchema = mongoose.Schema(
         },
         content: {
             type: String,
+        },
+        img: {
+            type: String
         }
     } , { timestamps: { createdAt: true} }
 )
