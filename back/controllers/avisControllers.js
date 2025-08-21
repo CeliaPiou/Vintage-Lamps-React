@@ -55,12 +55,36 @@ const getAllAvis = async(req, res, next) => {
         res.status(200).json(allAvis)
     }
     catch(error){
-        next(createError(404, "Error, ", error.message))
+        next(createError(500, "Error, ", error.message))
+    }
+}
+
+const deleteAvis = async(req, res, next) => {
+    try{
+        // Vérifions si l'avis existe
+        const avis = await Avis.findById(req.params.id)
+        if(!avis) return next(createError(404, "This avis doesn't exist"));
+
+        // Je vérifie si je suis connecté:
+        if(!req.user || !req.user.id) return next(createError(401, "Authentification required"));
+
+        // Je vérifie si je suis admin
+        const me = await Users.findById(req.user.id);
+        if(me.role !== "admin") return next(createError(403, "You must be an admin to do that"));
+
+
+        const result = await Avis.findByIdAndDelete(req.params.id);
+        res.status(200).json("this avis has been deleted")
+    }
+
+    catch(error){
+        next(createError(500, "Error, ", error.message))
     }
 }
 
 
 module.exports = {
     postAvis,
-    getAllAvis
+    getAllAvis,
+    deleteAvis
 }

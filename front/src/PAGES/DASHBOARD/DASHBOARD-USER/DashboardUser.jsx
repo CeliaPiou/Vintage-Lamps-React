@@ -103,7 +103,7 @@ const DashboardUser = () => {
 
                         <h3>Mes avis</h3>
 
-                        {user.avis ?
+                        {user.avis?.length > 0 ?
                         // Si il y'a des avis
                         <>
                         {user.avis?.map(avi => (

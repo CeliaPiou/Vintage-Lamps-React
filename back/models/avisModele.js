@@ -20,8 +20,8 @@ const avisSchema = mongoose.Schema(
             type: String,
         },
         img: {
-            data: Buffer,           // données binaires
-            contentType: String     // ex: "image/png", "image/jpeg"
+            data: Buffer,
+            contentType: String
         }
     } , { timestamps: { createdAt: true} }
 )

@@ -6,6 +6,7 @@ const avisControllers = require('../controllers/avisControllers');
 
 router.post('/add', verifieToken, avisControllers.postAvis)
 router.get('/all', avisControllers.getAllAvis)
+router.delete('/delete/:id', verifieToken, avisControllers.deleteAvis)
 
 
 module.exports = router;
