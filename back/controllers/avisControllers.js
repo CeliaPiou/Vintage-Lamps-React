@@ -21,7 +21,6 @@ const postAvis = async(req, res, next) => {
 
         // Vérifier si on est bien le receveur de cette commande
         const deliveredUser = orderConcerned.user;
-        console.log('Delivered User : ', deliveredUser)
 
         // POSTER !
 
@@ -52,7 +51,7 @@ const postAvis = async(req, res, next) => {
 
 const getAllAvis = async(req, res, next) => {
     try{
-        const allAvis = await Avis.find().populate('username');
+        const allAvis = await Avis.find().populate('user');
         res.status(200).json(allAvis)
     }
     catch(error){
