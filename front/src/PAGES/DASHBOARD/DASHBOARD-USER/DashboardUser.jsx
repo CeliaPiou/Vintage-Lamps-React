@@ -98,6 +98,38 @@ const DashboardUser = () => {
                 <div> </div>
 
                 <h2>+ Mes échanges +</h2>
+
+                    <div id='mes-avis'>
+
+                        <h3>Mes avis</h3>
+
+                        {user.avis ?
+                        // Si il y'a des avis
+                        <>
+                        {user.avis?.map(avi => (
+                            <div key={avi._id}
+                            className='card flip-card-container'>
+                                <div className="flip-card">
+                                <div className='card-front'>
+                                    <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{formatDate(avi.createdAt)}</p>
+                                    <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{avi.rating}/5</p>
+                                    { avi.image ?
+                                    <img src={avi.image} alt='Image du client' width={200} height={200}></img>
+                                    :
+                                    <img src='https://sdmntprnortheu.oaiusercontent.com/files/00000000-dafc-61f4-a015-9cde6ff5ff5a/raw?se=2025-08-21T20%3A04%3A39Z&sp=r&sv=2024-08-04&sr=b&scid=deab5f1a-d5be-5c3c-ba06-424a6c249a7b&skoid=0a4a0f0c-99ac-4752-9d87-cfac036fa93f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-21T08%3A42%3A03Z&ske=2025-08-22T08%3A42%3A03Z&sks=b&skv=2024-08-04&sig=t4Qjnt%2Blx7cTMQ/5NvQbhbAxVC/M/HGtbPlguQW6UX0%3D' alt="Image pour illustrer l'avis" width={200} height={200}></img> }
+                                </div>
+                                <div className="card-back">
+                                    <strong> {avi.rating}/5 </strong>
+                                    <p>'' {avi.content} ,,</p>
+                                </div>
+                            </div>
+                        </div>
+                        ))}
+                        </>
+                        :
+                        <p>Aucun avis publié.</p>
+                        }
+                    </div>
             </div>
         </main>
     )

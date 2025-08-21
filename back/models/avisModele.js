@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const avisSchema = mongoose.Schema(
     {
-        username : {
+        user : {
             type: mongoose.Schema.Types.ObjectId, ref: "Users",
             required: true
         },
@@ -12,13 +12,16 @@ const avisSchema = mongoose.Schema(
         },
         rating: {
             type: Number,
+            min: 1,
+            max: 5,
             required: true
         },
         content: {
             type: String,
         },
         img: {
-            type: String
+            data: Buffer,           // données binaires
+            contentType: String     // ex: "image/png", "image/jpeg"
         }
     } , { timestamps: { createdAt: true} }
 )

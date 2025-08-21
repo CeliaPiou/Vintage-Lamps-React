@@ -5,7 +5,8 @@ dotenv.config();
 
 // Importation du modèle
 const Orders = require('../models/ordersModele');
-const Avis = require('../models/avisModele')
+const Avis = require('../models/avisModele');
+const Users = require('../models/userModele.js')
 
 
 // Les controllers
@@ -23,12 +24,29 @@ const postAvis = async(req, res, next) => {
         console.log('Delivered User : ', deliveredUser)
 
         // POSTER !
-        const newAvis = await Avis.create({...req.body})
-        res.status(201).json(newAvis);
+
+        const postAvis = await Avis.create({
+            user: req.body.user,
+            order: req.body.order,
+            rating: req.body.rating,
+            content: req.body.content,
+            image: req.body.image || null
+        });
+
+
+        // Ajout de l'avis dans le compte user
+        const addAvisinUser = await Users.findByIdAndUpdate(
+            req.user.id,
+            {$push: { avis: postAvis._id }},
+            { new: true }
+        );
+
+
+        res.status(201).json(postAvis);
     }
 
     catch(error) {
-        next(createError(404, "Error, ", error.message))
+        next(createError(500, "Error, ", error.message))
     }
 }
 

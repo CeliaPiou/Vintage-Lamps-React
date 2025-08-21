@@ -1,12 +1,20 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { useParams } from "react-router-dom";
+import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
+import { AuthContext } from '../../../UTILS/contexts/AuthContext';
+
 
 const Avis = () => {
 
-    const [ rating, setRating ] = useState(0);
-    const [content, setContent] = useState("");
-    const [image, setImage] = useState(null);
+    const { auth } = useContext(AuthContext);
 
-    const handleSubmit = (e) => {
+    const [ rating, setRating ] = useState(0);
+    const [ content, setContent ] = useState("");
+    const [ image, setImage ] = useState(null);
+
+    const { id } = useParams()
+
+    const handleSubmit = async (e) => {
 
         e.preventDefault();
 
@@ -19,10 +27,20 @@ const Avis = () => {
             rating,
             content,
             image,
+            order: id,
+            user: auth.others._id,
             createdAt: new Date().toISOString(),
         };
 
-        console.log("Avis : ", newAvis)
+        // console.log("Avis : ", newAvis)
+
+        try{
+            const response = await AXIOS_INSTANCE.post('/lv/avis/add', newAvis);
+            alert("Avis ajouté");
+        }
+        catch(error){
+            console.error('Error:', error);
+        }
     }
 
     return (

@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const HomeLatestAvis = () => {
 
-     const [avis, setAvis] = useState([
+    const [avis, setAvis] = useState([
             {
                 id: 1,
                 date: "Mar 4, 2024" ,

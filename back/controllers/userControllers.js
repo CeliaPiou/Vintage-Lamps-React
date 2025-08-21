@@ -42,7 +42,7 @@ const getAllUsers = async (req, res, next) => {
 }
 const getOneUser = async (req, res, next) => {
     try {
-        const result = await Users.findById(req.params.id).populate("orders");
+        const result = await Users.findById(req.params.id).populate("orders").populate("avis");
         res.status(200).json(result)
 
     }
