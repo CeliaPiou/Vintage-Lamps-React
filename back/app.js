@@ -22,7 +22,7 @@ connectMongoDB(ENV.MONGO_URI, ENV.DB_NAME);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ENV.FRONT_URL,
     credentials:true}
 ));
 
