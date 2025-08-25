@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 import { CartContext } from '../../UTILS/contexts/CartContext'
+import { API_URL } from '../../api'
 
 const DetailProduct = () => {
 
@@ -20,7 +21,7 @@ const DetailProduct = () => {
 
         const fetchArticle = async() => {
             try{
-                const { data, status } = await axios.get(`http://localhost:8000/lv/articles/${id}`);
+                const { data, status } = await axios.get(`${API_URL}/lv/articles/${id}`);
                 if(status === 200) {
                     setArticle(data)
                     setBigPicture(data.picture?.img)

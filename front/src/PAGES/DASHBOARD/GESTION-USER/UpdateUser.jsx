@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance';
 import { useParams, useNavigate } from 'react-router-dom';
 import './style.scss'
+import { API_URL } from '../../../api';
 
 const UpdateUser = () => {
 
@@ -18,7 +19,7 @@ const UpdateUser = () => {
 
         const fetchCust = async () => {
             try {
-                const { data, status } = await AXIOS_INSTANCE.get('http://localhost:8000/lv/users/'+id);
+                const { data, status } = await AXIOS_INSTANCE.get(`${API_URL}/lv/users/${id}`);
                 if (status === 200) {
                     setUser(data)
                 }
@@ -56,7 +57,7 @@ const UpdateUser = () => {
         event.preventDefault();
 
         try{
-            const response = await AXIOS_INSTANCE.put("http://localhost:8000/lv/users/update/"+id, userUpdated);
+            const response = await AXIOS_INSTANCE.put(`${API_URL}/lv/users/update/${id}`, userUpdated);
             alert("Utilisateur modifiée");
         }
             catch(error) {

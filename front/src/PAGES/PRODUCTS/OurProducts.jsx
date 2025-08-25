@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
 import { CartContext } from '../../UTILS/contexts/CartContext';
+import { API_URL } from '../../api';
 
 const OurProducts = () => {
 
@@ -18,7 +19,7 @@ const OurProducts = () => {
         const fetchArticles = async() => {
             try{
                 // Change l'URL à récupérer selon l'url utilisé
-                const urlToFetch =  "http://localhost:8000/lv/articles/all";
+                const urlToFetch =  `${API_URL}/lv/articles/all`;
 
                 const { data, status } = await axios.get(urlToFetch);
                 if(status === 200) {

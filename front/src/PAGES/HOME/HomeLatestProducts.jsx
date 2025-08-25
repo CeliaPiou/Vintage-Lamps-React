@@ -7,6 +7,7 @@ import arrowToLeft from '../../assets/icons/arrow-previous.svg'
 import gradient from '../../assets/img/gradient.svg'
 
 import { CartContext } from '../../UTILS/contexts/CartContext'
+import { API_URL } from '../../api'
 
 const HomeLatestProducts = () => {
 
@@ -16,7 +17,7 @@ const HomeLatestProducts = () => {
     useEffect(() => {
         const fetchArticles = async() => {
             try{
-                const { data, status } = await axios.get('http://localhost:8000/lv/articles/new')
+                const { data, status } = await axios.get(`${API_URL}/lv/articles/new`)
                 if(status === 200) setProduct(data);
             }
             catch(error){

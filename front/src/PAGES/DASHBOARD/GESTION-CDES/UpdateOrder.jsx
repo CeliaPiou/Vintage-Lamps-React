@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
+import { API_URL } from '../../../api';
 
 const UpdateOrder = () => {
 
@@ -12,7 +13,7 @@ const UpdateOrder = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       try{
-        const {data, status} = await AXIOS_INSTANCE.get('http://localhost:8000/lv/orders/'+ id)
+        const {data, status} = await AXIOS_INSTANCE.get(`${API_URL}/lv/orders/`+ id)
         if(status===200) {
           setOrder(data)
         }
@@ -53,7 +54,7 @@ const UpdateOrder = () => {
     event.preventDefault();
 
     try{
-      const response = await AXIOS_INSTANCE.put("http://localhost:8000/lv/orders/update/"+id, orderModified);
+      const response = await AXIOS_INSTANCE.put(`${API_URL}/lv/orders/update/`+id, orderModified);
       alert("Commande modifiée");
       navigate("/dashboard")
 

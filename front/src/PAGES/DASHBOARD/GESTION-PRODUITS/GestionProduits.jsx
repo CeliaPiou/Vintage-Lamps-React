@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import AddProduct from './AddProduct';
 import UpdateArticle from './UpdateArticle';
+import { API_URL } from '../../../api';
 
 
 const GestionProduits = () => {
@@ -16,7 +17,7 @@ const GestionProduits = () => {
         const fetchArticles = async () => {
 
             try{
-                const { data, status } = await axios.get('http://localhost:8000/lv/articles/all')
+                const { data, status } = await axios.get(`${API_URL}/lv/articles/all`)
 
                 if(status === 200) {
                     setArticles(data)

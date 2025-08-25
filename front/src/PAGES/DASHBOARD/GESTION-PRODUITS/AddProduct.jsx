@@ -1,6 +1,7 @@
 import React, { useState }from 'react'
 import axios from 'axios'
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
+import { API_URL } from '../../../api'
 
 
 const AddProduct = () => {
@@ -50,7 +51,7 @@ const AddProduct = () => {
         event.preventDefault()
 
         try{
-            const response = await AXIOS_INSTANCE.post('http://localhost:8000/lv/articles/add', article);
+            const response = await AXIOS_INSTANCE.post(`${API_URL}/lv/articles/add`, article);
             alert("Article ajouté");
         }
         catch(error){

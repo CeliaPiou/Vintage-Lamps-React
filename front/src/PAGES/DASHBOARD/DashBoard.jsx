@@ -9,6 +9,9 @@ import GestionCdes from './GESTION-CDES/GestionCdes'
 import GestionUser from './GESTION-USER/GestionUser'
 import GestionCat from './GESTION-CATEGORY/GestionCat'
 
+import { API_URL } from './../../api';
+
+
 
 const DashBoard = () => {
 
@@ -137,7 +140,7 @@ const DashBoard = () => {
         useEffect(() => {
             const fetchLampes = async () => {
                 try{
-                    const { data, status } = await axios.get('http://localhost:8000/lv/articles/all');
+                    const { data, status } = await axios.get(`${API_URL}/lv/articles/all`);
                     if(status === 200) {
                         setLampes(data)
                     }
@@ -154,7 +157,7 @@ const DashBoard = () => {
         useEffect(() => {
             const fetchCat = async () => {
                 try {
-                    const { data, status } = await axios.get('http://localhost:8000/lv/category/all')
+                    const { data, status } = await axios.get(`${API_URL}/lv/category/all`)
                     if (status === 200) {
                         setCategories(data)
                     }
@@ -171,7 +174,7 @@ const DashBoard = () => {
         useEffect(() => {
             const fetchUsers = async () => {
                 try{
-                    const {data, status} = await axios.get('http://localhost:8000/lv/users/all')
+                    const {data, status} = await axios.get(`${API_URL}/lv/users/all`)
                     if(status===200) setUsers(data)
                 }
                 catch(error) {
@@ -187,7 +190,7 @@ const DashBoard = () => {
 
             const fetchOrders = async () => {
                 try{
-                    const { data, status } = await axios.get('http://localhost:8000/lv/orders/all');
+                    const { data, status } = await axios.get(`${API_URL}/lv/orders/all`);
                     if (status===200) {
                         setCommandes(data);
                     }

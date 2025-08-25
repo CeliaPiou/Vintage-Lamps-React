@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
+import { API_URL } from '../../../api'
 
 
 
@@ -46,7 +47,7 @@ const UpdateCat = () => {
 
         const fetchCat = async () => {
             try {
-                const { status, data } = await AXIOS_INSTANCE.get('http://localhost:8000/lv/category/'+id)
+                const { status, data } = await AXIOS_INSTANCE.get(`${API_URL}/lv/category/`+id)
                 if (status === 200) {
                     setCat(data)
                 }
@@ -65,7 +66,7 @@ const UpdateCat = () => {
         event.preventDefault();
 
         try {
-            const response = await AXIOS_INSTANCE.put('http://localhost:8000/lv/category/update/'+id, catModifie)
+            const response = await AXIOS_INSTANCE.put(`${API_URL}/lv/category/update/`+id, catModifie)
             alert("Catégorie modifiée !", catModifie);
             navigate('/dashboard')
         }
@@ -88,7 +89,7 @@ const UpdateCat = () => {
     const handleDelete = async (event) => {
         event.preventDefault();
         try {
-            const response = await AXIOS_INSTANCE.delete('http://localhost:8000/lv/category/delete/'+id);
+            const response = await AXIOS_INSTANCE.delete(`${API_URL}/lv/category/delete/`+id);
             alert("Catégorie '"+ cat.name +"' supprimée");
             navigate('/dashboard');
         }

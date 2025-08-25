@@ -2,6 +2,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
 import "./style.scss"
+import { API_URL } from './../../../api';
+
 
 const AjouterCat = ({addCat, setAddCat}) => {
 
@@ -22,7 +24,7 @@ const AjouterCat = ({addCat, setAddCat}) => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            const response = await AXIOS_INSTANCE.post('http://localhost:8000/lv/category/add', cat);
+            const response = await AXIOS_INSTANCE.post(`${API_URL}/lv/category/add`, cat);
             alert("Catégorie ajoutée !");
             setAddCat(false)
         }

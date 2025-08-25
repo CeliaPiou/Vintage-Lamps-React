@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance';
+import { API_URL } from '../../../api';
 
 const GestionUser = () => {
 
@@ -9,7 +10,7 @@ const GestionUser = () => {
     useEffect(() => {
         const fetchCustomers = async () => {
             try{
-                const { data, status } = await AXIOS_INSTANCE.get('http://localhost:8000/lv/users/all');
+                const { data, status } = await AXIOS_INSTANCE.get(`${API_URL}/lv/users/all`);
                 if (status == 200) setUsers(data)
 
             }
@@ -23,7 +24,7 @@ const GestionUser = () => {
     const deleteUser = async (id) => {
 
         try{
-            const result = await AXIOS_INSTANCE.delete('http://localhost:8000/lv/users/delete/'+id);
+            const result = await AXIOS_INSTANCE.delete(`${API_URL}/lv/users/delete/${id}`);
             alert("L'utilisateur a été supprimé")
         }
         catch(error){

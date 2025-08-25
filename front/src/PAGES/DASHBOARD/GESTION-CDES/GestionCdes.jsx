@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./style.scss"
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance';
+import { API_URL } from '../../../api';
 
 const GestionCdes = () => {
 
@@ -11,7 +12,7 @@ const GestionCdes = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try{
-                const { data, status } = await AXIOS_INSTANCE.get('http://localhost:8000/lv/orders/all');
+                const { data, status } = await AXIOS_INSTANCE.get(`${API_URL}/lv/orders/all`);
                 if (status == 200) setOrders(data)
 
             }
@@ -41,7 +42,7 @@ const GestionCdes = () => {
 
     const handleDelete = async (id) => {
         try {
-            const result = await AXIOS_INSTANCE.delete('http://localhost:8000/lv/orders/'+id+"/delete");
+            const result = await AXIOS_INSTANCE.delete(`${API_URL}/lv/orders/+${id}+/delete`);
             alert("La commande a été supprimée")
         }
         catch(error) {

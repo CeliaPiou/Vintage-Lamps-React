@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 // URL CONSTANT
 import URLS from '../constants/Api'
 import AXIOS_INSTANCE from '../services/AxiosInstance'
+import { API_URL } from '../../api'
 
 // Créer un context d'authentification
 export const AuthContext = createContext()
@@ -53,7 +54,7 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
 
         try{
-            await AXIOS_INSTANCE.get('http://localhost:8000/lv/users/logout');
+            await AXIOS_INSTANCE.get(`${API_URL}/lv/users/logout`);
             setAuth(null);
             localStorage.removeItem('auth');
             navigate(`/`)
