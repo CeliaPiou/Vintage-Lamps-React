@@ -21,7 +21,6 @@ const DashboardUser = () => {
 
         const fetchUser = async () => {
             try {
-              
                 const urlToFetch = `${API_URL}/lv/users/${auth?.others?._id}`;
 
                 const { data, status } = await axios.get(urlToFetch);
