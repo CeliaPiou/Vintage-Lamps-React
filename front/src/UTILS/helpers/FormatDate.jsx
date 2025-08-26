@@ -1,4 +1,5 @@
 export function formatDate(isoDate) {
+    if (!isoDate) return "Date invalide";
     const date = new Date(isoDate);
 
     return new Intl.DateTimeFormat("fr-FR", {

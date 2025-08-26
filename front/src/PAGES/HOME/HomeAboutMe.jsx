@@ -11,9 +11,7 @@ const HomeAboutMe = () => {
 
             <div>
                 <h2>A propos</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quam pariatur fugiat veritatis. Consectetur tenetur, aut
-                    praesentium velit ducimus quia nemo fugit. </p>
+                <p>  </p>
                 <button className='btn4'>En savoir plus
                     <img
                         src={gradient}

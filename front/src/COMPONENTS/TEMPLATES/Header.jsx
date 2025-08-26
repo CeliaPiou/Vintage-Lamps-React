@@ -125,20 +125,18 @@ const Header = () => {
 
             <div id="hero-section-text" className='flex'>
                 <h1 className='typewriter'>Vintage Lamps</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsum ea esse dolore! Earum impedit, expedita rerum a
-                    delectus ratione officia similique aut dolores eaque
-                    voluptatem molestias, voluptatum, eligendi atque dolorum.</p>
-                    <button
-                    className='btn4'
-                    >
+                <p> Découvrez nos lampes restaurées avec soin,
+                    afin de préserver la beauté et l’histoire des créations des maîtres
+                    verriers et artisans du métal, de Muller à Gallé, et d’offrir aux amateurs
+                    de vintage un éclairage qui allie art et fonctionnalité.
+                </p>
+                <Link to={{ pathname: `/products`}}>
+                    <button className='btn4'>
                     Discover our lamps
-                    <img
-                        src={gradient}
-                        width={500}
-                        className='btn-effect'></img>
+                        <img src={gradient} width={500} className='btn-effect'></img>
                     </button>
-        </div>
+                </Link>
+            </div>
 
         </section>
 
