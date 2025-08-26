@@ -7,7 +7,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 import { formatDate } from '../../../UTILS/helpers/FormatDate.jsx'
-import { API_URL } from './api';
+import { API_URL } from '../../../api.js';
 
 
 
