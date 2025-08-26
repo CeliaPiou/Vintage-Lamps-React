@@ -29,10 +29,7 @@ const postOrder = async(req, res, next) => {
         );
 
         // Modifier l'availability de l'article
-        console.log("Articles dans le req.body:", req.body.articles);
-
         const articleIds = req.body.articles;
-        console.log("Article IDs extraits:", articleIds);
 
         await Articles.updateMany(
             { _id: { $in: articleIds } },

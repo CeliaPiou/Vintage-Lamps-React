@@ -17,6 +17,7 @@ import OurCategories from './PAGES/CATEGORIES/OurCategories'
 import DetailCategory from './PAGES/CATEGORIES/DetailCategory'
 import Panier from './PAGES/PANIER/Panier'
 import Paiement from './PAGES/PANIER/Paiement'
+import Error from './PAGES/Error'
 
 //-- Dashboard Materials
 import DashBoard from './PAGES/DASHBOARD/DashBoard'
@@ -25,7 +26,10 @@ import UpdateOrder from './PAGES/DASHBOARD/GESTION-CDES/UpdateOrder'
 import UpdateUser from './PAGES/DASHBOARD/GESTION-USER/UpdateUser'
 import UpdateCat from './PAGES/DASHBOARD/GESTION-CATEGORY/UpdateCat'
 
-// SERVICES
+import DashboardUser from './PAGES/DASHBOARD/DASHBOARD-USER/DashboardUser'
+import Avis from './PAGES/DASHBOARD/DASHBOARD-USER/Avis'
+
+// -- Services
 import PrivateRouter from './UTILS/helpers/PrivateRouter'
 import PublicRouter from './UTILS/helpers/PublicRouter'
 
@@ -59,6 +63,17 @@ function App() {
 
         <Route path="/products/:id" element={<DetailProduct />} />
         <Route path="/categories/:id" element={<DetailCategory />} />
+
+        <Route path='*' element={<Error/>} />
+
+      </Route>
+
+      {/* DASHBOARD RESERVE AUX USERS */}
+      <Route path="/" element={<LayoutSH />}>
+
+        <Route path="/account" element={<DashboardUser/>} />
+        <Route path="/order/:id" element={<Avis/>} />
+        {/* A modifier */}
 
 
       </Route>

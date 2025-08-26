@@ -1,0 +1,39 @@
+#dashboard-user {
+    width: 100vw;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        text-align: center;
+        width: 100%;
+    }
+
+    #historic-orders {
+        width: 100%;
+
+        #container-of-orders {
+            padding: 20px 0 20px 0;
+            width: 98%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+
+            .order-box {
+                border: 1px solid #b6b6b6;
+                display: flex;
+                flex-direction: column;
+                border-radius: 7px;
+
+                .grey-part {
+                    background-color: #F0F2F2;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 5px;
+                    gap: 5px;
+                }
+            }
+        }
+    }
+}

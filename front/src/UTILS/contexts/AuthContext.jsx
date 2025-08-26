@@ -12,7 +12,7 @@ export const AuthContext = createContext()
 // Ts les composants qui sont enfants de ce contexte seront specifiés dans ce paramètre là
 export const AuthProvider = ({ children }) => {
 
-    //Etat pour stocker les infos de l'user connecté
+    // Etat pour stocker les infos de l'user connecté
     const [ auth, setAuth ] = useState({})
     const [ isLoading, setIsLoading ] = useState(false)
     const navigate = useNavigate();
