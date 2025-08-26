@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import AXIOS_INSTANCE from '../../UTILS/services/AxiosInstance'
 import { Link } from 'react-router-dom'
 import './style.scss'
+import { API_URL } from './../../api';
+
 
 const OurCategories = () => {
 
@@ -12,7 +14,7 @@ const OurCategories = () => {
 
         const fetchCategories = async () => {
             try {
-                const { data, status } = await AXIOS_INSTANCE.get("http://localhost:8000/lv/category/get");
+                const { data, status } = await AXIOS_INSTANCE.get(`${API_URL}/lv/category/get`);
                 if(status === 200) {
                     setCat(data)
                 }

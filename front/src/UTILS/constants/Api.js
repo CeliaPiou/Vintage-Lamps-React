@@ -1,6 +1,8 @@
+import { API_URL } from "../../api";
+
 const URLS = {
-    POST_REGISTER: 'http://localhost:8000/lv/users/add',
-    POST_LOGIN: '/lv/users/sign-in'
+    POST_REGISTER: `${API_URL}/lv/users/add`,
+    POST_LOGIN: `${API_URL}/lv/users/sign-in`
 }
 
 export default URLS;

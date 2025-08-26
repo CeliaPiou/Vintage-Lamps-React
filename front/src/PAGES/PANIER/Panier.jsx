@@ -4,7 +4,9 @@ import { useState, useEffect, useContext } from 'react'
 import { CartContext } from '../../UTILS/contexts/CartContext'
 import { useNavigate } from 'react-router-dom'
 import AXIOS_INSTANCE from '../../UTILS/services/AxiosInstance'
+
 import Carrousel from '../../COMPONENTS/TEMPLATES/Carrousel'
+import { API_URL } from '../../api'
 
 const Panier = () => {
 
@@ -35,7 +37,7 @@ const Panier = () => {
                 price: total,
                 articles: cart.map(item => item._id)
             }
-            const response = await AXIOS_INSTANCE.post('http://localhost:8000/lv/orders/add', orderData);
+            const response = await AXIOS_INSTANCE.post(`${API_URL}/lv/orders/add`, orderData);
             alert('Commande validée !');
         }
         catch(error){

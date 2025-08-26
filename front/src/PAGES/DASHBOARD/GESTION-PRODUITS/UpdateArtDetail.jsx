@@ -4,6 +4,7 @@ import axios from 'axios'
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
 
 import AjouterCat from "../GESTION-CATEGORY/AjouterCat"
+import { API_URL } from '../../../api'
 
 const UpdateArtDetail = () => {
     const navigate = useNavigate();
@@ -45,7 +46,7 @@ const UpdateArtDetail = () => {
 
         const fetchArticles = async() => {
             try{
-                const { data, status } = await AXIOS_INSTANCE.get(`http://localhost:8000/lv/articles/`+id);
+                const { data, status } = await AXIOS_INSTANCE.get(`${API_URL}/lv/articles/`+id);
                 if (status === 200) setArticle(data);
             }
             catch(error){
@@ -62,7 +63,7 @@ const UpdateArtDetail = () => {
     useEffect(() => {
         const fetchCat = async () => {
             try{
-                const { data, status } = await AXIOS_INSTANCE('http://localhost:8000/lv/category/all')
+                const { data, status } = await AXIOS_INSTANCE(`${API_URL}/lv/category/all`)
                 if(status === 200) {setCategories(data)}
             }
             catch(error) {
@@ -173,7 +174,7 @@ const UpdateArtDetail = () => {
         event.preventDefault()
 
         try{
-            const response = await AXIOS_INSTANCE.put("http://localhost:8000/lv/articles/"+id+'/update', articleModifie);
+            const response = await AXIOS_INSTANCE.put(`${API_URL}/lv/articles/${id}/update`, articleModifie);
             alert("Article modifié");
             location.reload();
         }
@@ -193,7 +194,7 @@ const UpdateArtDetail = () => {
         event.preventDefault()
 
         try{
-            const result = await AXIOS_INSTANCE.delete('http://localhost:8000/lv/articles/'+id+'/delete');
+            const result = await AXIOS_INSTANCE.delete(`${API_URL}/lv/articles/${id}/delete`);
             alert("L'article a été supprimé")
         }
         catch(error){

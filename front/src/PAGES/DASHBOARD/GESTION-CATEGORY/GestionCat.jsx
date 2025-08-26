@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import AjouterCat from './AjouterCat'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../../../api';
 
 const GestionCat = () => {
 
@@ -14,7 +15,7 @@ const GestionCat = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const { data, status } = await axios('http://localhost:8000/lv/category/all');
+                const { data, status } = await axios(`${API_URL}/lv/category/all`);
                 if(status === 200) {
                     setCategories(data);
                 }

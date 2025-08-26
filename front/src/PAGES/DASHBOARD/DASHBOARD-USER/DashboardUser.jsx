@@ -7,6 +7,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 import { formatDate } from '../../../UTILS/helpers/FormatDate.jsx'
+import { API_URL } from './api';
 
 
 
@@ -20,7 +21,8 @@ const DashboardUser = () => {
 
         const fetchUser = async () => {
             try {
-                const urlToFetch =  "http://localhost:8000/lv/users/"+auth?.others?._id;
+              
+                const urlToFetch = `${API_URL}/lv/users/${auth?.others?._id}`;
 
                 const { data, status } = await axios.get(urlToFetch);
                 if(status === 200) {

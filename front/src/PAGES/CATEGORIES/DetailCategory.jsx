@@ -6,7 +6,7 @@ import { CartContext } from '../../UTILS/contexts/CartContext'
 import AXIOS_INSTANCE from '../../UTILS/services/AxiosInstance'
 
 import './style.scss'
-
+import { API_URL } from './../../api';
 
 const DetailCategory = () => {
 
@@ -15,12 +15,13 @@ const DetailCategory = () => {
     const { id } = params;
 
     // Récupération de la catégorie avec l'ID
+
     const [ category, setCategory ] = useState([]);
     useEffect(() => {
 
         const fetchCat = async () => {
             try {
-                const { data, status } = await AXIOS_INSTANCE.get(`http://localhost:8000/lv/category/${id}`)
+                const { data, status } = await AXIOS_INSTANCE.get(`${API_URL}/lv/category/${id}`);
                 if(status === 200) {
                     setCategory(data)
                 }
