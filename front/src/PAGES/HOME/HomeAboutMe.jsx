@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 import gradient from '../../assets/img/gradient.svg'
 
 const HomeAboutMe = () => {
@@ -11,13 +11,15 @@ const HomeAboutMe = () => {
 
             <div>
                 <h2>A propos</h2>
-                <p>  </p>
-                <button className='btn4'>En savoir plus
-                    <img
-                        src={gradient}
-                        width={500}
-                        className='btn-effect'></img>
-                </button>
+                <p> Notre passion : raviver la beauté des lampes anciennes et faire découvrir aux amateurs de lumière et de design ces pièces uniques qui traversent le temps, du verre artisanal aux métaux travaillés, en passant par les chefs-d’œuvre des maîtres verriers. </p>
+                <Link to={{pathname: `/about`}}>
+                    <button className='btn4'>En savoir plus
+                        <img
+                            src={gradient}
+                            width={500}
+                            className='btn-effect'></img>
+                    </button>
+                </Link>
             </div>
 
         </section>
@@ -26,9 +28,7 @@ const HomeAboutMe = () => {
 
             <div className='text-center w-50'>
                 <h2>Respect et tradition</h2>
-                <p>Some of these lamps are one hundred years old and over
-                (a time when planned obsolescence didn't mean anything)
-                and will last just as long or longer if they are properly taken care of.</p>
+                <p>Certaines de ces lampes ont cent ans et plus (à une époque où l’obsolescence programmée n’avait aucun sens) et dureront tout autant, voire plus, si elles sont correctement entretenues.</p>
             </div>
 
         </section>

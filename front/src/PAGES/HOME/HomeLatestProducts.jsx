@@ -110,7 +110,7 @@ const HomeLatestProducts = () => {
                 ))}
             </div>
 
-            <Link to={{ pathname: `/news` }}>
+            <Link to={{ pathname: `/products` }}>
                 <button className='btn4'>Toutes les nouveautés
                 <img
                         src={gradient}

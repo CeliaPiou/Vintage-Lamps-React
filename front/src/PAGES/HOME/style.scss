@@ -14,14 +14,34 @@
     div {
         border-radius: 15px;
         display: flex;
-        flex-direction: row-reverse;
+        position: relative;
+        // flex-direction: row-reverse;
         justify-content: space-around;
         align-items: center;
         background-color: #252525;
 
-        width: 100%;
+        width: 50vw;
         max-width: 500px;
         height: 300px;
+
+        p {
+            color: yellow;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: var.$font-big;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.158);
+            max-width: 90%;
+            font-size: 2rem;
+            text-align: center;
+            z-index: 1;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        p:hover {
+            color: black;
+            background-color: rgba(255, 255, 255, 0.479);
+        }
     }
 
     img {

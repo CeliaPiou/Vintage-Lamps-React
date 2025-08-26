@@ -1,29 +1,37 @@
 import React from 'react'
 import './style.scss'
+import { Link } from 'react-router-dom'
 
 const ContainerLinks = () => {
+
   return (
 
     <>
 
       <section id="container-links"  className='flex mt-big justify-center'>
 
-        <div className=''>
-          <img
-            src="https://i.ibb.co/r2KVYgP1/erasebg-transformed-1.webp"
-            alt="modernist art deco glass lamp"
-            width={250}/>
-          <button className='btn4'>Glass shade lamps</button>
-        </div>
+        <Link to={{ pathname : `/products`}}>
+          <div className=''>
+            <img
+              src="https://i.ibb.co/r2KVYgP1/erasebg-transformed-1.webp"
+              alt="modernist art deco glass lamp"
+              width={250}/>
+            {/* <button className='btn4'>Voir les nouveautés</button> */}
+            <p>Voir les nouveautés</p>
+          </div>
+        </Link>
 
-        <div className=''>
-        <button className='btn4'>Metal shade lamps</button>
+        <Link to={{ pathname : `/products`}}>
+          <div className=''>
+          {/* <button className='btn4'>Voir les petits prix</button> */}
+          <p>Voir les petits prix</p>
 
-          <img
-            src="https://i.ibb.co/DfhtSdnb/erasebg-transformed-3.webp"
-            alt="vintage mid-century rockabilly lamp"
-            width={250}/>
-        </div>
+            <img
+              src="https://i.ibb.co/DfhtSdnb/erasebg-transformed-3.webp"
+              alt="vintage mid-century rockabilly lamp"
+              width={250}/>
+          </div>
+        </Link>
 
 
         {/* <div id='metal-card' className='card'>

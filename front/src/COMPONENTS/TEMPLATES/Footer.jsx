@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
 
@@ -35,17 +36,33 @@ const Footer = () => {
           <div className='text-center w-30'>
             <div>
                 <h2>Contact</h2>
-                <p><em>Blablabla</em></p>
+                <p><em>Besoin d’aide ou simplement envie d’échanger sur nos trouvailles vintage ? Contactez-nous !</em></p>
             </div>
 
             <div>
-              <p>email@email.fr</p>
+              <p>leydier2020@email.fr</p>
               <p>+331 0203 0405</p>
-              <p>Jaures</p>
+              <p>Métro Jaures, Paris</p>
             </div>
 
             <div>
-              Etsy - FB - Insta
+            {/* <!-- Etsy --> */}
+            <a href="https://www.etsy.com/shop/LampesVintages?ref=l2-about-shopname&from_page=listing" target="_blank" rel="noopener noreferrer">
+              <svg width="32" height="32" viewBox="0 0 512 512">
+                <circle cx="256" cy="256" r="256" fill="#F16521"/>
+                <text x="50%" y="60%" text-anchor="middle" fill="white" font-size="200" font-family="Arial" dy=".35em">E</text>
+              </svg>
+            </a>
+
+              {/* <!-- Facebook --> */}
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <img src="path/to/facebook-logo.png" alt="Lampes Vintage sur Facebook" width="32" height="32"/>
+              </a>
+
+              {/* <!-- Instagram --> */}
+              <a href="https://www.instagram.com/lampesvintages/" target="_blank" rel="noopener noreferrer">
+                <img src="path/to/instagram-logo.png" alt="Lampes Vintage sur Instagram" width="32" height="32"/>
+              </a>
             </div>
 
           </div>
@@ -56,15 +73,16 @@ const Footer = () => {
               <p>Conditions générales de vente</p>
               <p>Questions fréquentes</p>
               <p>Informations sur les livraisons</p>
-              <p>Mentions légales</p>
+              <Link to ={{pathname: `/mentions-legales`}}>
+                <p>Mentions légales</p>
+              </Link>
 
           </div>
 
           <div className='text-center w-30'>
             <h2>Newsletter</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Asperiores corporis excepturi modi laborum quibusdam
-              architecto, suscipit esse obcaecati doloribus!</p>
+            <p>Découvrez en avant-première nos lampes anciennes rénovées
+              et laissez-vous inspirer par le charme du design vintage</p>
 
             <div>
               <input type="text" placeholder="Votre email"></input>

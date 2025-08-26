@@ -17,6 +17,9 @@ import OurCategories from './PAGES/CATEGORIES/OurCategories'
 import DetailCategory from './PAGES/CATEGORIES/DetailCategory'
 import Panier from './PAGES/PANIER/Panier'
 import Paiement from './PAGES/PANIER/Paiement'
+
+import MentionsLegales from './PAGES/PAGES-FOOTER/MentionsLegales'
+
 import Error from './PAGES/Error'
 
 //-- Dashboard Materials
@@ -63,6 +66,8 @@ function App() {
 
         <Route path="/products/:id" element={<DetailProduct />} />
         <Route path="/categories/:id" element={<DetailCategory />} />
+
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
 
         <Route path='*' element={<Error/>} />
 

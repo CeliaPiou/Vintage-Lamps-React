@@ -475,6 +475,10 @@ a {
 //// TABLETTES
 @media screen and (max-width:1024px) {
 
+    .typewriter {
+        font-size: 2rem !important;
+    }
+
     #secondary-nav {
 
         #search-input {
