@@ -19,6 +19,7 @@ const Header = () => {
     // Afficher/Gérer la connexion :
     const { logout, auth } = useContext(AuthContext);
 
+
     // Afficher/retirer le déroulé du panier
     const cartContentVisble = () => {
         const containerCart = document.getElementById('container-cart');
@@ -95,15 +96,6 @@ const Header = () => {
                         <div className='dropdown-child'>
                             <p>Bonjour, {auth.others?.username}</p>
                             <button className="btn5" onClick={logout}>Se déconnecter</button>
-                            {auth?.others?.role!="admin"?
-                            <>
-                                <Link to={{ pathname: `/account` }}>
-                                    <button className='btn5'>Mon compte</button>
-                                </Link>
-                            </>
-                            :
-                            ""
-                            }
                         </div>
                     </li>
                 </>
@@ -124,21 +116,21 @@ const Header = () => {
             </nav>
 
             <div id="hero-section-text" className='flex'>
-                <h1 className='typewriter'>Vintage Lamps</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsum ea esse dolore! Earum impedit, expedita rerum a
-                    delectus ratione officia similique aut dolores eaque
-                    voluptatem molestias, voluptatum, eligendi atque dolorum.</p>
-                    <button
-                    className='btn4'
-                    >
-                    Discover our lamps
-                    <img
-                        src={gradient}
-                        width={500}
-                        className='btn-effect'></img>
-                    </button>
-        </div>
+                    <h1 className='typewriter'>Vintage Lamps</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Ipsum ea esse dolore! Earum impedit, expedita rerum a
+                        delectus ratione officia similique aut dolores eaque
+                        voluptatem molestias, voluptatum, eligendi atque dolorum.</p>
+                        <button
+                        className='btn4'
+                        >
+                        Discover our lamps
+                        <img
+                            src={gradient}
+                            width={500}
+                            className='btn-effect'></img>
+                        </button>
+            </div>
 
         </section>
 

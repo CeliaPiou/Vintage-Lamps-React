@@ -269,9 +269,9 @@
 // Avis récents
 
 .flip-card-container {
-    width: 200px;
+    width: 200px; /* Ajuste selon tes besoins */
     height: 300px;
-    perspective: 1000px;
+    perspective: 1000px; /* Important pour l'effet 3D */
 }
 .flip-card {
     position: relative;

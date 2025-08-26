@@ -18,7 +18,7 @@ const OurProducts = () => {
     useEffect(() => {
         const fetchArticles = async() => {
             try{
-  
+                // Change l'URL à récupérer selon l'url utilisé
                 const urlToFetch =  `${API_URL}/lv/articles/all`;
 
                 const { data, status } = await axios.get(urlToFetch);
@@ -112,6 +112,33 @@ const OurProducts = () => {
                             <option value="prix-decroissant">Prix décroissant</option>
                         </select>
                     </fieldset>
+
+                    {/* <fieldset>
+                        <legend>Filtrer par...</legend>
+                        <div>
+                            <legend>Par couleur</legend>
+                            <div>
+                                <input type="checkbox" name="color" id="jaune" value="jaune"></input>
+                                <label htmlFor="jaune">Jaune</label>
+                                <input type="checkbox" name="color" id="orange" value="orange"></input>
+                                <label htmlFor="orange">Orange</label>
+                                <input type="checkbox" name="color" id="noir" value="noir"></input>
+                                <label htmlFor="noir">Noir</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <legend>Par catégorie de prix</legend>
+                            <div>
+                                <input type="checkbox" name="price-cat" id="under-150" value="under-150"></input>
+                                <label htmlFor="under-150">Inférieur à 150</label>
+                                <input type="checkbox" name="price-cat" id="150-250" value="150-250"></input>
+                                <label htmlFor="150-250">Entre 150 et 250</label>
+                                <input type="checkbox" name="price-cat" id="over-250" value="over-250"></input>
+                                <label htmlFor="over-250">Supérieur à 250</label>
+                            </div>
+                        </div>
+                    </fieldset> */}
 
                     <button className='btn4 mt-small' onClick={handleFilter}>Appliquer les filtres</button>
 
