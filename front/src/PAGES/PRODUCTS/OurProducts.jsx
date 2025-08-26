@@ -18,7 +18,7 @@ const OurProducts = () => {
     useEffect(() => {
         const fetchArticles = async() => {
             try{
-  
+
                 const urlToFetch =  `${API_URL}/lv/articles/all`;
 
                 const { data, status } = await axios.get(urlToFetch);

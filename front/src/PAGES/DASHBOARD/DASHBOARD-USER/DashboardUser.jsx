@@ -11,6 +11,7 @@ import { API_URL } from './api';
 
 
 
+
 const DashboardUser = () => {
 
     const { auth, logout } = useContext(AuthContext);
@@ -21,7 +22,7 @@ const DashboardUser = () => {
 
         const fetchUser = async () => {
             try {
-              
+
                 const urlToFetch = `${API_URL}/lv/users/${auth?.others?._id}`;
 
                 const { data, status } = await axios.get(urlToFetch);
