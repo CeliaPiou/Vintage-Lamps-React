@@ -67,7 +67,7 @@ const postUser = async (req,res,next) => {
 const verifyEmail = async (req, res, next) => {
 
     try {
-        const { token } = req.query;
+        const { token } = req.params;
         if (!token) return next(createError(400, "Token missing."));
 
         const tokenHash = sha256(token);

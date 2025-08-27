@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async (user, verifieToken) => {
 
     const verificationLink =
-    `<a href='${ENV.PORT_APPLICATION_FRONT}/verification/${verifieToken}'> ${verifieToken}</a>`
+    `<a href='${ENV.FRONT_URL}/verification/${verifieToken}'>Lien de vérification</a>`
 
     await transporter.sendMail({
 

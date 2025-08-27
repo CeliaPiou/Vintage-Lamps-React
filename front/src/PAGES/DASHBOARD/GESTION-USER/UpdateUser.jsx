@@ -71,7 +71,7 @@ const UpdateUser = () => {
     // --- Supprimer un avis
     const deleteAvis = async (id) => {
         try{
-            const result = await AXIOS_INSTANCE.delete('http://localhost:8000/lv/avis/delete/'+id);
+            const result = await AXIOS_INSTANCE.delete(`${API_URL}/lv/avis/delete/${id}`);
             alert("L'avis a été supprimé")
         }
         catch(error){

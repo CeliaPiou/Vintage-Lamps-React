@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+import { API_URL } from '../../api';
 
 const HomeLatestAvis = () => {
 
@@ -55,7 +56,7 @@ const HomeLatestAvis = () => {
         const fetchArticles = async() => {
 
             try{
-                const { data, status } = await axios.get(`http://localhost:8000/lv/avis/all`);
+                const { data, status } = await axios.get(`${API_URL}/lv/avis/all`);
                 if (status === 200) {
                     const formattedData = data.map(item => ({
                         id: item._id,

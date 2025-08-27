@@ -10,6 +10,7 @@ import LayoutDSH from './COMPONENTS/TEMPLATES/LayoutDSH'
 import Home from './PAGES/HOME/Home'
 import About from './PAGES/ABOUT/About'
 import Connexion from './PAGES/CONNEXION/Connexion'
+import VerificationPage from './PAGES/CONNEXION/VerificationPage'
 import Contact from './PAGES/CONTACT/Contact'
 import OurProducts from './PAGES/PRODUCTS/OurProducts'
 import DetailProduct from './PAGES/PRODUCTS/DetailProduct'
@@ -55,6 +56,8 @@ function App() {
 
       {/* PAGES PUBLIQUES AVEC PETIT HEADER */}
       <Route path='/' element={<LayoutSH />}>
+
+        <Route path="/verification/:token" element={<VerificationPage />} />
 
         <Route path='/about' element={<About />} />
         <Route path='/connexion' element={<Connexion />} />
