@@ -21,7 +21,7 @@ const GestionUser = () => {
             }
         }
         fetchCustomers();
-    }, []);
+    }, [users]);
 
     const deleteUser = async (id) => {
 

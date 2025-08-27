@@ -13,6 +13,19 @@ const userSchema = mongoose.Schema(
             type: String,
             required: true
         },
+
+        ///// Vérification e-mail
+        isVerified: {
+            type: Boolean, default: false
+        },
+        verificationTokenHash: {
+            type: String
+        },
+        verificationTokenExpires: {
+            type: Date
+        },
+        /////
+
         role: {
             type: String,
             enum: ['user', 'admin'],

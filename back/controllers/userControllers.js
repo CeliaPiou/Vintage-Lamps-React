@@ -1,35 +1,97 @@
 const createError = require('../middlewares/error');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv')
-const ENV = require('../config/env.js')
+const crypto = require("crypto");
+
+const dotenv = require('dotenv');
 dotenv.config();
+const ENV = require('../config/env.js');
+
 
 // Importation du modèle
 const Users = require('../models/userModele.js');
+const {sendEmail} = require('../services/nodemailer.js')
 
+// Helper
+function sha256(str) {
+    return crypto.createHash("sha256").update(str).digest("hex");
+}
 
 // Let's go
 const postUser = async (req,res,next) => {
 
     try{
         const alreadyExisted = await Users.findOne({email : req.body.email});
-        if(alreadyExisted) return next(createError(403, 'User already exists'))
+        const { username, email, password } = req.body;
 
-        const passwordHashed = await bcrypt.hash(req.body.password, 10);
+        // Erreurs possibles: Compte déjà existant, pas de champ rempli, longueur insuffisante
+        if(alreadyExisted)          return next(createError(403, 'User already exists'));
+        if (!email || !password)    return next(createError(400, "Missing e-mail and/or password." ));
+        if (password.length < 8)    return next(createError(400, "Password must be longer. (8 caracters at least)" ));
+
+        // Sécurisation maximale du mdp :
+        const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        if (!strongPassword.test(password)) return next(createError(400, "Le mot de passe doit contenir au moins 8 caractères, avec majuscule, minuscule, chiffre et caractère spécial."
+        ));
+
+        // Cryptage du mot de passe:
+        const passwordHashed = await bcrypt.hash(req.body.password, 12);
+
+        // Génère un token de vérification :
+        const token = crypto.randomBytes(32).toString("hex");
+        const tokenHash = sha256(token);
+        const expires = new Date(Date.now() + 1000 * 60 * 60 * 24); // 24h
+
+
+        // Enfin, création du user:
         const newUser = await Users.create({
-            ...req.body,
-            password: passwordHashed
+            username,
+            email,
+            password: passwordHashed,
+            isVerified: false,
+            verificationTokenHash: tokenHash,
+            verificationTokenExpires: expires
         });
 
+        await sendEmail(newUser, token);
 
-        res.status(201).json(newUser);
+        res.status(201).json({message: "Utilisateur créé. Veuillez vérifier votre e-mail pour activer votre compte."});
 
     }
     catch(error){
-        next(createError(404, 'Error: ', error.message))
+        next(createError(500, 'Error: ', error.message))
     }
 }
+
+// Vérification email
+const verifyEmail = async (req, res, next) => {
+
+    try {
+        const { token } = req.query;
+        if (!token) return next(createError(400, "Token missing."));
+
+        const tokenHash = sha256(token);
+
+        const user = await Users.findOne({
+            verificationTokenHash: tokenHash,
+            verificationTokenExpires: { $gt: new Date() }
+        });
+
+        if (!user) return next(createError(400, "Invalid or expired link."));
+
+        user.isVerified = true;
+        user.verificationTokenHash = undefined;
+        user.verificationTokenExpires = undefined;
+        await user.save();
+
+        return res.json({ message: "Email verified, you can now log in." });
+        }
+
+        catch (error) {
+            next(createError(500, error.message));
+        }
+};
+
 const getAllUsers = async (req, res, next) => {
 
     try{
@@ -37,7 +99,7 @@ const getAllUsers = async (req, res, next) => {
         res.status(200).json(result)
     }
     catch(error){
-        next(createError(404, 'Error: ', error.message))
+        next(createError(500, 'Error: ', error.message))
     }
 }
 const getOneUser = async (req, res, next) => {
@@ -138,6 +200,7 @@ const updateUser = async(req, res, next) => {
 
 module.exports = {
     postUser,
+    verifyEmail,
     getAllUsers,
     getOneUser,
     signIn,
