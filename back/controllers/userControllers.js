@@ -25,9 +25,9 @@ const postUser = async (req,res,next) => {
         const { username, email, password } = req.body;
 
         // Erreurs possibles: Compte déjà existant, pas de champ rempli, longueur insuffisante
-        if(alreadyExisted)          return next(createError(403, 'User already exists'));
-        if (!email || !password)    return next(createError(400, "Missing e-mail and/or password." ));
-        if (password.length < 8)    return next(createError(400, "Password must be longer. (8 caracters at least)" ));
+        if(alreadyExisted)          return next(createError(403, `L'utilisateur existe déjà.`));
+        if (!email || !password)    return next(createError(400, `Le mot de passe et l'email doivent être renseignés.` ));
+        if (password.length < 8)    return next(createError(400, `Le mot de passe doit être plus long (8 caracteres au moins)` ));
 
         // Sécurisation maximale du mdp :
         const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
@@ -41,7 +41,6 @@ const postUser = async (req,res,next) => {
         const token = crypto.randomBytes(32).toString("hex");
         const tokenHash = sha256(token);
         const expires = new Date(Date.now() + 1000 * 60 * 60 * 24); // 24h
-
 
         // Enfin, création du user:
         const newUser = await Users.create({

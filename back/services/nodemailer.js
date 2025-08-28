@@ -2,11 +2,6 @@ const nodemailer = require("nodemailer");
 const dotenv = require('dotenv')
 dotenv.config();
 const ENV = require('../config/env')
-
-// 🔹 Vérification des variables d'environnement
-console.log("EMAIL_USER:", ENV.EMAIL_USER);
-console.log("EMAIL_PASS:", ENV.EMAIL_PASS);
-
 const transporter = nodemailer.createTransport({
 
     // Configuration du serveur SMTP de GMAIL
