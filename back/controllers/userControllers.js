@@ -133,7 +133,7 @@ const signIn = async (req, res, next) => {
         .cookie('access_token', token, {
             httpOnly: true,  // Il ne peut pas être accédé via le javascript !
             maxAge: 24 * 60 * 60 * 1000, // 24h en millisecondes
-            secure: false, // Célia A mettre à true pour https (site en ligne)
+            secure: true, //  A mettre à true pour https (site en ligne)
             sameSite: 'strict' // Protège contre les attaques CSRF
         })
         .status(200).json({
