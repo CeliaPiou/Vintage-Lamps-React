@@ -44,7 +44,7 @@ export const CartProvider = ({ children }) => {
             updateCart(updatedCart);
             setCartIsUpdated(!cartIsUpdated)
             // Pop-up, article ajouté
-            alert('Item added to your cart !')
+            alert(`L'article a bien été ajouté au panier !`)
         }
         else {
             alert("L'article est déjà dans votre panier")

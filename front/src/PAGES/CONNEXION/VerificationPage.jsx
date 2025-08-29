@@ -12,7 +12,7 @@ const VerificationPage = () => {
 
     const verifyEmail = async () => {
         try {
-        console.log("Célia", token)
+        // console.log("Célia", token)
 
         if (!token) {
             setMessage("Aucun token fourni.");

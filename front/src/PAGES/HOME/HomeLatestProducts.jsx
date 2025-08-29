@@ -81,32 +81,34 @@ const HomeLatestProducts = () => {
                     .slice(0,8)
                     .map((item) => (
 
-                        <Link to={{ pathname: `/products/${item._id}` }}>
                         <div key={item._id} className='card'
                         style={{
                             transform: `translateX(${position}px)`,
                             transition: 'transform 0.3s ease-in-out'
                         }}>
 
-                            <img
-                                src={item.picture?.img}
-                                width={200}
-                                height={200}
-                            ></img>
+                            <Link to={{ pathname: `/products/${item._id}` }}>
 
-                            <p>
-                                <strong>{item.name}</strong>
-                            </p>
+                                <img
+                                    src={item.picture?.img}
+                                    width={200}
+                                    height={200}
+                                ></img>
 
-                            <span>
-                                {item.price},00 €
-                            </span>
-                            <br/>
+                                <p>
+                                    <strong>{item.name}</strong>
+                                </p>
 
-                            <button onClick={addItem} className='btn5'>Add to cart</button>
+                                <span>
+                                    {item.price},00 €
+                                </span>
+                                <br/>
+
+                            </Link>
+
+                            <button onClick={() => {addItem(item)}} className='btn5'>Add to cart</button>
 
                         </div>
-                        </Link>
                 ))}
             </div>
 

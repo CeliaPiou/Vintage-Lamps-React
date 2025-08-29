@@ -116,13 +116,13 @@ const signIn = async (req, res, next) => {
     try{
         // Vérifier si l'email est déjà enregistré
         const findUser = await Users.findOne({email: req.body.email});
-        if(!findUser) return next(createError(404, 'User not found'))
+        if(!findUser) return next(createError(404, `L'utilisateur n'existe pas`))
 
         // Vérifier le mot de passe, en le décryptant
         const hashedPassword = findUser.password;
         const enteredPassword = req.body.password;
         const comparePassword = await bcrypt.compare(enteredPassword, hashedPassword);
-        if(!comparePassword) return next(createError(401, 'wrong credentials'));
+        if(!comparePassword) return next(createError(401, `Mauvais identifiants`));
 
         // Token
         const token = jwt.sign({id: findUser._id}, ENV.TOKEN, { expiresIn: "24h" })
@@ -141,7 +141,7 @@ const signIn = async (req, res, next) => {
         });
     }
     catch(error){
-        next(createError(404, "oopsy... :", error.message))
+        next(createError(500, "Error... :", error.message))
     }
 
 }
@@ -164,7 +164,7 @@ const deleteUser = async(req, res, next) => {
     try{
         // Vérifier si l'email est déjà enregistré
         const findUser = await Users.findById(req.params.id)
-        if(!findUser) return next(createError(404, 'User not found'))
+        if(!findUser) return next(createError(500, 'User not found'))
 
         const userToDelete = await Users.findByIdAndDelete(req.params.id);
         res.status(200).json('Vous avez bien supprimé cet utilisateur')

@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }) => {
         catch(error){
             console.log(error.message)
             setIsLoading(false)
+            throw error;
         }
     }
 
@@ -61,6 +62,7 @@ export const AuthProvider = ({ children }) => {
         }
         catch(error){
             console.log("Error: ", error.message)
+            throw error;
         }
 
     }

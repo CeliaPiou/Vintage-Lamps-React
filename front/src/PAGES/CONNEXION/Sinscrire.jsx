@@ -7,6 +7,9 @@ import URLS from '../../UTILS/constants/Api'
 
 const Sinscrire = () => {
 
+    // état pour stocker le message d'erreur
+    const [message, setMessage] = useState("");
+
     // Initialisation de l'état pour les informations de l'user
     const [user, setUser] = useState({
         username: "",
@@ -28,6 +31,7 @@ const Sinscrire = () => {
         }
         catch(error){
             console.error('Error:', error.message);
+            setMessage(`Erreur rencontrée : ${error.response?.data.error.message}`|| "Erreur lors de la vérification.");
         }
 
     }
@@ -66,6 +70,8 @@ const Sinscrire = () => {
             />
 
             <button className="btn4 mt-small">REGISTER</button>
+
+            <p>{message}</p>
 
         </form>
     </>

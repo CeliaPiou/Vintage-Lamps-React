@@ -7,6 +7,9 @@ import { AuthContext } from '../../UTILS/contexts/AuthContext'
 
 const SeConnecter = () => {
 
+    // état pour stocker le message d'erreur
+    const [message, setMessage] = useState("");
+
     // D'abord, on crée un etat pour stocker l'user
     const [ user, setUser ] = useState({});
     const { login } = useContext(AuthContext);
@@ -18,10 +21,17 @@ const SeConnecter = () => {
     }
 
     // Const handleSubmit pour réaliser la co
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+
         // J'envoie les infos de l'user à la fonct login
-        login(user)
+        try {
+            await login(user)
+        }
+        catch(error) {
+            console.error(error.message);
+            setMessage(`Erreur rencontrée : ${error.response?.data.error.message}`|| "Erreur lors de la vérification.");
+        }
     }
 
 
@@ -51,7 +61,9 @@ const SeConnecter = () => {
                 <button type="submit" className="btn4 mt-small">
                 LOGIN
                 </button>
-                <p>Forgot password?</p>
+
+                <p>{message}</p>
+                {/* <p>Forgot password?</p> */}
             </form>
         </>
     )
