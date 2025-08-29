@@ -133,8 +133,14 @@ const signIn = async (req, res, next) => {
         .cookie('access_token', token, {
             httpOnly: true,  // Il ne peut pas être accédé via le javascript !
             maxAge: 24 * 60 * 60 * 1000, // 24h en millisecondes
-            secure: true, //  A mettre à true pour https (site en ligne)
-            sameSite: 'strict' // Protège contre les attaques CSRF
+            ////   Sur local host:
+            // secure: false, //  A mettre à true pour https (site en ligne)
+            // sameSite: 'strict' // Protège contre les attaques CSRF
+
+            //// Sur Vercel:
+            secure: true,          // HTTPS obligatoire
+            sameSite: 'lax',       // OK pour fetch côté client sur le même domaine
+            path: '/'              // s’assure que le cookie est accessible
         })
         .status(200).json({
             others
