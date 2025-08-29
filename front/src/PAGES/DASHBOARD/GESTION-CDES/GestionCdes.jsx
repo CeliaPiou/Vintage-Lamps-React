@@ -22,7 +22,7 @@ const GestionCdes = () => {
         }
 
         fetchOrders();
-    }, [orders])
+    }, [])
     let i = 1;
 
     const blue = {
@@ -42,7 +42,7 @@ const GestionCdes = () => {
 
     const handleDelete = async (id) => {
         try {
-            const result = await AXIOS_INSTANCE.delete(`${API_URL}/lv/orders/+${id}+/delete`);
+            const result = await AXIOS_INSTANCE.delete(`${API_URL}/lv/orders/${id}/delete`);
             alert("La commande a été supprimée")
         }
         catch(error) {
