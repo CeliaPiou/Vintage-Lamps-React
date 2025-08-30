@@ -85,6 +85,18 @@
             border: 2px solid var.$font-fun2-color;
         }
 
+        textarea {
+            padding: 15px;
+            border: none;
+            padding-bottom: 3px;
+            border-bottom: 3px solid var.$font-fun2-color;
+            transition: all 0.1s ease-in-out;
+            width: 80%;
+            height: 150px;
+            max-width: 80%;
+            resize: none;
+        }
+
         button {
             width: 50%;
             padding: 10px;
@@ -93,6 +105,29 @@
             svg {
                 margin-right: 10px;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #contact {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+
+        div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        form {
+            width: 100vw;
         }
     }
 }

@@ -37,6 +37,15 @@ const postMessage = async(req, res, next) => {
     }
 }
 
+const getAllMessages = async (req, res, next) => {
+    try {
+        // A définir
+    }
+    catch(error){
+        next(createError(500, "Error, ", error.message))
+    }
+}
+
 
 module.exports = {
     postMessage
