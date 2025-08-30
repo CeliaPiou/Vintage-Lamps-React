@@ -20,6 +20,7 @@ const transporter = nodemailer.createTransport({
 
 });
 
+// Vérification du compte email
 const sendEmail = async (user, verifieToken) => {
 
     const verificationLink =
@@ -43,4 +44,17 @@ const sendEmail = async (user, verifieToken) => {
 
 }
 
-module.exports = { sendEmail };
+const sendContact = async ({name, email, message}) => {
+
+    await transporter.sendMail({
+
+        from: ENV.EMAIL_USER,
+        replyTo: email,
+        to: ENV.EMAIL_USER,
+        subject: `Vintage Lamps / Demande de contact de ${name}`,
+        text: message
+
+    })
+}
+
+module.exports = { sendEmail, sendContact };

@@ -11,6 +11,6 @@ const PORT = ENV.PORT || 8080;
 
 // LISTEN
 app.listen(PORT, () => {
-    console.log(`🎉 The back-end server is launched ! http://localhost:${PORT}`)
+    console.log(`🎉 Le serveur back-end est lancé, yay ! http://localhost:${PORT}`)
 })
 
