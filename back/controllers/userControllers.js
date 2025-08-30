@@ -134,13 +134,12 @@ const signIn = async (req, res, next) => {
             httpOnly: true,  // Il ne peut pas être accédé via le javascript !
             maxAge: 24 * 60 * 60 * 1000, // 24h en millisecondes
             ////   Sur local host:
-            secure: false, //  A mettre à true pour https (site en ligne)
-            sameSite: 'strict' // Protège contre les attaques CSRF
+            // secure: false, //  A mettre à true pour https (site en ligne)
+            // sameSite: 'strict' // Protège contre les attaques CSRF
 
             //// Sur Vercel:
-            // secure: true,          // HTTPS obligatoire
-            // sameSite: 'lax',       // OK pour fetch côté client sur le même domaine
-            // path: '/'              // s’assure que le cookie est accessible
+            secure: true,          // HTTPS obligatoire
+            sameSite: 'none',       // Pas le choix puisque render / vercel sont deux domaines différents
         })
         .status(200).json({
             others
