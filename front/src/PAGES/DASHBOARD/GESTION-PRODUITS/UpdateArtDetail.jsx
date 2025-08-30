@@ -1,6 +1,5 @@
 import React, { useState, useEffect }from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
 
 import AjouterCat from "../GESTION-CATEGORY/AjouterCat"
@@ -176,7 +175,7 @@ const UpdateArtDetail = () => {
         try{
             const response = await AXIOS_INSTANCE.put(`${API_URL}/lv/articles/${id}/update`, articleModifie);
             alert("Article modifié");
-            location.reload();
+            navigate('/dashboard')
         }
         catch(error){
             console.error('Error:', error);
