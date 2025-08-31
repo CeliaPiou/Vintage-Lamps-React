@@ -1,0 +1,40 @@
+#container-messages {
+    // background-color: red;
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .message-box {
+        position: relative;
+        background-color: #F2F2F2;
+        min-width: 25vw;
+        height: 200px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            margin: 10px;
+        }
+
+    }
+
+    .message-box:hover {
+        scale: 1.05;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    #container-messages {
+        .message-box {
+            width: 100%;
+        }
+    }
+}

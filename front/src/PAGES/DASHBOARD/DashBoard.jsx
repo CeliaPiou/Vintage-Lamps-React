@@ -3,6 +3,7 @@ import './style.scss'
 import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+
 import { AuthContext } from '../../UTILS/contexts/AuthContext';
 
 import GestionProduits from './GESTION-PRODUITS/GestionProduits'
@@ -11,6 +12,7 @@ import GestionUser from './GESTION-USER/GestionUser'
 import GestionCat from './GESTION-CATEGORY/GestionCat'
 
 import { API_URL } from './../../api';
+import GestionMessages from './GESTION-MESS/GestionMessages';
 
 
 
@@ -43,6 +45,7 @@ const DashBoard = () => {
         const [products, setProducts] = useState(false);
         const [orders, setOrders] = useState(false);
         const [customers, setCustomers] = useState(false);
+        const [mess, setMess] = useState(false);
         const [catClicked, setCatClicked] = useState(false);
 
         // Au chargement de la page, voir si une option a déjà été choisie
@@ -59,7 +62,7 @@ const DashBoard = () => {
                 setOrders(false);
                 setCustomers(false);
                 setCatClicked(false)
-
+                setMess(false);
             };
 
             if(localSto === "orders") {
@@ -68,7 +71,7 @@ const DashBoard = () => {
                 setOrders(true);
                 setCustomers(false);
                 setCatClicked(false)
-
+                setMess(false);
             };
 
             if(localSto === "customers") {
@@ -77,7 +80,7 @@ const DashBoard = () => {
                 setOrders(false);
                 setCustomers(true);
                 setCatClicked(false)
-
+                setMess(false);
             };
 
             if(localSto === "categories") {
@@ -86,6 +89,16 @@ const DashBoard = () => {
                 setOrders(false);
                 setCustomers(false);
                 setCatClicked(true)
+                setMess(false);
+            }
+
+            if(localSto === "messages") {
+                setDashboard(false);
+                setProducts(false);
+                setOrders(false);
+                setCustomers(false);
+                setCatClicked(false);
+                setMess(true);
             }
 
         }, [])
@@ -96,6 +109,7 @@ const DashBoard = () => {
             setOrders(false);
             setCustomers(false);
             setCatClicked(false);
+            setMess(false);
 
             localStorage.setItem("dashboard", "dashboard")
         }
@@ -105,6 +119,7 @@ const DashBoard = () => {
             setOrders(false);
             setCustomers(false);
             setCatClicked(false);
+            setMess(false);
 
             localStorage.setItem("dashboard", "products")
         }
@@ -114,6 +129,7 @@ const DashBoard = () => {
             setOrders(true);
             setCustomers(false);
             setCatClicked(false);
+            setMess(false);
 
             localStorage.setItem("dashboard", "orders")
 
@@ -124,9 +140,20 @@ const DashBoard = () => {
             setOrders(false);
             setCustomers(true);
             setCatClicked(false);
+            setMess(false);
 
             localStorage.setItem("dashboard", "customers")
 
+        }
+        const handleSelectedMessages = () => {
+            setDashboard(false);
+            setProducts(false);
+            setOrders(false);
+            setCustomers(false);
+            setCatClicked(false);
+            setMess(true);
+
+            localStorage.setItem("dashboard", "messages")
         }
         const handleSelectedCat = () => {
             setDashboard(false);
@@ -134,11 +161,14 @@ const DashBoard = () => {
             setOrders(false);
             setCustomers(false);
             setCatClicked(true);
+            setMess(false);
 
             localStorage.setItem("dashboard", "categories")
         }
 
-        // Récupération des datas
+        // ___________ Les data à fetch
+
+        // Récupération des lampes
         const [ lampes, setLampes ] = useState([]);
         useEffect(() => {
             const fetchLampes = async () => {
@@ -156,6 +186,7 @@ const DashBoard = () => {
             fetchLampes()
         }, [])
 
+        // Récupérer les catégories
         const [ categories, setCategories ] = useState([]);
         useEffect(() => {
             const fetchCat = async () => {
@@ -173,6 +204,7 @@ const DashBoard = () => {
             fetchCat()
         }, [])
 
+        // Récupérer les users
         const [ users, setUsers ] = useState([]);
         useEffect(() => {
             const fetchUsers = async () => {
@@ -188,6 +220,7 @@ const DashBoard = () => {
             fetchUsers();
         }, []);
 
+        // Récup l'ensemble des commandes
         const [ commandes, setCommandes ] = useState([]);
         useEffect(() => {
 
@@ -207,6 +240,7 @@ const DashBoard = () => {
             fetchOrders();
         }, [])
 
+        // Calculer le total généré
         const [ total, setTotal ] = useState();
         useEffect(() => {
                 const fetchPrices =  () => {
@@ -221,12 +255,32 @@ const DashBoard = () => {
 
             }, [commandes])
 
+        // Récupérer les commandes à envoyer
         const [ commandesToSend, setCommandesToSend ] = useState([]);
         useEffect(() => {
             const ordersToShip = commandes.filter(item => item.isShipped!= true);
             setCommandesToSend(ordersToShip);
             console.log(ordersToShip)
         }, [commandes]);
+
+        // Récupérer les messages
+        const [ messages, setMessages ] = useState([]);
+        useEffect(() => {
+
+            const fetchMessages = async () => {
+                try{
+                    const { data, status } = await axios.get(`${API_URL}/lv/contact/all`);
+                    if (status===200) {
+                        setMessages(data);
+                    }
+                }
+                catch(error){
+                    console.log(error.message)
+                }
+            };
+            fetchMessages();
+        }, [])
+
 
         const quitter = () => {
             localStorage.removeItem('dashboard');
@@ -291,6 +345,15 @@ const DashBoard = () => {
                             <span>Clients</span>
                         </li>
 
+                        {/* Messages */}
+                        <li onClick={handleSelectedMessages}
+                        className='dashboard'
+                        style={mess? {backgroundColor: "#ffd900"} :  {backgroundColor: "transparent"}}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#666666"><path d="M80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg>
+                            <span>Messages</span>
+                        </li>
+
                         {/* Quitter */}
                         <li onClick={() => quitter()}
                             className="dashboard">
@@ -319,7 +382,11 @@ const DashBoard = () => {
                 : catClicked ?
                 < GestionCat />
 
+                : mess ?
+                < GestionMessages />
+
                 :
+
                 // Le Dashboard
                 <div className='container-dashboard'>
 
@@ -328,6 +395,14 @@ const DashBoard = () => {
                         <h2>Vous avez {commandesToSend.length} commande(s) à expédier</h2>
                         :
                         <h2>Pas de commandes en attente</h2>
+                        }
+                    </article>
+
+                    <article className='article-dashboard'>
+                        {messages.length != 0 ?
+                        <h2>Vous avez reçu {messages.length} messages, dont XX en attente d'être lus.</h2>
+                        :
+                        <h2>Vous n'avez pas reçu de messages.</h2>
                         }
                     </article>
 
@@ -344,7 +419,6 @@ const DashBoard = () => {
                     <article className='article-dashboard'>
                         <h2>Nombre de clients</h2>
                         <p><strong>{users.length}</strong> clients sont actuellement enregistrées</p>
-
                     </article>
 
                     <article className='article-dashboard'>

@@ -5,6 +5,7 @@ dotenv.config();
 
 // Importation du modèle
 const Messages = require('../models/messagesModele');
+const Users = require('../models/userModele');
 const {sendContact} = require('../services/nodemailer')
 
 
@@ -36,17 +37,45 @@ const postMessage = async(req, res, next) => {
         next(createError(500, "Error, ", error.message))
     }
 }
-
 const getAllMessages = async (req, res, next) => {
     try {
-        // A définir
+
+        // Je dois être admin et connecté pour accéder au message
+        if(!req.user || !req.user.id)   return next(createError(401, "Authentification requise !"));
+
+        const me = await Users.findById(req.user.id);
+        if(me.role !== "admin") return next(createError(403, "Vous devez être admin"));
+
+        const result = await Messages.find();
+        res.status(200).json(result)
     }
     catch(error){
+        next(createError(500, "Error, ", error.message))
+    }
+}
+const getOneMessage = async (req, res, next) => {
+    try {
+
+        // Je dois être admin et connecté pour accéder au message
+        if(!req.user || !req.user.id)   return next(createError(401, "Authentification requise !"));
+        const me = await Users.findById(req.user.id);
+        if(me.role !== "admin") return next(createError(403, "Vous devez être admin"));
+
+        // Je dois vérifier que le message existe
+        const result = await Messages.findById(req.params.id)
+        if(!result) next(createError(404, "Le message n'existe pas"))
+
+        res.status(200).json(result)
+    }
+
+    catch(error) {
         next(createError(500, "Error, ", error.message))
     }
 }
 
 
 module.exports = {
-    postMessage
+    postMessage,
+    getAllMessages,
+    getOneMessage
 }

@@ -29,6 +29,7 @@ import UpdateArtDetail from './PAGES/DASHBOARD/GESTION-PRODUITS/UpdateArtDetail'
 import UpdateOrder from './PAGES/DASHBOARD/GESTION-CDES/UpdateOrder'
 import UpdateUser from './PAGES/DASHBOARD/GESTION-USER/UpdateUser'
 import UpdateCat from './PAGES/DASHBOARD/GESTION-CATEGORY/UpdateCat'
+import DetailMessage from './PAGES/DASHBOARD/GESTION-MESS/DetailMessage'
 
 import DashboardUser from './PAGES/DASHBOARD/DASHBOARD-USER/DashboardUser'
 import Avis from './PAGES/DASHBOARD/DASHBOARD-USER/Avis'
@@ -93,6 +94,7 @@ function App() {
           <Route path="/dashboard/update-order/:id" element={<UpdateOrder/>}/>
           <Route path="/dashboard/update-user/:id" element={<UpdateUser/>} />
           <Route path="/dashboard/update-category/:id" element={<UpdateCat/>} />
+          <Route path="/dashboard/message/:id" element={<DetailMessage/>}/>
 
           <Route path='/dashboard' element={<DashBoard />} />
         </Route >
