@@ -72,10 +72,33 @@ const getOneMessage = async (req, res, next) => {
         next(createError(500, "Error, ", error.message))
     }
 }
+const deleteOneMessage = async (req, res, next) => {
+    try {
+
+        // Vérifions si le message existe
+        const message = await Messages.findById(req.params.id)
+        if(!message) return next(createError(404, "Ce message ne semble pas exister"));
+
+        // Je vérifie si je suis connecté:
+        if(!req.user || !req.user.id) return next(createError(401, "Authentification requise"));
+
+        // Je vérifie si je suis admin
+        const me = await Users.findById(req.user.id);
+        if(me.role !== "admin") return next(createError(403, "Vous devez être un admin pour interagir avec les messages"));
+
+        const result = await Messages.findByIdAndDelete(req.params.id);
+        res.status(200).json("Ce message a bien été supprimé")
+    }
+
+    catch(err){
+        next(createError(500, err.message))
+    }
+}
 
 
 module.exports = {
     postMessage,
     getAllMessages,
-    getOneMessage
+    getOneMessage,
+    deleteOneMessage
 }

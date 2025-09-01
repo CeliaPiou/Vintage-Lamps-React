@@ -1,9 +1,9 @@
 import React, { useState, useEffect }from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
+import AXIOS_INSTANCE       from '../../../UTILS/services/AxiosInstance'
 
-import AjouterCat from "../GESTION-CATEGORY/AjouterCat"
-import { API_URL } from '../../../api'
+import AjouterCat           from "../GESTION-CATEGORY/AjouterCat"
+import { API_URL }          from '../../../api'
 
 const UpdateArtDetail = () => {
     const navigate = useNavigate();
@@ -216,241 +216,235 @@ const UpdateArtDetail = () => {
 
     <section id='dashboard-update-article'>
 
-            <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
-                <div className='dashboard-container'>
+            <div className='dashboard-container'>
 
-                    {/* première div: img */}
-                    <div className="half">
-                        <img src={article.picture?.img}></img>
-                    </div>
+                {/* première div: img */}
+                <div className="half">
+                    <img src={article.picture?.img}></img>
+                </div>
 
-                    {/* Deuxième div, infos */}
-                    <div className="half">
+                {/* Deuxième div, infos */}
+                <div className="half">
+                    <div>
+                        {/* {avail} */}
+                        <div >
+                            <legend htmlFor='availability'>
+                                {article.availability === true ?
+                                <>
+                                    {/* <p style={green}>Article disponible</p> */}
+                                    <select style={green} name="availability" id="availability" onChange={handleChange}>
+                                        <option value={true}>Disponible</option>
+                                        <option value={false}>Non disponible</option>
+                                    </select>
+                                </>
+                                : article.availability === false ?
+                                <>
+                                    {/* <p style={red} >Article non disponible</p> */}
+                                    <select style={red} name="availability" id="availability" onChange={handleChange}>
+                                        <option value={false}>Non disponible</option>
+                                        <option value={true}>Disponible</option>
+                                    </select>
+                                </>
+                                :
+                                ""
+                                }
+                            </legend>
+                        </div>
+                        {/* Name */}
                         <div>
-                            {/* {avail} */}
-                            <div >
-                                <legend htmlFor='availability'>
-                                    {article.availability === true ?
-                                    <>
-                                        {/* <p style={green}>Article disponible</p> */}
-                                        <select style={green} name="availability" id="availability" onChange={handleChange}>
-                                            <option value={true}>Disponible</option>
-                                            <option value={false}>Non disponible</option>
-                                        </select>
-                                    </>
-                                    : article.availability === false ?
-                                    <>
-                                        {/* <p style={red} >Article non disponible</p> */}
-                                        <select style={red} name="availability" id="availability" onChange={handleChange}>
-                                            <option value={false}>Non disponible</option>
-                                            <option value={true}>Disponible</option>
-                                        </select>
-                                    </>
-                                    :
-                                    ""
-                                    }
-                                </legend>
-                            </div>
-                            {/* Name */}
-                            <div>
-                                <label htmlFor='name'><strong style={{ fontSize: "1.2rem" }}>Nom de l'article</strong></label>
-                                <input
-                                type='text'
-                                value={articleModifie.name}
-                                id='name'
-                                name="name"
-                                required
-                                placeholder="Nom de l'article"
-                                onChange={handleChange}
-                                ></input>
-                            </div>
-                            {/* Categorie */}
-                            <div>
-                                <div id='hover-to-make-appear'>
-                                    <strong>Catégorie : </strong> {
+                            <label htmlFor='name'><strong style={{ fontSize: "1.2rem" }}>Nom de l'article</strong></label>
+                            <input
+                            type='text'
+                            value={articleModifie.name}
+                            id='name'
+                            name="name"
+                            required
+                            placeholder="Nom de l'article"
+                            onChange={handleChange}
+                            ></input>
+                        </div>
+                        {/* Categorie */}
+                        <div>
+                            <div id='hover-to-make-appear'>
+                                <strong>Catégorie : </strong> {
 
-                                        // Si il y'a une catégorie, et qu'il n'y en a qu'une
-                                        article.category && article.category.length === 1 ?
+                                    // Si il y'a une catégorie, et qu'il n'y en a qu'une
+                                    article.category && article.category.length === 1 ?
+                                        <>
+                                        {article.category[0].name}
+                                        </>
+
+                                    // Si il y'a une catégorie et qu'il y'en a plusieurs
+                                    : article.category && article.category.length > 1 ?
+                                        article.category.map((cat, idx) => (
                                             <>
-                                            {article.category[0].name}
+                                                {cat.name} {idx < article.category.length - 1 ? ', ' : ''}
                                             </>
+                                        ))
 
-                                        // Si il y'a une catégorie et qu'il y'en a plusieurs
-                                        : article.category && article.category.length > 1 ?
-                                            article.category.map((cat, idx) => (
-                                                <>
-                                                    {cat.name} {idx < article.category.length - 1 ? ', ' : ''}
-                                                </>
-                                            ))
+                                    : "Pas encore de catégorie"}
+                                <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="grey"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
 
-                                        : "Pas encore de catégorie"}
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="grey"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+                                {/* Toutes les catégories existantes */}
+                                <div id='reveal-categories' onChange={handleChange} >
+                                    {categories.map(c => (
+                                        <div>
 
-                                    {/* Toutes les catégories existantes */}
-                                    <div id='reveal-categories' onChange={handleChange} >
-                                        {categories.map(c => (
-                                            <div>
-                                                {/* <input name='category'
-                                                    type='checkbox'
-                                                    value={c._id}
-                                                    onChange={handleChange}
-                                                    id={c.name}
-                                                    /> */}
+                                            <input
+                                            name="category"
+                                            type="checkbox"
+                                            value={c._id}
+                                            id={c.name}
+                                            checked={articleModifie.category.includes(c._id)}
+                                            onChange={handleChange}
+                                            />
 
-<input
-    name="category"
-    type="checkbox"
-    value={c._id}
-    id={c.name}
-    checked={articleModifie.category.includes(c._id)}
-    onChange={handleChange}
-/>
-
-                                                <label htmlFor={c.name}>{c.name}</label>
-                                            </div>
-                                        ))}
-                                    </div>
-
+                                            <label htmlFor={c.name}>{c.name}</label>
+                                        </div>
+                                    ))}
                                 </div>
 
-                                <p onClick={() => handleAddCat()} style={greyish}>+ Créer une catégorie</p>
                             </div>
 
-                            <div className='souscat'>
+                            <p onClick={() => handleAddCat()} style={greyish}>+ Créer une catégorie</p>
+                        </div>
 
-                                <div >
-                                    {/* Infos générales, prix marque matière culeur period */}
-                                    <div>
-                                        <label htmlFor='price'>Prix de l'article</label>
-                                        <input
-                                        id='price'
-                                        value={articleModifie.price}
-                                        required
-                                        name="price"
-                                        placeholder="Prix"
-                                        onChange={handleChange}
-                                        ></input>
-                                    </div>
+                        <div className='souscat'>
 
-                                    <div>
-                                        <label htmlFor='brand'>Marque  (facultatif)</label>
-                                        <input
-                                        id='brand'
-                                        value={articleModifie.brand}
-                                        placeholder="Marque"
-                                        name="brand"
-                                        onChange={handleChange}
-                                        ></input>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor='material'>Matière (facultatif)</label>
-                                        <input
-                                        id='material'
-                                        name="material"
-                                        value={articleModifie.material}
-                                        placeholder="Matière"
-                                        onChange={handleChange}
-                                        ></input>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor='color'>Couleur (facultatif)</label>
-                                        <input
-                                        id='color'
-                                        value={articleModifie.color}
-                                        placeholder="Couleur"
-                                        name="color"
-                                        onChange={handleChange}
-                                        ></input>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor='period'>Période (facultatif)</label>
-                                        <input id='period'
-                                        placeholder="Période"
-                                        value={articleModifie.period}
-                                        name="period"
-                                        onChange={handleChange}
-                                        ></input>
-                                    </div>
-
-
-                                    {/* Description */}
-                                    <div>
-                                        <label htmlFor='description'>Description (facultatif)</label>
-                                        <textarea id='description'
-                                        style={{"resize":"none"}}
-                                        placeholder="Description"
-                                        value={articleModifie.description}
-                                        name="description"
-                                        onChange={handleChange}
-                                        ></textarea>
-                                    </div>
-                                </div>
-
-                                {/* img */}
+                            <div >
+                                {/* Infos générales, prix marque matière culeur period */}
                                 <div>
-                                {/* Div images */}
-                                    <div>
-                                        <label htmlFor='img'>Image principale</label>
-                                        <input
-                                        type='text'
-                                        value={articleModifie.picture?.img}
-                                        name='img'
-                                        id='img'
-                                        placeholder="URL de l'image principale"
-                                        required
-                                        onChange={handleChange} />
-                                    </div>
+                                    <label htmlFor='price'>Prix de l'article</label>
+                                    <input
+                                    id='price'
+                                    value={articleModifie.price}
+                                    required
+                                    name="price"
+                                    placeholder="Prix"
+                                    onChange={handleChange}
+                                    ></input>
+                                </div>
 
-                                    <div>
-                                        <label htmlFor='img1'>Image supplémentaire 1</label>
-                                        <input type='text'
-                                        value={articleModifie.picture?.img1}
-                                        name='img1' id='img1' placeholder="URL de l'image 1" onChange={handleChange} />
-                                    </div>
+                                <div>
+                                    <label htmlFor='brand'>Marque  (facultatif)</label>
+                                    <input
+                                    id='brand'
+                                    value={articleModifie.brand}
+                                    placeholder="Marque"
+                                    name="brand"
+                                    onChange={handleChange}
+                                    ></input>
+                                </div>
 
-                                    <div>
-                                        <label htmlFor='img2'>Image supplémentaire 2</label>
-                                        <input type='text' value={articleModifie.picture?.img2} name='img2' id='img2' placeholder="URL de l'image 2" onChange={handleChange} />
-                                    </div>
+                                <div>
+                                    <label htmlFor='material'>Matière (facultatif)</label>
+                                    <input
+                                    id='material'
+                                    name="material"
+                                    value={articleModifie.material}
+                                    placeholder="Matière"
+                                    onChange={handleChange}
+                                    ></input>
+                                </div>
 
-                                    <div>
-                                        <label htmlFor='img3'>Image supplémentaire 3</label>
-                                        <input type='text' value={articleModifie.picture?.img3} name='img3' id='img3' placeholder="URL de l'image 3" onChange={handleChange} />
-                                    </div>
+                                <div>
+                                    <label htmlFor='color'>Couleur (facultatif)</label>
+                                    <input
+                                    id='color'
+                                    value={articleModifie.color}
+                                    placeholder="Couleur"
+                                    name="color"
+                                    onChange={handleChange}
+                                    ></input>
+                                </div>
 
-                                    <div>
-                                        <label htmlFor='img4'>Image supplémentaire 4</label>
-                                        <input type='text' value={articleModifie.picture?.img4} name='img4' id='img4' placeholder="URL de l'image 4" onChange={handleChange} />
-                                    </div>
+                                <div>
+                                    <label htmlFor='period'>Période (facultatif)</label>
+                                    <input id='period'
+                                    placeholder="Période"
+                                    value={articleModifie.period}
+                                    name="period"
+                                    onChange={handleChange}
+                                    ></input>
+                                </div>
 
-                                    <div>
-                                        <label htmlFor='video'>Vidéo</label>
-                                        <input type='text' value={articleModifie.picture?.img4} name='video' id='video' placeholder="URL de la vidéo" onChange={handleChange} />
-                                    </div>
 
+                                {/* Description */}
+                                <div>
+                                    <label htmlFor='description'>Description (facultatif)</label>
+                                    <textarea id='description'
+                                    style={{"resize":"none"}}
+                                    placeholder="Description"
+                                    value={articleModifie.description}
+                                    name="description"
+                                    onChange={handleChange}
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            {/* img */}
+                            <div>
+                            {/* Div images */}
+                                <div>
+                                    <label htmlFor='img'>Image principale</label>
+                                    <input
+                                    type='text'
+                                    value={articleModifie.picture?.img}
+                                    name='img'
+                                    id='img'
+                                    placeholder="URL de l'image principale"
+                                    required
+                                    onChange={handleChange} />
+                                </div>
+
+                                <div>
+                                    <label htmlFor='img1'>Image supplémentaire 1</label>
+                                    <input type='text'
+                                    value={articleModifie.picture?.img1}
+                                    name='img1' id='img1' placeholder="URL de l'image 1" onChange={handleChange} />
+                                </div>
+
+                                <div>
+                                    <label htmlFor='img2'>Image supplémentaire 2</label>
+                                    <input type='text' value={articleModifie.picture?.img2} name='img2' id='img2' placeholder="URL de l'image 2" onChange={handleChange} />
+                                </div>
+
+                                <div>
+                                    <label htmlFor='img3'>Image supplémentaire 3</label>
+                                    <input type='text' value={articleModifie.picture?.img3} name='img3' id='img3' placeholder="URL de l'image 3" onChange={handleChange} />
+                                </div>
+
+                                <div>
+                                    <label htmlFor='img4'>Image supplémentaire 4</label>
+                                    <input type='text' value={articleModifie.picture?.img4} name='img4' id='img4' placeholder="URL de l'image 4" onChange={handleChange} />
+                                </div>
+
+                                <div>
+                                    <label htmlFor='video'>Vidéo</label>
+                                    <input type='text' value={articleModifie.picture?.img4} name='video' id='video' placeholder="URL de la vidéo" onChange={handleChange} />
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
-
-
                 </div>
 
-                {addCat? "" :
-                    <div className="button-container">
-                    <button type="submit" className='btn4'>Mettre à jour</button>
-                    <button type="button" onClick={handleReturn} className='btn4'>Revenir en arrière</button>
-                    <button type="button" onClick={handleDelete} className='btn4'>Supprimer l'article</button>
-                </div>
-                }
+
+            </div>
+
+            {addCat? "" :
+                <div className="button-container">
+                <button type="submit" className='btn4'>Mettre à jour</button>
+                <button type="button" onClick={handleReturn} className='btn4'>Revenir en arrière</button>
+                <button type="button" onClick={handleDelete} className='btn4'>Supprimer l'article</button>
+            </div>
+            }
 
 
-            </form>
+        </form>
 
     </section>
 
