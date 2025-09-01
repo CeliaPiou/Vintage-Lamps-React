@@ -70,9 +70,12 @@ const Footer = () => {
           <div className='text-center w-30'>
             <h2>Informations</h2>
 
-              <p>Conditions générales de vente</p>
-              <p>Questions fréquentes</p>
-              <p>Informations sur les livraisons</p>
+              <Link to={{pathname: `/conditions-generales`}}>
+                <p>Conditions générales de vente</p>
+              </Link>
+              <Link to={{pathname: `/questions-frequentes`}}>
+                <p>Questions fréquentes</p>
+              </Link>
               <Link to ={{pathname: `/mentions-legales`}}>
                 <p>Mentions légales</p>
               </Link>

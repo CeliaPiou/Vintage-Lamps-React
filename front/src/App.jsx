@@ -20,6 +20,8 @@ import Panier from './PAGES/PANIER/Panier'
 import Paiement from './PAGES/PANIER/Paiement'
 
 import MentionsLegales from './PAGES/PAGES-FOOTER/MentionsLegales'
+import ConditionsGénérales from './PAGES/PAGES-FOOTER/ConditionsGénérales'
+import QuestionsFréquentes from './PAGES/PAGES-FOOTER/QuestionsFréquentes'
 
 import Error from './PAGES/Error'
 
@@ -72,6 +74,8 @@ function App() {
         <Route path="/categories/:id" element={<DetailCategory />} />
 
         <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path='/conditions-generales' element={<ConditionsGénérales/>} />
+        <Route path="/questions-frequentes" element={<QuestionsFréquentes/>} />
 
         <Route path='*' element={<Error/>} />
 

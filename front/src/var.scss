@@ -113,6 +113,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: left;
 }
 .column {
     flex-direction: column;
@@ -163,11 +164,15 @@ body {
     margin: auto;
 }
 .container {
-    width: 100vw;
-    gap: 20px;
+    width: 80vw;
+    gap: 10px;
     margin: auto;
 }
-
+.img-auto {
+    width: 80vw;
+    max-width: 500px;
+    margin: auto
+}
 .card {
     margin-bottom: 10px;
     position: relative;
