@@ -75,7 +75,7 @@ const getOneMessage = async (req, res, next) => {
 const deleteOneMessage = async (req, res, next) => {
     try {
 
-        // Vérifions si le message existe
+        // Je vérifie si le message existe
         const message = await Messages.findById(req.params.id)
         if(!message) return next(createError(404, "Ce message ne semble pas exister"));
 
@@ -94,11 +94,36 @@ const deleteOneMessage = async (req, res, next) => {
         next(createError(500, err.message))
     }
 }
+const readMessage = async (req, res, next) => {
+    try{
+
+        // Je vérifie si le message existe
+        const message = await Messages.findById(req.params.id)
+        if(!message) return next(createError(404, "Ce message ne semble pas exister"));
+
+        // Je vérifie si je suis connecté:
+        if(!req.user || !req.user.id) return next(createError(401, "Authentification requise"));
+
+        // Je vérifie si je suis admin
+        const me = await Users.findById(req.user.id);
+        if(me.role !== "admin") return next(createError(403, "Vous devez être un admin pour interagir avec les messages"));
+
+        // Tout ok, alors :
+        const result = await Messages.findByIdAndUpdate(req.params.id, req.body, {new:true});
+
+        res.status(200).json("Ce message a bien été passé en lu")
+
+    }
+    catch(error){
+        next(createError(500, error.message))
+    }
+}
 
 
 module.exports = {
     postMessage,
     getAllMessages,
     getOneMessage,
-    deleteOneMessage
+    deleteOneMessage,
+    readMessage
 }

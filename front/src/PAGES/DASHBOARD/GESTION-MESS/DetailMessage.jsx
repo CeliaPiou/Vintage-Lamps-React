@@ -78,23 +78,51 @@ const DetailMessage = () => {
 
     }
 
+    // Pour le passage en "lu"
+    const [status, setStatus] = useState(
+        {status: "read"}
+    );
+    const handleIsRead = async (event) => {
+        try{
+            const isRead = await AXIOS_INSTANCE.put(`${API_URL}/lv/contact/${id}/isread`, status)
+            alert('Ce message a bien été passé en lu.')
+        }
+        catch(error){
+            console.log(error.message)
+        }
+    }
 
     return (
         <section id='container-of-message'>
             <div className='display-of-message'>
+                {console.log(message)}
 
+                {message.length == 0 ?
+                <>
                 <div>
-                    <p>Message de : <strong>{message.name} | {message.email}</strong></p>
-                    <p>Reçu le : <strong>{formatDate(message.createdAt)}</strong></p>
-                    <p>Message : </p>
-                    <p><strong>{message.message}</strong></p>
-                </div>
-                <div>
-                    <button style={green} className='btn5'>Répondre à ce message</button>
+                    <p>Impossible de lire ce message.</p>
                     <button style={greyish} className='btn5' onClick={() => handleReturn()}>Revenir en arrière</button>
-                    <button style={red} className='btn5' onClick={() => handleDelete()}>Supprimer ce message</button>
-
                 </div>
+                </>
+                :
+                <>
+                    <div>
+                        <p>Message de : <strong>{message.name} | {message.email}</strong></p>
+                        <p>Reçu le : <strong>{formatDate(message.createdAt)}</strong></p>
+                        <p>Message : </p>
+                        <p><strong>{message.message}</strong></p>
+                    </div>
+                    <div id="buttons-display">
+                        {message.status == "new" ?
+                            <button style={green} className='btn5' onClick={() => handleIsRead()}>Passer en lu</button>
+                            :
+                            ""
+                        }
+                        <button style={greyish} className='btn5' onClick={() => handleReturn()}>Revenir en arrière</button>
+                        <button style={red} className='btn5' onClick={() => handleDelete()}>Supprimer ce message</button>
+                    </div>
+                </>
+            }
 
             </div>
         </section>

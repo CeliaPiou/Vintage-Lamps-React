@@ -47,7 +47,7 @@ const DashboardUser = () => {
     return (
         <main id='dashboard-user'>
             <h2>Bonjour {auth.others?.username} !</h2>
-            <button className="invisible-button" onClick={logout}>Se déconnecter</button>
+            <button className="invisible-button btn5"  onClick={logout}>Se déconnecter</button>
 
 
             <div>
