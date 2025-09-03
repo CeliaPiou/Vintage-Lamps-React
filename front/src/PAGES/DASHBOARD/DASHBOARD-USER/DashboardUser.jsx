@@ -75,6 +75,7 @@ const DashboardUser = () => {
                                         </div>
 
                                         <div className='content-order'>
+                                            {console.log("Order :", order)}
                                             Mettre la liste des articles
                                         </div>
 

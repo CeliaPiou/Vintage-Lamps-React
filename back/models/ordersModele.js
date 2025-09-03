@@ -20,15 +20,16 @@ const ordersSchema = mongoose.Schema(
             type: String
         },
         payment: {
-            type: String
+            type: Boolean,
+            default: false
         },
         isShipped: {
             type: Boolean,
             default: false
+        },
+        avis: {
+            type: mongoose.Schema.Types.ObjectId, ref: "Avis"
         }
-        // , avis: {
-        //     type: mongoose.Schema.Types.ObjectId, ref: "Avis"
-        // }
 
     } , { timestamps: { createdAt: true} }
 )

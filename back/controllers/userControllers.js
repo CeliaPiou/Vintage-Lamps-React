@@ -89,8 +89,7 @@ const verifyEmail = async (req, res, next) => {
         catch (error) {
             next(createError(500, error.message));
         }
-};
-
+}
 const getAllUsers = async (req, res, next) => {
 
     try{
@@ -103,7 +102,10 @@ const getAllUsers = async (req, res, next) => {
 }
 const getOneUser = async (req, res, next) => {
     try {
-        const result = await Users.findById(req.params.id).populate("orders").populate("avis");
+        const result = await Users.findById(req.params.id).populate("avis").populate({
+            path: "orders",
+            populate: { path: "articles"}
+        });;
         res.status(200).json(result)
 
     }

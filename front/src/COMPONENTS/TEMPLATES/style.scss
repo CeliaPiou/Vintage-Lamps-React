@@ -515,11 +515,25 @@ a {
 
         h1 {font-size: 0.5rem}
     }
+    #pre-footer {
+        gap: 0px;
+        div {
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-wrap: nowrap;
+        }
+    }
 
     #main-footer {
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        div {
+            width: 90vw;
+        }
     }
     #hero-section-small {
         height: 50px;

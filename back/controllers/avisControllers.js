@@ -23,7 +23,6 @@ const postAvis = async(req, res, next) => {
         const deliveredUser = orderConcerned.user;
 
         // POSTER !
-
         const postAvis = await Avis.create({
             user: req.body.user,
             order: req.body.order,
@@ -40,6 +39,12 @@ const postAvis = async(req, res, next) => {
             { new: true }
         );
 
+        // Ajout de l'avis dans la commande
+        const addAvisInOrder = await Orders.findByIdandUpdate(
+            orderConcerned,
+            {$push: { avis: postAvis._id }},
+            { new: true }
+        )
 
         res.status(201).json(postAvis);
     }

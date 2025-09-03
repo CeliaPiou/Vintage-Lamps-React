@@ -60,15 +60,19 @@ const getOneOrder = async(req, res, next) => {
     try{
 
         // Need to be authentified to see orders
-        if(!req.user || !req.user.id) return next(createError(401, "Authentification required"));
-        const response = await Orders.findById(req.params.id).populate("articles");
+        if(!req.user || !req.user.id) return next(createError(401, "Authentification requise"));
+        const response = await Orders.findById(req.params.id).populate({
+            path: "articles",
+            select: "name price",
+            populate: { path: "category", select: "title" }
+        });
 
         // Need to be admin or to have created the order to see it
         const userCreator = response.user;
         const me = await Users.findById(req.user.id);
         const role = me.role;
 
-        if(role !== "admin" && userCreator !== me) return next(createError(401, "You're not the admin nor the creator of this order."))
+        if(role !== "admin" && userCreator !== me) return next(createError(401, "Vous devez être l'admin ou le créateur de la commande."))
         res.status(200).json(response)
 
     }
