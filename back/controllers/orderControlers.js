@@ -63,8 +63,10 @@ const getOneOrder = async(req, res, next) => {
         if(!req.user || !req.user.id) return next(createError(401, "Authentification requise"));
         const response = await Orders.findById(req.params.id).populate({
             path: "articles",
-            select: "name price",
-            populate: { path: "category", select: "title" }
+            select: "name price picture"
+        }).populate({
+            path: "user",
+            select: "user email"
         });
 
         // Need to be admin or to have created the order to see it

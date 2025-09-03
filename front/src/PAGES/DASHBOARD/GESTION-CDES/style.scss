@@ -1,10 +1,5 @@
-section {
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-    align-items: center;
-}
 table {
+    overflow: scroll;
     background-color: rgba(235, 234, 234, 0.911);
     padding: 20px;
     border-radius: 20px;

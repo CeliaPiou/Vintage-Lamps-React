@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance'
 import { API_URL } from '../../../api';
+import { formatDate } from '../../../UTILS/helpers/FormatDate';
 
 const UpdateOrder = () => {
 
@@ -92,7 +93,7 @@ const UpdateOrder = () => {
         </div>
 
         <div className='container-recap'>
-          <p>Commandée par {order.user}, le {order.createdAt}
+          <p>Commandée par {order.user?.email}, le {formatDate(order.createdAt)}
             <br/>
             Montant total : {order.price},00€
           </p>
@@ -102,7 +103,8 @@ const UpdateOrder = () => {
         <div className='container-article-order'>
           {order.articles?.map((art) => (
             <div key={art._id}>
-              <img src={art.picture?.img} alt=""></img>
+              {console.log(art)}
+              <img src={art.picture?.img} alt="Image de l'article commandé"></img>
               <p>{art.name}, {art.price},00 €</p>
             </div>
 
