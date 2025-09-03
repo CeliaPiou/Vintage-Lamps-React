@@ -51,7 +51,7 @@ const GestionCdes = () => {
     }
 
     return (
-        <>
+        <section>
             <h2>Gestion des commandes</h2>
             <p>Modifier ou supprimer une commande</p>
 
@@ -109,7 +109,7 @@ const GestionCdes = () => {
 
                 </tbody>
             </table>
-        </>
+        </section>
     )
 }
 

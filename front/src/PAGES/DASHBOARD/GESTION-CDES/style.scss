@@ -1,3 +1,9 @@
+section {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    align-items: center;
+}
 table {
     background-color: rgba(235, 234, 234, 0.911);
     padding: 20px;
@@ -5,7 +11,7 @@ table {
     border: 1px solid rgba(128, 128, 128, 0.116);
     display: block;
     border-collapse: separate;
-    border-spacing: 20px 10px; /* horizontal | vertical */
+    border-spacing: 20px 10px;
 
     thead {
         color: grey;
