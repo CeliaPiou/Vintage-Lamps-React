@@ -40,8 +40,8 @@ const postAvis = async(req, res, next) => {
         );
 
         // Ajout de l'avis dans la commande
-        const addAvisInOrder = await Orders.findByIdandUpdate(
-            orderConcerned,
+        const addAvisInOrder = await Orders.findByIdAndUpdate(
+            orderConcerned._id,
             {$push: { avis: postAvis._id }},
             { new: true }
         )

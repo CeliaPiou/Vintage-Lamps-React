@@ -8,6 +8,10 @@
 
     div {
         text-align: center;
+
+        div {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.096);
+        }
     }
 
     h2 {
@@ -43,3 +47,51 @@
         }
     }
 }
+
+.cart-item {
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 0.3px solid rgba(104, 104, 104, 0.322);
+    width: 90%;
+    padding: 10px;
+
+    img {
+        max-width: 30%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+
+    p {
+        width: 40vw;
+        padding: 10px;
+        border-right: 0.3px solid rgba(104, 104, 104, 0.322)
+    }
+}
+
+#leave-avis {
+    margin-top: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.185);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0 15px 0;
+    justify-content: center;
+    text-align: center;
+}
+
+.star-btn {
+    color: gray;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.star-btn.selected {
+    color: gold;
+    background-color: lightyellow; /* ou une couleur plus visible */
+}
+

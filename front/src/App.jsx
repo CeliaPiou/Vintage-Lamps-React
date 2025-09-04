@@ -68,7 +68,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/products' element={<OurProducts />} />
         <Route path='/categories' element={<OurCategories />} />
-        <Route path='/order/:id/payment' element={<Paiement/>} />
+        <Route path='/order-approuved' element={<Paiement/>} />
 
         <Route path="/products/:id" element={<DetailProduct />} />
         <Route path="/categories/:id" element={<DetailCategory />} />

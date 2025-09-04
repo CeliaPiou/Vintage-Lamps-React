@@ -10,8 +10,6 @@ import { formatDate } from '../../../UTILS/helpers/FormatDate.jsx'
 import { API_URL } from '../../../api.js';
 
 
-
-
 const DashboardUser = () => {
 
     const { auth, logout } = useContext(AuthContext);
@@ -27,7 +25,6 @@ const DashboardUser = () => {
 
                 const { data, status } = await axios.get(urlToFetch);
                 if(status === 200) {
-                    // const { password, ...others } = data
                     setUser(data);
                 }
             }
@@ -47,7 +44,7 @@ const DashboardUser = () => {
     return (
         <main id='dashboard-user'>
             <h2>Bonjour {auth.others?.username} !</h2>
-            <button className="invisible-button btn5"  onClick={logout}>Se déconnecter</button>
+            <button className="btn5"  onClick={logout}>Se déconnecter</button>
 
 
             <div>
@@ -59,30 +56,40 @@ const DashboardUser = () => {
                         Vous avez passé {user.orders?.length} commandes.
                         <br/>
 
-                        <button className='invisible-button' onClick={() => setShowOrders(!showOrders)}>
+                        <button style={{ margin: "25px"}} className='btn4' onClick={() => setShowOrders(!showOrders)}>
                         {showOrders ? "Masquer le détail" : "Voir le détail"}
                         </button>
 
                         {showOrders && (
                             <div id='container-of-orders'>
-                                {user.orders?.map(order => (
+                                {user.orders?.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
+                                    .map(order => (
                                     <div className='order-box'>
-                                        <div className='grey-part'>
+                                        <div    className='grey-part'
+                                                style={{ backgroundColor: order.isShipped ? "rgb(206, 222, 158)" : "rgb(226, 134, 134)" }}>
                                             <h3>Cde effectuée le {formatDate(order.createdAt)}</h3>
                                             <p>Total {order.price},00 € </p>
-                                            <p>Statut : {order.isShipped ? "Expédié" : "En attente d'expédition"} </p>
+                                            {console.log("allo")}
+                                            <p>Statut : <span style={{ color: order.isShipped? "green" : "red"}}>{order.isShipped ? "Expédié" : "En attente d'expédition"} </span></p>
                                             <p>N° de commande {order._id} </p>
                                         </div>
 
                                         <div className='content-order'>
-                                            {console.log("Order :", order)}
-                                            Mettre la liste des articles
+                                            {order.articles?.map((art) => (
+
+                                                <div key={art._id} className='cart-item'>
+                                                    <img width={150} src={art.picture?.img} alt={art.name}></img>
+                                                    <p>1 x <strong>{art.name}</strong></p>
+                                                    <p>{art.price},00 €</p>
+                                                </div>
+
+                                            ))}
                                         </div>
 
                                         <div>
                                             {order.isShipped &&
                                             <Link to={{ pathname: `/order/${order._id}`}}>
-                                                <button className='invisible-button'>Laisser un avis sur cette commande</button>
+                                                <button style={{ margin: "15px"}} className='btn4'>Laisser un avis sur cette commande</button>
                                             </Link>
                                             }
                                         </div>
@@ -99,11 +106,11 @@ const DashboardUser = () => {
                 </div>
 
                 <h2>+ Mon compte +</h2>
-                <div> </div>
+                <div></div>
 
                 <h2>+ Mes échanges +</h2>
 
-                    <div id='mes-avis'>
+                    <div id='mes-avis' style={{width: "70vw"}}>
 
                         <h3>Mes avis</h3>
 

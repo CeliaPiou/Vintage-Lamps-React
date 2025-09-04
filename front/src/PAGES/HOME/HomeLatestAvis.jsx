@@ -9,6 +9,15 @@ const HomeLatestAvis = () => {
 
     const [avisManually, setAvisManually] = useState([
             {
+                id: 5,
+                createdAt: "Mar 14, 2025",
+                username: "Elizabeth",
+                rating: "5",
+                content: "The lamp is absolutely beautiful. I received it in a great amount of time and it was packaged very well. I am sure I will cherish this for many years.",
+                image: "https://i.etsystatic.com/iap/67b554/6764633163/iap_640x640.6764633163_7sqf6c59.jpg?version=0",
+                imgUser: "https://i.etsystatic.com/site-assets/images/avatars/default_avatar.png?width=75"
+            },
+            {
                 id: 1,
                 createdAt: "Mar 4, 2024" ,
                 username: "shoe-riya",
@@ -47,8 +56,6 @@ const HomeLatestAvis = () => {
 
         ]
         );
-    const [avisRecorded, setAvisRecorded] = useState([]);
-
     const [avis, setAvis] = useState(avisManually);
 
     useEffect(() => {
@@ -57,17 +64,19 @@ const HomeLatestAvis = () => {
 
             try{
                 const { data, status } = await axios.get(`${API_URL}/lv/avis/all`);
+                console.log(status, data)
+
                 if (status === 200) {
                     const formattedData = data.map(item => ({
                         id: item._id,
                         createdAt: item.createdAt || item.date,
-                        username: item.username || item.user.username,
+                        username: item.username || item.user?.username,
                         rating: item.rating || item.rating,
                         content: item.content || item.content,
                         image: item.image,
                         imgUser: item.imgUser || ""
                     }));
-                    setAvis([...avisManually, ...formattedData]);
+                    setAvis(prev => [...prev, ...formattedData]);
                 }
             }
             catch(error){
@@ -87,33 +96,32 @@ const HomeLatestAvis = () => {
 
             <div className='flex container justify-center' id="reviews">
 
-            {avis.map((avi) => (
+            {avis.slice(0,8).map((avi) => (
 
             <div key={avi.id}
-                className='card flip-card-container'
-            >
+                className='card flip-card-container'>
                 <div className="flip-card">
-                <div className='card-front'>
-                    <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{avi.date}</p>
-                    <p style={{fontSize: '1.2rem', margin: 0, fontWeight: 'bold'}}>{avi.username}</p>
-                    <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{renderStars(avi.rating)}</p>
+                    <div className='card-front'>
+                        <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{avi.date}</p>
+                        <p style={{fontSize: '1.2rem', margin: 0, fontWeight: 'bold'}}>{avi.username}</p>
+                        <p style={{fontSize: '0.95rem', margin: 0, fontWeight: '400'}}>{renderStars(avi.rating)}</p>
 
-                    {avi.image ?
-                        <img alt="Image de l'avis" src={avi.image} width={200} height={200}></img>
-                        :
-                        <img alt="Image de l'avis" src='https://sdmntprnortheu.oaiusercontent.com/files/00000000-dafc-61f4-a015-9cde6ff5ff5a/raw?se=2025-08-21T20%3A04%3A39Z&sp=r&sv=2024-08-04&sr=b&scid=deab5f1a-d5be-5c3c-ba06-424a6c249a7b&skoid=0a4a0f0c-99ac-4752-9d87-cfac036fa93f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-21T08%3A42%3A03Z&ske=2025-08-22T08%3A42%3A03Z&sks=b&skv=2024-08-04&sig=t4Qjnt%2Blx7cTMQ/5NvQbhbAxVC/M/HGtbPlguQW6UX0%3D' width={200} height={200}></img>
-                    }
+                        {avi.image ?
+                            <img alt="Image de l'avis" src={avi.image} width={200} height={200}></img>
+                            :
+                            <img alt="Image de l'avis" src='https://sdmntprnortheu.oaiusercontent.com/files/00000000-dafc-61f4-a015-9cde6ff5ff5a/raw?se=2025-08-21T20%3A04%3A39Z&sp=r&sv=2024-08-04&sr=b&scid=deab5f1a-d5be-5c3c-ba06-424a6c249a7b&skoid=0a4a0f0c-99ac-4752-9d87-cfac036fa93f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-21T08%3A42%3A03Z&ske=2025-08-22T08%3A42%3A03Z&sks=b&skv=2024-08-04&sig=t4Qjnt%2Blx7cTMQ/5NvQbhbAxVC/M/HGtbPlguQW6UX0%3D' width={200} height={200}></img>
+                        }
 
-                </div>
-                <div className="card-back" key={avi.id}>
-                    <strong>{avi.username} {renderStars(avi.rating)}</strong>
-                    <p>'' {avi.content} ,,</p>
-                </div>
+                    </div>
+                    <div className="card-back" key={avi.id}>
+                        <strong>{avi.username} {renderStars(avi.rating)}</strong>
+                        <p>'' {avi.content} ,,</p>
+                    </div>
                 </div>
 
             </div>
 
-))}
+            ))}
 
             </div>
 

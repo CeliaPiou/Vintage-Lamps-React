@@ -45,7 +45,7 @@ const Avis = () => {
 
     return (
 
-        <main>
+        <main id='leave-avis' className='w-70'>
             <h2>Laisser un avis</h2>
 
             <form onSubmit={handleSubmit}>
@@ -56,9 +56,8 @@ const Avis = () => {
                         type="button"
                         key={star}
                         onClick={() => setRating(star)}
-                        className={`text-2xl ${
-                        star <= rating ? "text-yellow-500" : "text-gray-300"
-                        }`}
+                        className={`star-btn ${star <= rating ? "selected" : ""} btn4`}
+                        style={{ margin: "2px"}}
                     >
                         ★
                     </button>
@@ -68,6 +67,7 @@ const Avis = () => {
                 <textarea value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Votre avis..."
+                required
                 ></textarea>
 
                 <label>Image :</label>
@@ -75,7 +75,7 @@ const Avis = () => {
                 type="file"
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files[0])}
-                className="block w-full"
+                className='invisible-button'
                 />
                 {image && (
                     <p className="text-sm text-gray-600 mt-1">
@@ -83,7 +83,8 @@ const Avis = () => {
                     </p>
                 )}
 
-                <button type='submit'>Soumettre</button>
+                <br/>
+                <button className='btn4' style={{ margin: "35px"}} type='submit'>Soumettre</button>
             </form>
 
         </main>
