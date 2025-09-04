@@ -88,7 +88,8 @@ const Footer = () => {
               et laissez-vous inspirer par le charme du design vintage</p>
 
             <div>
-              <input type="text" placeholder="Votre email"></input>
+              <label htmlFor='email'>Je m'inscris :</label>
+              <input id='email' name="email" type="email" placeholder="Votre email"></input>
               <button type='submit'>Je m'inscris</button>
             </div>
 

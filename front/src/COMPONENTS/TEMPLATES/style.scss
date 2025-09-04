@@ -172,15 +172,17 @@ a {
         left: 0;
         right: 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.185);
+        ul {
+            li {
+                color: #262626 !important;
+            }
+            svg {
+                fill : #262626 !important;
+            }
+        }
     }
 
     #hero-section-text {
-        // position: absolute;
-        // left: 10vw;
-        // bottom: 5vh;
-        // height: 60vh;
-        // max-width: 500px;
-
         padding: 50px;
         height: 40dvh;
         margin-top: 0;
@@ -192,13 +194,8 @@ a {
 
         h1 {
             font-family: 'Courier New', Courier, monospace;
-            // width: 0;
-            // overflow: hidden;
-            // white-space: nowrap;
-            // font-family: var.$font-big;
             font-size: clamp(15px, 15vw, 42px);
             letter-spacing: 0.3rem;
-            // border-right: 5px solid;
             margin: 0;
 
             // animation: typewriter 2s steps(14) forwards, blink .4s step-end infinite alternate;
@@ -258,25 +255,45 @@ a {
 
             li:hover {
                 padding-bottom: 5px;
-                border-bottom: 5px solid var.$font-fun2-color;
+                // border-bottom: 5px solid var.$font-fun2-color;
+                border-bottom: 5px solid #262626;
             }
         }
     }
 
     #primary-nav:hover {
         background-color: white;
+        // Pour fond sombre
+        // background-color: rgb(56, 56, 56);
         height:77px;
+        li {
+            color: #262626;
+        }
+        svg {
+            fill : #262626;
+        }
     }
 
     .fixed {
-        z-index: 10;
+        z-index: 200 !important;
         background-color: var.$font-inverse-color;
+        // Pour fond sombre
+        // background-color: rgb(56, 56, 56);
         align-items: center;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.185);
+
+        ul {
+            li {
+                color: #262626 !important;
+            }
+            svg {
+                fill : #262626 !important;
+            }
+        }
 
     }
 

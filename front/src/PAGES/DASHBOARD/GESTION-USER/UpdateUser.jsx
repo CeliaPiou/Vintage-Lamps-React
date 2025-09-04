@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance';
 import { useParams, useNavigate } from 'react-router-dom';
-// import { formatDate } from '../../../UTILS/helpers/FormatDate';
+import { formatDate } from '../../../UTILS/helpers/FormatDate';
 import './style.scss'
 import { API_URL } from '../../../api';
 
@@ -87,7 +87,7 @@ const UpdateUser = () => {
                 <h2>Infos utilisateur</h2>
 
                 {user.username}, {user.email} <br/>
-                Inscrit le {user.createdAt}.
+                Inscrit le {formatDate(user.createdAt)}.
                 {/* Inscrit le {formatDate(user.createdAt)}. */}
 
             </div>
@@ -95,7 +95,7 @@ const UpdateUser = () => {
             <div className='bubble flex'>
 
                 <form onSubmit={handleSubmit}>
-                    <legend>Role</legend>
+                    <legend style={{ marginBottom: "15px"}}>Role : {user.role} </legend>
                     <select name="role" id="role"
                     onChange={handleChange}
                     >
@@ -103,7 +103,7 @@ const UpdateUser = () => {
                         <option value={"user"}>Utilisateur</option>
                     </select>
                     <br/>
-                    <button className='btn4' type="submit">Valider les modifications</button>
+                    <button style={{ marginTop: "15px"}} className='btn4' type="submit">Valider les modifications</button>
                 </form>
             </div>
 
@@ -114,7 +114,7 @@ const UpdateUser = () => {
                 <>
                     <strong>Commande effectuée : {user.orders.length} : </strong>
                     {user.orders.map((cde) => (
-                        <p key={cde._id}>N° {cde._id}, le {cde.createdAt} // total : {cde.price},00 €</p>
+                        <p key={cde._id}>N° {cde._id}, le {formatDate(cde.createdAt)} // total : {cde.price},00 €</p>
                     ))}
                 </>:
                 <p>
@@ -129,7 +129,7 @@ const UpdateUser = () => {
                     <div>
                         {user.avis.map((avi => (
                             <div key={avi._id}>
-                                <p> {renderStars(avi.rating)}, le {avi.createdAt}
+                                <p> {renderStars(avi.rating)}, le {formatDate(avi.createdAt)}
                                 {/* Bouton supprimer */}
                                 <svg onClick={() => deleteAvis(avi._id)} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#992B15"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                                 </p>

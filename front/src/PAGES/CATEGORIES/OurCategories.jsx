@@ -38,7 +38,7 @@ const OurCategories = () => {
                 <Link to={{ pathname: `/categories/${c._id}` }}>
 
                     <div key={c._id}>
-                        <img src={c.image}  alt=""/>
+                        <img src={c.image}  alt="Illustration de la catégorie"/>
                         <h2>{c.name}</h2>
                         <p>{c.articles.length} Lampes.</p>
                     </div>

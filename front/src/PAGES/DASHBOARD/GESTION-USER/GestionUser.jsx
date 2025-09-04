@@ -75,7 +75,7 @@ return (
                 :
                 <tr>
                     <td colSpan={6}>
-                        <em>Aucune commande pour le moment.</em>
+                        <em>Aucun client enregistré pour le moment.</em>
                     </td>
                 </tr>
                 }

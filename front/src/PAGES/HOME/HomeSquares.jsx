@@ -9,6 +9,7 @@ const HomeSquares = () => {
 
         <div className='square'>
             <img
+            alt='Photo décorative de lampe'
             width={500}
             src='https://i.etsystatic.com/16538771/r/il/32410e/6583043325/il_794xN.6583043325_93ad.jpg'></img>
         </div>
@@ -18,6 +19,7 @@ const HomeSquares = () => {
         </div>
         <div className='square'>
             <img
+            alt='Photo décorative de lampe'
             width={300}
             src='https://i.etsystatic.com/16538771/r/il/417656/5681630832/il_794xN.5681630832_lbes.jpg'></img>
         </div>
@@ -29,6 +31,7 @@ const HomeSquares = () => {
         <div className='square'>
             <img
             width={300}
+            alt='Photo décorative de lampe'
             src='https://i.etsystatic.com/16538771/r/il/7a629d/6610309460/il_794xN.6610309460_brsn.jpg'></img>
         </div>
         <div className='square three flex justify-center column'>

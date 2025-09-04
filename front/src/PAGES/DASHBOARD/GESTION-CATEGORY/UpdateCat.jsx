@@ -104,7 +104,7 @@ const UpdateCat = () => {
 
             <section>
 
-                <img src={cat.image} alt=""></img>
+                <img src={cat.image} alt="Illustration de la catégorie"></img>
                 <strong>{cat.name}</strong>
 
             </section>

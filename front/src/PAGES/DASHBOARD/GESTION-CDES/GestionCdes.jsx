@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 import "./style.scss"
-import AXIOS_INSTANCE from '../../../UTILS/services/AxiosInstance';
-import { API_URL } from '../../../api';
+import React, { useEffect, useState } from 'react'
+import { Link }         from 'react-router-dom';
+import AXIOS_INSTANCE   from '../../../UTILS/services/AxiosInstance';
+import { API_URL }      from '../../../api';
+import { formatDate }   from '../../../UTILS/helpers/FormatDate'
 
 const GestionCdes = () => {
 
@@ -78,7 +78,7 @@ const GestionCdes = () => {
                             <>
                                 <tr key={item._id}>
                                     <td>{i++} - {item.user}</td>
-                                    <td>{item.createdAt}</td>
+                                    <td>{formatDate(item.createdAt)}</td>
                                     <td>{item.price} €</td>
                                     <td width={250}>
                                         {item.articles.map(item => (<p>{item.name}</p>))}

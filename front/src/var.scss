@@ -6,9 +6,8 @@
 // $font-fun2-color: #ffd900;
 
 // VARIANTE COL
-$color-yellow: #ffd900;
-$font-fun2-color: #fdb515;
-
+$color-yellow: #ff9d00;
+$font-fun2-color: #FFD900;
 
 $font-main-color: #262626;
 $font-inverse-color : #ffffff ;
@@ -43,6 +42,9 @@ body {
     color: $bg-dark-color;
     font-size: 0.9rem;
     font-weight: 300;
+}
+.invisible-thing {
+    display: none;
 }
 
 // BOUTONS
@@ -96,7 +98,7 @@ body {
     transition: all 0.1s ease-in-out;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
-    z-index: 3;
+    z-index: 1;
     height: 45px;
     font-size: 12;
     max-width: 200px;

@@ -66,13 +66,13 @@ const HomeLatestProducts = () => {
             <div className='container-of-arrows'>
 
                 <div className='arrow-round'>
-                    <img id="previous-arrow" onClick={handlePrevClick} src={arrowToLeft}></img>
+                    <img id="previous-arrow" alt='Flèche vers la gauche afin de faire défiler les éléments' onClick={handlePrevClick} src={arrowToLeft}></img>
                 </div>
 
                 <h2>Les nouveautés</h2>
 
                 <div className='arrow-round'>
-                    <img id='next-arrow' onClick={handleNextClick} src={arrowToRight}></img>
+                    <img id='next-arrow' alt="Flèche vers la droite afin de faire défiler les éléments" onClick={handleNextClick} src={arrowToRight}></img>
                 </div>
             </div>
 
@@ -93,6 +93,7 @@ const HomeLatestProducts = () => {
                                     src={item.picture?.img}
                                     width={200}
                                     height={200}
+                                    alt="Photographie de l'article"
                                 ></img>
 
                                 <p>
@@ -115,9 +116,10 @@ const HomeLatestProducts = () => {
             <Link to={{ pathname: `/products` }}>
                 <button className='btn4'>Toutes les nouveautés
                 <img
-                        src={gradient}
-                        width={500}
-                        className='btn-effect'></img>
+                    src={gradient}
+                    alt=""
+                    width={500}
+                    className='btn-effect'></img>
                 </button>
             </Link>
 

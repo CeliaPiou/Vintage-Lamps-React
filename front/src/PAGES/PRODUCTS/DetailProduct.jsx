@@ -53,16 +53,15 @@ const DetailProduct = () => {
                         Votre navigateur ne supporte pas la lecture de vidéos.
                     </video>
                     )}
-                    {article.picture?.img && <img src={article.picture.img} alt="" onClick={() => handleChangePic(article.picture.img)} />}
-                    {article.picture?.img1 && <img src={article.picture.img1} alt="" onClick={() => handleChangePic(article.picture.img1)} />}
-                    {article.picture?.img2 && <img src={article.picture.img2} alt="" onClick={() => handleChangePic(article.picture.img2)} />}
-                    {article.picture?.img3 && <img src={article.picture.img3} alt="" onClick={() => handleChangePic(article.picture.img3)} />}
-                    {article.picture?.img4 && <img src={article.picture.img4} alt="" onClick={() => handleChangePic(article.picture.img4)} />}
+                    {article.picture?.img && <img src={article.picture.img} alt="Photographie de l'objet" onClick={() => handleChangePic(article.picture.img)} />}
+                    {article.picture?.img1 && <img src={article.picture.img1} alt="2ème Photographie de l'objet" onClick={() => handleChangePic(article.picture.img1)} />}
+                    {article.picture?.img2 && <img src={article.picture.img2} alt="3ème Photographie de l'objet" onClick={() => handleChangePic(article.picture.img2)} />}
+                    {article.picture?.img3 && <img src={article.picture.img3} alt="4ème Photographie de l'objet" onClick={() => handleChangePic(article.picture.img3)} />}
+                    {article.picture?.img4 && <img src={article.picture.img4} alt="Enième photographie de l'objet" onClick={() => handleChangePic(article.picture.img4)} />}
                 </div>
                 <div id="image-container-big">
                     <img src={bigPicture} alt={bigPicture} />
                 </div>
-                {/* {console.log(article.picture.img4)} */}
 
             </div>
 

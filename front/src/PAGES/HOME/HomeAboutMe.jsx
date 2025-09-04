@@ -16,6 +16,7 @@ const HomeAboutMe = () => {
                     <button className='btn4'>En savoir plus
                         <img
                             src={gradient}
+                            alt=""
                             width={500}
                             className='btn-effect'></img>
                     </button>

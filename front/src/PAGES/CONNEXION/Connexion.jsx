@@ -37,6 +37,7 @@ const Connexion = () => {
               <button className="btn4 mt-small" onClick={handleClickSignUp} id="btn-signup">
                 <img
                   src={gradient}
+                  alt=""
                   width={500}
                   className='btn-effect'></img>
                 SIGN UP!
@@ -58,6 +59,7 @@ const Connexion = () => {
             <button className="btn4" id="btn-login" onClick={handleClickSignIn}>
               <img
                 src={gradient}
+                alt=""
                 width={500}
                 className='btn-effect'>
               </img>

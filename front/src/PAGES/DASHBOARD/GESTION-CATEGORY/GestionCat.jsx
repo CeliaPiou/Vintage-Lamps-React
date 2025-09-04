@@ -47,7 +47,7 @@ const GestionCat = () => {
                     <div className='one-cat' key={cat._id}>
 
                             <div className='img-container'>
-                                <img src={cat.image} alt=""/>
+                                <img src={cat.image} alt="Illustration de la catégorie"/>
                             </div>
 
                             <strong>{cat.name}</strong>
