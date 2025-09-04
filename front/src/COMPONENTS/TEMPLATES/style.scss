@@ -99,26 +99,11 @@ a {
 //
 #hero-section-small {
     position: relative;
-    // background-color: var.$bg-dark-color;
     background-image:
     // Dark voile
-    // linear-gradient(60deg, #2727273a, #262626b7)
     linear-gradient(60deg, #ff660e27, #5a501a65)
-
     ,
-    ////// Our images
-    // url('../../assets/img/glass-lamp.JPG')
-    // url('https://i.etsystatic.com/16538771/r/il/7378b2/4858918966/il_794xN.4858918966_5s7c.jpg')
-    // url('../../assets/img/v2.jpg')
-    // url('../../assets/img/v3.jpg')
-    url('../../assets/img/gradient.svg')
-
-
-
-    ////// Pexels
-    // url(https://images.pexels.com/photos/568290/pexels-photo-568290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-    // url(https://images.pexels.com/photos/30783191/pexels-photo-30783191/free-photo-of-pensive-woman-in-vintage-office-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-    ;
+    url('../../assets/img/gradient.svg');
     background-size: cover;
     background-attachment:fixed;
     background-position: center;

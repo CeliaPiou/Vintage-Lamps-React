@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import './style.scss'
 import '../../var.scss'
 import gradient from '../../assets/img/gradient.svg'
+import vllogo from "../../assets/img/vllogo.png"
 
 // Les composants
 import Burger from './Burger'
@@ -59,6 +60,9 @@ const Header = () => {
                     <li id="logo-vl">
                         Vintage Lamp
                     </li>
+                    {/* <li>
+                        <img src={vllogo} width={45} alt="Logo de la marque"></img>
+                    </li> */}
                 </ul>
                 </Link>
 

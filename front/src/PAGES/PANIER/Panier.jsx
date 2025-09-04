@@ -1,12 +1,14 @@
 import React from 'react'
 import './style.scss'
 import { useState, useEffect, useContext } from 'react'
-import { CartContext } from '../../UTILS/contexts/CartContext'
-import { useNavigate } from 'react-router-dom'
-import AXIOS_INSTANCE from '../../UTILS/services/AxiosInstance'
+import { CartContext }  from '../../UTILS/contexts/CartContext'
+import { useNavigate }  from 'react-router-dom'
+import AXIOS_INSTANCE   from '../../UTILS/services/AxiosInstance'
+import { Link }         from 'react-router-dom'
 
-import Carrousel from '../../COMPONENTS/TEMPLATES/Carrousel'
-import { API_URL } from '../../api'
+import Carrousel        from '../../COMPONENTS/TEMPLATES/Carrousel'
+import { API_URL }      from '../../api'
+import emptycart        from '../../assets/img/emptycart.png'
 
 const Panier = () => {
 
@@ -80,7 +82,13 @@ const Panier = () => {
 
         </>
         :
-        <p>Your cart is empty !</p>}
+        <>
+            <p>Votre panier est vide !</p>
+            <img src={emptycart} alt="Panier vide" width={300}></img>
+            <Link to={{pathname:`/products`}}>
+                <button style={{ marginTop: "30px"}} className='btn4'>Aller voir nos produits</button>
+            </Link>
+        </>}
 
 
         {/* Apparition des boutons si le cart est rempli, sinon les suggestions */}
